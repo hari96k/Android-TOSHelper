@@ -1,0 +1,1398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/rolesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Roles"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp"
+        app:layout_heightPercent="8%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/roles_GF"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/rolesTitle"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/GFTitleGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/roles_GF"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/GFTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/mafia"
+            android:gravity="center"
+            android:text="@string/GF"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/mafiaText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/GFStatus"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/GF_arso"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/GFTitleGroup"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/arsoTitleGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/GF_arso"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/arsoTitle1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/neutral"
+            android:gravity="center"
+            android:text="@string/arsonist"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/arsonistText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/arsoStatus1"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/arso_surv"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/arsoTitleGroup1"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/survTitleGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/arso_surv"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/survTitle1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/neutral"
+            android:gravity="center"
+            android:text="@string/survivor"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/survivorText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/survStatus1"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/surv_jailor"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/survTitleGroup1"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/jailorTitleGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/surv_jailor"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/jailorTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/town"
+            android:gravity="center"
+            android:text="@string/Jailor"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/townText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/jailorStatus"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/jailor_amne"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/jailorTitleGroup"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/amneTitleGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/jailor_amne"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/amneTitle1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/neutral"
+            android:gravity="center"
+            android:text="@string/Amnesiac"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/amneText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/amneStatus1"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/amne_SK"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/amneTitleGroup1"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/SKTitleGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/amne_SK"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/SKTitle1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/neutral"
+            android:gravity="center"
+            android:text="@string/SerialKiller"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/skText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/SKStatus1"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/SK_witch"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/SKTitleGroup1"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/witchTitleGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/SK_witch"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/witchTitle1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/neutral"
+            android:gravity="center"
+            android:text="@string/Witch"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/witchText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/witchStatus1"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/witch_Any"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/witchTitleGroup1"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/AnyTitleGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/witch_Any"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/AnyTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/Any"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/AnyStatus"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/any_witch"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/AnyTitleGroup"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/witchTitleGroup2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/any_witch"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/witchTitle2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/neutral"
+            android:gravity="center"
+            android:text="@string/Witch"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/witchText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/witchStatus2"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/witch_SK"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/witchTitleGroup2"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/SKTitleGroup2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/witch_SK"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/SKTitle2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/neutral"
+            android:gravity="center"
+            android:text="@string/SerialKiller"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/skText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/SKStatus2"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/SK_amne"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/SKTitleGroup2"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/amneTitleGroup2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/SK_amne"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/amneTitle2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/neutral"
+            android:gravity="center"
+            android:text="@string/Amnesiac"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/amneText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/amneStatus2"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/amne_vet"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/amneTitleGroup2"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/vetTitleGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/amne_vet"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/vetTItle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/town"
+            android:gravity="center"
+            android:text="@string/Veteran"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/townText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/vetStatus"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/vet_surv"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/vetTitleGroup"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/survTitleGroup2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/vet_surv"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/survTitle2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/neutral"
+            android:gravity="center"
+            android:text="@string/survivor"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/survivorText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/survStatus2"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/surv_arso"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/survTitleGroup2"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/arsoTitleGroup2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/surv_arso"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/arsoTitle2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/neutral"
+            android:gravity="center"
+            android:text="@string/arsonist"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/arsonistText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/arsoStatus2"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/arso_maf"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/arsoTitleGroup2"
+        android:background="@color/gray" />
+
+
+    <RelativeLayout
+        android:id="@+id/MafTitleGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/arso_maf"
+        android:gravity="center"
+        android:onClick="toggleStatus"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:id="@+id/MafTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/mafia"
+            android:gravity="center"
+            android:text="@string/Maf"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/mafiaText"
+            android:textSize="20sp"
+            app:layout_heightPercent="6%"
+            app:layout_widthPercent="50%" />
+
+        <View
+            android:id="@+id/MafStatus"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorAccent"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/leftBisector"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/rolesTitle"
+        android:layout_toRightOf="@+id/rolesTitle"
+        android:background="@color/gray" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/roles_GF"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/mafia"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/GFPos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/GF_arso"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/arsoPos1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/arso_surv"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/survPos1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/surv_jailor"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/town"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/jailorPos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/jailor_amne"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/amnePos1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/amne_SK"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/SKPos1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/SK_witch"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/witchPos1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/witch_Any"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/AnyPos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/any_witch"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/witchPos2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/witch_SK"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/SKPos2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/SK_amne"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/amnePos2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/amne_vet"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/town"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/vetPos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/vet_surv"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/survPos2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/surv_arso"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/arsoPos2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/arso_maf"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/mafia"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/MafPos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/positionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/rolesTitle"
+        android:layout_toRightOf="@+id/rolesTitle"
+        android:gravity="center"
+        android:text="@string/positionTitle"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp"
+        app:layout_heightPercent="8%"
+        app:layout_widthPercent="10%" />
+
+    <View
+        android:id="@+id/rightBisector"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/positionTitle"
+        android:layout_toRightOf="@+id/positionTitle"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/taken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:gravity="center"
+        android:text="@string/taken"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp"
+        app:layout_heightPercent="8%"
+        app:layout_widthPercent="40%" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roles_GF"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/mafia"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkGF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/GF_arso"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkArso1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arso_surv"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkSurv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/surv_jailor"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/town"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkJailor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jailor_amne"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkAmne1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/amne_SK"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkSK1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SK_witch"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkWitch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/witch_Any"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:gravity="center_horizontal"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <Button
+            android:id="@+id/rainbowButtonAnyField"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="end"
+            android:background="@drawable/delete2"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/rainbowAnyField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|bottom"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/any_witch"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkWitch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/witch_SK"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkSK2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SK_amne"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkAmne2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/amne_vet"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/town"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkVet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vet_surv"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkSurv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/surv_arso"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkArso2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/arso_maf"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/mafia"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="40%">
+
+        <CheckBox
+            android:id="@+id/chkMafioso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+</android.support.percent.PercentRelativeLayout>

@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/rolesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/Roles"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp"
+        app:layout_heightPercent="8%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/roles_sheriff"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/rolesTitle"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/sheriffTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/roles_sheriff"
+        android:background="@color/town"
+        android:gravity="center"
+        android:text="@string/sheriff"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/sheriff_doc"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/sheriffTitle"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/doctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sheriff_doc"
+        android:background="@color/town"
+        android:gravity="center"
+        android:text="@string/Doctor"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/doc_invest"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/doctor"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/invest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/doc_invest"
+        android:background="@color/town"
+        android:gravity="center"
+        android:text="@string/investigator"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+
+    <View
+        android:id="@+id/invest_jailor"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/invest"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/jailor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/invest_jailor"
+        android:background="@color/town"
+        android:gravity="center"
+        android:text="@string/Jailor"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/jailor_med"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/jailor"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/jailor_med"
+        android:background="@color/town"
+        android:gravity="center"
+        android:text="@string/medium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/med_GF"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/medium"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/GF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/med_GF"
+        android:background="@color/mafia"
+        android:gravity="center"
+        android:text="@string/GF"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/GF_framer"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/GF"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/framer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GF_framer"
+        android:background="@color/mafia"
+        android:gravity="center"
+        android:text="@string/framer"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+
+    <View
+        android:id="@+id/framer_exe"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/framer"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/exe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/framer_exe"
+        android:background="@color/neutral"
+        android:gravity="center"
+        android:text="@string/exe"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/exe_escort"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/exe"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/escort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/exe_escort"
+        android:background="@color/town"
+        android:gravity="center"
+        android:text="@string/escort"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/escort_maf"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/escort"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/maf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/escort_maf"
+        android:background="@color/mafia"
+        android:gravity="center"
+        android:text="@string/Maf"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/maf_lookout"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/maf"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/lookout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/maf_lookout"
+        android:background="@color/town"
+        android:gravity="center"
+        android:text="@string/lookout"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/lookout_sk"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/lookout"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/sk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lookout_sk"
+        android:background="@color/neutral"
+        android:gravity="center"
+        android:text="@string/SerialKiller"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/sk_TK"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/sk"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/TK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sk_TK"
+        android:background="@color/town"
+        android:gravity="center"
+        android:text="@string/TK"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/TK_Jester"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/TK"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/Jester"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TK_Jester"
+        android:background="@color/neutral"
+        android:gravity="center"
+        android:text="@string/jester"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/jester_RT"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/Jester"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/RT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/jester_RT"
+        android:background="@color/town"
+        android:gravity="center"
+        android:text="@string/RT"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%" />
+
+    <View
+        android:id="@+id/rightBisector"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/rolesTitle"
+        android:layout_toRightOf="@+id/rolesTitle"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/taken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:gravity="center"
+        android:text="@string/taken"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp"
+        app:layout_heightPercent="8%"
+        app:layout_widthPercent="50%" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/roles_sheriff"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/town"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkSheriff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sheriff_doc"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/town"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkDoctor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/doc_invest"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/town"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkInvest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/invest_jailor"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/town"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkJailor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jailor_med"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/town"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/med_GF"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/mafia"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkGF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/GF_framer"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/mafia"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkFramer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/framer_exe"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkExe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/exe_escort"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/town"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkEscort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/escort_maf"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/mafia"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkMafioso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/maf_lookout"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/town"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkLookout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lookout_sk"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkSK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sk_TK"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:background="@color/town"
+        android:gravity="center_horizontal"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:id="@+id/classicButtonTKField"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:background="@drawable/delete2"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/classicTKField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TK_Jester"
+        android:layout_toEndOf="@id/rightBisector"
+        android:layout_toRightOf="@id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/chkJester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/jester_RT"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:background="@color/town"
+        android:gravity="center_horizontal"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:id="@+id/classicButtonRTField"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:background="@drawable/delete2"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/classicRTField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+
+</android.support.percent.PercentRelativeLayout>

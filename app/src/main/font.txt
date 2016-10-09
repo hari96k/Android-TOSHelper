@@ -1,0 +1,7 @@
+font for buttons: (font 20)
+
+Komika Axis
+
+font for titles:
+
+ArtBrush

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TownofSalemHelper.iml" filepath="$PROJECT_DIR$/TownofSalemHelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../Documents/AndroidStudioProjects/TownofSalemHelper/app/app.iml" filepath="$PROJECT_DIR$/../../../Documents/AndroidStudioProjects/TownofSalemHelper/app/app.iml" />
+    </modules>
+  </component>
+</project>
