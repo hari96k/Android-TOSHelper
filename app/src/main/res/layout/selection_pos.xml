@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/posTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/tint"
         android:gravity="center"
         android:text="@string/position"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -16,14 +17,15 @@
 
     <LinearLayout
         android:id="@+id/posDescripGroup"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/posTitle"
         android:layout_centerHorizontal="true"
+        android:background="@color/tint"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/descrip1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="(for "
@@ -54,7 +56,6 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/descrip3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -64,10 +65,11 @@
 
     <LinearLayout
         android:id="@+id/prevRoleGroup"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/posDescripGroup"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
@@ -82,7 +84,7 @@
             android:id="@+id/buttonPosField"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_gravity="end"
+            android:layout_gravity="center"
             android:background="@drawable/delete2"
             android:onClick="deletePos"
             android:scaleType="fitXY"
@@ -93,14 +95,13 @@
         android:id="@+id/listViewPos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/prevRoleGroup"
+        android:layout_below="@+id/prevRoleGroup"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:paddingTop="20dp"
-        tools:listitem="@android:layout/simple_list_item_1" />
+        android:background="@color/tint"
+        android:paddingTop="20dp" />
 
     <ImageView
-        android:id="@+id/imageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
@@ -109,5 +110,4 @@
         android:contentDescription="@string/position"
         android:scaleType="fitXY"
         android:src="@drawable/question" />
-
 </RelativeLayout>

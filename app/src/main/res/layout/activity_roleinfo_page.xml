@@ -1,36 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:orientation="vertical"
         android:padding="20dp">
 
         <TextView
             android:id="@+id/roleTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#b3ffffff"
+            android:gravity="center"
             android:text="@string/Spy"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="40sp" />
 
         <TextView
             android:id="@+id/roleAttribute"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:background="#b3ffffff"
+            android:gravity="center"
             android:text="@string/role_attribute"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            android:layout_gravity="center"
+            android:background="#b3ffffff"
             android:paddingTop="20dp"
             android:text="@string/summaryTitle"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -40,15 +45,17 @@
             android:id="@+id/summaryInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#b3ffffff"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="@string/summary"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            android:layout_gravity="center"
+            android:background="#b3ffffff"
             android:text="@string/abilitiesTitle"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold" />
@@ -57,15 +64,17 @@
             android:id="@+id/abilitiesInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#b3ffffff"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="@string/abilities"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            android:layout_gravity="center"
+            android:background="#b3ffffff"
             android:text="@string/attributesTitle"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold" />
@@ -74,15 +83,17 @@
             android:id="@+id/attributesInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#b3ffffff"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="@string/attributes"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            android:layout_gravity="center"
+            android:background="#b3ffffff"
             android:text="@string/goalTitle"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold" />
@@ -91,15 +102,17 @@
             android:id="@+id/goalInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#b3ffffff"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="@string/goals"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            android:layout_gravity="center"
+            android:background="#b3ffffff"
             android:text="@string/investResultsTitle"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold" />
@@ -108,6 +121,7 @@
             android:id="@+id/investResultsInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#b3ffffff"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="@string/investResults"
@@ -115,9 +129,10 @@
 
         <TextView
             android:id="@+id/mechanicsTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            android:layout_gravity="center"
+            android:background="#b3ffffff"
             android:text="@string/mechanics"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold"
@@ -127,12 +142,9 @@
             android:id="@+id/mechanicsInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#b3ffffff"
             android:text="@string/goals"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:visibility="invisible" />
-        <!--android:paddingBottom="10dp"-->
-        <!--android:paddingTop="10dp"-->
-
-
     </LinearLayout>
 </ScrollView>

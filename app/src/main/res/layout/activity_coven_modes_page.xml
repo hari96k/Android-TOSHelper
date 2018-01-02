@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/salem_classic"
+        android:src="@drawable/coven_modes_title" />
+
+    <ImageView
+        android:id="@+id/buttonRanked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/ranked_button"
+        android:onClick="goToRanked"
+        android:src="@drawable/button_ranked" />
+
+    <ImageView
+        android:id="@+id/buttonClassic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonRanked"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/classic_mode"
+        android:onClick="goToClassic"
+        android:src="@drawable/button_classic" />
+
+    <ImageView
+        android:id="@+id/buttonCustom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonClassic"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/custom_mode"
+        android:onClick="goToCustom"
+        android:src="@drawable/button_custom" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/imageView2"
+        android:contentDescription="@string/GF"
+        android:scaleType="fitXY"
+        android:src="@drawable/pirate" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/Townie"
+        android:scaleType="fitXY"
+        android:src="@drawable/coven_leader" />
+</RelativeLayout>

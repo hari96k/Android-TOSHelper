@@ -1,532 +1,1674 @@
 package hari.tosHelper;
 
-
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.TextView;
 
 import java.util.HashMap;
 
-
 public class Role_Information extends Activity {
-
-    protected static final HashMap<String, String[]> infoData = new HashMap<String, String[]>() {
+    protected static final HashMap<String, Object[]> infoData = new HashMap<String, Object[]>() {
         {
-            // String[0] = Role Alignment & uniqueness
-            // String[1] = Summary
-            // String[2] = Abilities
-            // String[3] = Attributes
-            // String[4] = Goal
-            // String[5] = (Optional) Mechanics
-
-            put("Jailor", new String[]{"(Town Killing)\n(Unique Role)",
-                    "A prison guard who secretly detains suspects.",
-                    "You may choose one person during the day to jail for the night.",
-                    "You may anonymously talk with your prisoner." +
-                            "You can choose to execute your prisoner." +
-                            "The jailed target can't perform their night ability." +
-                            "While jailed the prisoner is safe from all attacks.",
-                    "Lynch every criminal and evildoer.",
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target knows your darkest secrets. They could be the Spy, Blackmailer, or Jailor.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target detains people at night. They must be a Jailor."});
-
-            put("Investigator", new String[]{"(Town Investigative)", "A private eye who secretly gathers information.",
-                    "Investigate one person each night for a clue to their role.",
-                    "None.",
-                    "Lynch every criminal and evildoer.",
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target has sensitive information to reveal. They could be the Investigator, Consigliere, or Mayor.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target gathers information about people. They must be an Investigator.",
-
-                    "Escort, Transporter, or Consort - Your target is skilled at disrupting others.\n\n" +
-                    "Investigator, Consigliere, or Mayor - Your target has sensitive information to reveal.\n\n" +
-                    "Sheriff, Executioner or Werewolf - Your target is waiting for the perfect moment to strike.\n\n" +
-                    "Vigilante, Mafioso or Veteran - Your target owns a gun.\n\n" +
-                    "Lookout, Forger or Amnesiac - Your target sticks to the shadows.\n\n" +
-                    "Spy, Blackmailer or Jailor - Your target knows your darkest secrets.\n\n" +
-                    "Doctor, Disguiser or Serial Killer - Your target is covered in blood.\n\n" +
-                    "Bodyguard, Godfather or Arsonist - Your target is not afraid to get their hands dirty.\n\n" +
-                    "Medium, Janitor, or Retributionist - Your target works with dead bodies.\n\n" +
-                    "Survivor, Vampire Hunter or Witch - Your target keeps to themselves.\n\n" +
-                    "Framer, Vampire or Jester - Your target may not be what they seem. (Note: You will also receive this message if your target was framed)"});
-
-            put("Lookout", new String[]{"(Town Investigative)","An eagle-eyed observer, stealthily camping outside houses to gain information.",
-                    "Watch one person at night to see who visits them.",
-                    "None.",
-                    "Lynch every criminal and evildoer.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target sticks to the shadows. They could be the Lookout, Forger or Amnesiac.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target watches who visits people at night. They must be a Lookout."});
-
-            put("Sheriff", new String[]{"(Town Investigative)","The law enforcer of the town, forced into hiding from threat of murder.",
-                    "Check one person each night for suspicious activity.",
-                    "You will know if your target is a member of the Mafia, except for the Godfather." +
-                            "You will know if your target is a Serial Killer.",
-                    "Lynch every criminal and evildoer.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target is waiting for the perfect moment to strike. They could be the Sheriff, Executioner or Werewolf.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target is a protector of the town. They must be a Sheriff.",
-
-
-                    "Your target is not suspicious:\n" +
-                    "All Townies\n" +
-                    "Amnesiac, Survivor\n" +
-                    "Executioner, Jester, Witch\n" +
-                    "Vampire\n" +
-                    "Godfather\n" +
-                    "Arsonist\n" +
-                    "Werewolf during odd-numbered nights\n\n" +
-                    "Your target is a member of the Mafia:\n" +
-                    "All Mafia except Godfather\n" +
-                    "Anyone who was visited by a Framer\n\n" +
-                    "Your target is a Serial Killer!:\n" +
-                    "Serial Killer\n\n" +
-                    "Your target is a Werewolf:\n" +
-                    "Werewolf during Full Moon\n\n"});
-
-            put("Spy", new String[]{"(Town Investigative)","A stealthy eavesdropper who listens in on secret conversations.",
-                    "You can secretly listen to the Mafia at night.",
-                    "You can hear private messages." +
-                            "You will know who the Mafia visit at night.",
-                    "Lynch every criminal and evildoer.",
-
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target knows your darkest secrets. They could be the Spy, Blackmailer, or Jailor.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target secretly listens in on private conversations. They must be a Spy."});
-
-            put("Escort", new String[]{"(Town Support)","A beautiful woman skilled in distraction.",
-                    "Distract someone each night.",
-                    "Distraction blocks your target from using their role's night ability." +
-                            "You are immune to roleblocks.",
-                    "Lynch every criminal and evildoer.",
-
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target is skilled at disrupting others. They could be an Escort, Transporter or Consort.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target is a beautiful woman working for the town. She must be an Escort."});
-
-            put("Mayor", new String[]{"(Town Support)\n(Unique Role)","The leader of the town.",
-                    "You may reveal yourself as the Mayor of the Town.",
-                    "Once you have revealed yourself as Mayor your vote counts as 3 votes." +
-                            "You may not be healed once you have revealed yourself.",
-                    "Lynch every criminal and evildoer.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target has sensitive information to reveal. They could be the Investigator, Consigliere, or Mayor.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target is the leader of the town. They must be the Mayor."});
-
-            put("Medium", new String[]{"(Town Support)","A secret psychic who talks with the dead.",
-                    "When dead speak to a living person at night.",
-                    "You will speak to the dead anonymously each night you are alive." +
-                            "You may only speak to a living person once.",
-                    "Lynch every criminal and evildoer.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target works with dead bodies. They could be the Medium, Janitor or Retributionist.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target speaks with the dead. They must be a Medium."});
-
-            put("Retributionist", new String[]{"(Town Support)\n(Unique Role)", "A powerful mystic who will give one person a second chance at life.",
-                    "You may revive a dead Town member.",
-                    "You may only resurrect one person.",
-                    "Lynch every criminal and evildoer.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target works with dead bodies. They could be the Medium, Janitor or Retributionist.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target is a Retributionist."});
-
-            put("Transporter", new String[]{"(Town Support)","A man who transports people without asking any questions.",
-                    "Choose two people to transport at night.",
-                    "Transporting two people swaps all targets against them." +
-                            "You may transport yourself." +
-                            "Your targets will know they were transported.",
-                    "Lynch every criminal and evildoer.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target is skilled at disrupting others. They could be an Escort, Transporter or Consort.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target specializes in transportation, they must be a Transporter."});
-
-            put("Bodyguard", new String[]{"(Town Protective)",
-                    "An ex-soldier who secretly makes a living by selling protection.",
-                    "Protect one person from death at night.",
-                    "If your target is attacked both you and your attacker will die instead." +
-                            "Your counterattack ignores night immunity.",
-                    "Lynch every criminal and evildoer.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target is not afraid to get their hands dirty. They could be the Bodyguard, Godfather or Arsonist.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target is a trained protector, they must be a Bodyguard."});
-
-            put("Doctor", new String[]{"(Town Protective)",
-                    "A surgeon skilled in trauma care who secretly heals people.",
-                    "Heal one person each night, preventing them from dying.",
-                    "You may only heal yourself once." +
-                            "You will know if your target is attacked.",
-                    "Lynch every criminal and evildoer.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target is covered in blood. They could be the Doctor, Disguiser or Serial Killer.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target is a professional surgeon, they must be a Doctor."});
-
-            put("Vampire Hunter", new String[]{"(Town Killing)",
-                    "A priest turned monster hunter, this person slays Vampires.",
-                    "Check for Vampires each night.",
-                    "If you find a Vampire you will stake them in the heart." +
-                            "If a Vampire visits you they will be staked." +
-                            "You can hear Vampires talk at night." +
-                            "If you kill all Vampires you will become a Vigilante.",
-                    "Lynch every criminal and evildoer.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target keeps to themselves. They could be a Survivor, Vampire Hunter or Witch.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target tracks Vampires. They must be a Vampire Hunter!"});
-
-            put("Veteran", new String[]{"(Town Killing)\n(Unique)",
-                    "A paranoid war hero who will shoot anyone who visits him.",
-                    "Decide if you will go on alert.",
-                    "While on alert you can not be killed at night." +
-                            "If anyone visits you while you are on alert they will be shot." +
-                            "You can only go on alert 3 times." +
-                            "You are immune to role blocks.",
-                    "Lynch every criminal and evildoer.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target owns weapons. They could be a Vigilante, Veteran or Mafioso.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target is a paranoid war hero. They must be a Veteran."});
-
-            put("Vigilante", new String[]{"(Town Killing)",
-                    "A corrupt cop who takes the law into his own hands.",
-                    "Choose to take justice into your own hands and shoot someone.",
-                    "If you shoot another Town member you will commit suicide over the guilt." +
-                            "You can only shoot your gun 3 times.",
-                    "Lynch every criminal and evildoer.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target owns weapons. They could be a Vigilante, Veteran or Mafioso.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target will bend the law to enact justice. They must be a Vigilante."});
-
-            put("Godfather", new String[]{"(Mafia Killing)\n(Unique Role)",
-                    "The leader of organized crime.",
-                    "Kill someone each night.",
-                    "You can't be killed at night." +
-                            "If there is a Mafioso he will attack the target instead of you." +
-                            "You will appear to be a Town member to the Sheriff." +
-                            "You can talk with the other Mafia at night.",
-                    "Kill anyone that will not submit to the Mafia.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target is not afraid to get their hands dirty. They could be the Bodyguard, Godfather or Arsonist.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target is the leader of the Mafia. They must be the Godfather."});
-
-            put("Mafioso", new String[]{"(Mafia Killing)\n(Unique Role)",
-                    "A member of organized crime, trying to work their way to the top.",
-                    "Carry out the Godfather's orders.",
-                    "You can kill if the Godfather doesn't give you orders." +
-                            "If the Godfather dies you will become the next Godfather." +
-                            "You can talk with the other Mafia at night.",
-                    "Kill anyone that will not submit to the Mafia.",
-
-                    "Sheriff -\nYour target is a member of the Mafia.\n\n" +
-                            "Investigator -\n" +
-                            "Your target owns weapons. They could be a Vigilante, Veteran or Mafioso.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target does the Godfather's dirty work. They must be a Mafioso."});
-
-            put("Blackmailer", new String[]{"(Mafia Support)",
-                    "An eavesdropper who uses information to keep people quiet.",
-                    "Prevents one person from speaking during the next day each night.",
-                    "Blackmailed targets can not talk during the day." +
-                            "If there are no kill capable Mafia roles left you will become a Mafioso." +
-                            "You can talk with the other Mafia at night.",
-                    "Kill anyone that will not submit to the Mafia.",
-
-                    "Sheriff -\nYour target is a member of the Mafia.\n\n" +
-                            "Investigator -\n" +
-                            "Your target knows your darkest secrets. They could be the Spy, Blackmailer, or Jailor.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target uses information to silence people. They must be a Blackmailer."});
-
-            put("Consigliere", new String[]{"(Mafia Support)",
-                    "A corrupted investigator who gathers information for the Mafia.",
-                    "Check one person for their exact role each night.",
-                    "If there are no kill capable Mafia roles left you will become a Mafioso." +
-                            "You can talk with the other Mafia at night.",
-                    "Kill anyone that will not submit to the Mafia.",
-
-                    "Sheriff -\nYour target is a member of the Mafia.\n\n" +
-                            "Investigator -\n" +
-                            "Your target has sensitive information to reveal. They could be the Investigator, Consigliere, or Mayor.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target gathers information for the Mafia. They must be a Consigliere."});
-
-            put("Consort", new String[]{"(Mafia Support)",
-                    "A beautiful dancer working for organized crime.",
-                    "Distract someone each night.",
-                    "Distraction blocks your target from using their role's night ability." +
-                            "If there are no kill capable Mafia roles left you will become a Mafioso." +
-                            "You can talk with the other Mafia at night.",
-                    "Kill anyone that will not submit to the Mafia.",
-
-                    "Sheriff -\nYour target is a member of the Mafia.\n\n" +
-                            "Investigator -\n" +
-                            "Your target is skilled at disrupting others. They could be an Escort, Transporter or Consort.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target is a beautiful woman working for the Mafia. She must be a Consort."});
-
-            put("Disguiser", new String[]{"(Mafia Deception)",
-                    "A master of disguise who pretends to be other people.",
-                    "Choose a target to disguise yourself as.",
-                    "If your target dies you will appear to be them." +
-                            "You can only use your night ability three times." +
-                            "After disguising your name, position and character will be swapped with your targets.",
-                    "Kill anyone that will not submit to the Mafia.",
-
-                    "Sheriff -\nYour target is a member of the Mafia.\n\n" +
-                            "Investigator -\n" +
-                            "Your target is covered in blood. They could be the Doctor, Disguiser or Serial Killer.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target pretends to be other people. They must be a Disguiser."});
-
-            put("Forger", new String[]{"(Mafia Deception)",
-                    "A crooked lawyer that replaces documents.",
-                    "Choose a person and rewrite their last will at night.",
-                    "If your target dies, their last will is replaced with your forgery." +
-                            "You may only perform 3 forgeries.",
-                    "Kill anyone that will not submit to the Mafia.",
-
-                    "Sheriff -\nYour target is a member of the Mafia.\n\n" +
-                            "Investigator -\n" +
-                            "Your target sticks to the shadows. They could be the Lookout, Forger or Amnesiac.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target forges documents. They must be a Framer or a Forger."});
-
-            put("Framer", new String[]{"(Mafia Deception)",
-                    "A skilled counterfeiter who manipulates information.",
-                    "Choose someone to frame at night.",
-                    "If your target is investigated they will appear to be a member of the Mafia." +
-                            "If there are no kill capable Mafia roles left you will become a Mafioso.",
-                    "Kill anyone that will not submit to the Mafia.",
-
-                    "Sheriff -\nYour target is a member of the Mafia.\n\n" +
-                            "Investigator -\n" +
-                            "Your target may not be what they seem. They could be a Framer, Vampire, or Jester.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target forges documents. They must be a Framer or a Forger."});
-
-            put("Janitor", new String[]{"(Mafia Deception)",
-                    "A sanitation expert working for organized crime.",
-                    "Choose a person to clean at night.",
-                    "If your target dies their role and last will won't be revealed to the Town." +
-                            "Only you will see the cleaned targets role and last will." +
-                            "You may only perform 3 cleanings.",
-                    "Kill anyone that will not submit to the Mafia.",
-
-                    "Sheriff -\nYour target is a member of the Mafia.\n\n" +
-                            "Investigator -\n" +
-                            "Your target works with dead bodies. They could be the Medium, Janitor or Retributionist.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target cleans up dead bodies. They must be a Janitor."});
-
-            put("Arsonist", new String[]{"(Neutral Killing)",
-                    "A pyromaniac that wants to burn everyone.",
-                    "Douse someone in gasoline or ignite all doused targets.",
-                    "Targets will know that they are doused in gasoline." +
-                            "Death from fire can't be prevented by healing or night immunities." +
-                            "Select yourself to ignite doused people.",
-                    "Live to see everyone burn.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target is not afraid to get their hands dirty. They could be the Bodyguard, Godfather or Arsonist.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target likes to watch things burn. They must be an Arsonist."});
-
-            put("Serial Killer", new String[]{"(Neutral Killing)",
-                    "A psychotic criminal who wants everyone to die.",
-                    "Kill someone each night.",
-                    "If you are role blocked you will attack the role blocker instead of your target." +
-                            "You can not be killed at night.",
-                    "Kill everyone who would oppose you.",
-
-                    "Sheriff -\nYour target is a Serial Killer!\n\n" +
-                            "Investigator -\n" +
-                            "Your target is covered in blood. They could be the Doctor, Disguiser or Serial Killer.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target wants to kill everyone. They must be a Serial Killer."});
-
-            put("Werewolf", new String[]{"(Neutral Killing)\n(Unique Role)",
-                    "A beast that hides under the skin of a man.",
-                    "Transform into a Werewolf during the full moon.",
-                    "As a Werewolf you can not be killed at night." +
-                            "As a Werewolf you will attack your victim and anyone that visits them." +
-                            "Your attack goes through night immunity.",
-                    "Kill everyone who would oppose you.",
-
-                    "Sheriff -\nYour target is a Werewolf(Only during Full Moons).\n\n" +
-                            "Investigator -\n" +
-                            "Your target is waiting for the perfect moment to strike. They could be the Sheriff, Executioner or Werewolf.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target howls at the moon. They must be a Werewolf."});
-
-            put("Executioner", new String[]{"(Neutral Evil)",
-                    "An obsessed lyncher who will stop at nothing to execute his target.",
-                    "Trick the Town into lynching your target.",
-                    "Your target is >Your target's name<" +
-                            "If your target is killed at night you will become a Jester.",
-                    "Get your target lynched at any cost.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target is waiting for the perfect moment to strike. They could be the Sheriff, Executioner or Werewolf.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target wants someone to be lynched at any cost. They must be an Executioner."});
-
-            put("Jester", new String[]{"(Neutral Evil)",
-                    "A crazed lunatic whose life goal is to be publicly executed.",
-                    "Trick the Town into voting against you.",
-                    "If you are lynched you may kill one of your guilty voters the following night.",
-                    "Get yourself lynched by any means necessary.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target may not be what they seem. They could be a Framer, Vampire, or Jester.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target wants to be lynched. They must be a Jester."});
-
-            put("Witch", new String[]{"(Neutral Evil)",
-                    "A voodoo master who can control other people's actions.",
-                    "Control someone each night.",
-                    "You can only control targetable actions such as detection and killing." +
-                            "You can force people to target themselves." +
-                            "Your victim will know they are being controlled.",
-                    "Survive to see the Town lose the game.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target keeps to themselves. They could be a Survivor, Vampire Hunter or Witch.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target casts spells on people. They must be a Witch."});
-
-            put("Amnesiac", new String[]{"(Neutral Benign)",
-                    "A trauma patient that does not remember who he was.",
-                    "Remember who you were by selecting a graveyard role.",
-                    "When you choose a role it will be revealed to the Town." +
-                            "You can't choose a unique role.",
-                    "Remember who you were and complete that roles objectives.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target sticks to the shadows. They could be the Lookout, Forger or Amnesiac.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target does not remember their role. They must be an Amnesiac."});
-
-            put("Survivor", new String[]{"(Neutral Benign)",
-                    "A neutral character who just wants to live.",
-                    "Put on a bulletproof vest on at night, protecting you from attacks.",
-                    "You can only use the bulletproof vest 4 times.",
-                    "Live until the end of the game.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target keeps to themselves. They could be a Survivor, Vampire Hunter or Witch.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target simply wants to live. They must be a Survivor."});
-
-            put("Vampire", new String[]{"(Neutral Chaos)",
-                    "A blood thirsty Vampire that bites and converts humans to Vampires at night.",
-                    "Convert others to Vampires at night.",
-                    "Vampires vote at night to bite a target." +
-                            "The youngest Vampire will visit the target at night." +
-                            "You must wait 1 night between conversions.",
-                    "Convert everyone who would oppose you.",
-
-                    "Sheriff -\nYour target is not suspicious.\n\n" +
-                            "Investigator -\n" +
-                            "Your target may not be what they seem. They could be a Framer, Vampire, or Jester.\n\n" +
-                            "Consigliere - \n" +
-                            "Your target drinks blood. They must be a Vampire!"});
+            put("Jailor", new Object[]{"(Town Killing)\n(Unique Role)", "A prison guard who secretly detains suspects. ", "You may choose one person during the day to jail for the night. ", "You may anonymously talk with your prisoner. You can choose to execute your prisoner. The jailed target can't perform their night ability. While jailed the prisoner is safe from all attacks.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Investigator", new Object[]{"(Town Investigative)", "A private eye who secretly gathers information.", "Investigate one person each night for a clue to their role.", "None.", "Lynch every criminal and evildoer.", "Sheriff -\nYour target is not suspicious.\n\nInvestigator -\nYour target has sensitive information to reveal. They could be the Investigator, Consigliere, or Mayor.\n\nConsigliere - \nYour target gathers information about people. They must be an Investigator.", new SpannableStringBuilder()});
+            put("Lookout", new Object[]{"(Town Investigative)", "An eagle-eyed observer, stealthily camping outside houses to gain information.", "Watch one person at night to see who visits them.", "None.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Sheriff", new Object[]{"(Town Investigative)", "The law enforcer of the town, forced into hiding from threat of murder.", "Check one person each night for suspicious activity.", "You will know if your target is a member of the Mafia, except for the Godfather. You will know if your target is a Serial Killer.", "Lynch every criminal and evildoer.", new SpannableStringBuilder(), new SpannableStringBuilder()});
+            put("Spy", new Object[]{"(Town Investigative)", "A stealthy eavesdropper who listens in on secret conversations.", "You can secretly listen to the Mafia at night.", "You can hear private messages. You will know who the Mafia visit at night.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Escort", new Object[]{"(Town Support)", "A beautiful woman skilled in distraction.", "Distract someone each night.", "Distraction blocks your target from using their role's night ability. \nYou are immune to role blocks. \nIf you target a Serial Killer, they will attack you.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Mayor", new Object[]{"(Town Support)\n(Unique Role)", "The leader of the town.", "You may reveal yourself as the Mayor of the Town.", "Once you have revealed yourself as Mayor your vote counts as 3 votes. You may not be healed once you have revealed yourself.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Medium", new Object[]{"(Town Support)", "A secret psychic who talks with the dead.", "When dead speak to a living person at night.", "You will speak to the dead anonymously each night you are alive. You may only speak to a living person once.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Retributionist", new Object[]{"(Town Support)\n(Unique Role)", "A powerful mystic who will give one person a second chance at life.", "You may revive a dead Town member.", "You may only resurrect one person.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Transporter", new Object[]{"(Town Support)", "A man who transports people without asking any questions.", "Choose two people to transport at night.", "Transporting two people swaps all targets against them. You may transport yourself. Your targets will know they were transported.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Bodyguard", new Object[]{"(Town Protective)", "An ex-soldier who secretly makes a living by selling protection.", "Protect one person from death at night.", "If your target is attacked, both you and your attacker will die instead. \nIf you successfully protect someone, you can't be saved from death. \nYour counterattack ignores night immunity.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Doctor", new Object[]{"(Town Protective)", "A surgeon skilled in trauma care who secretly heals people.", "Heal one person each night, preventing them from dying.", "You may only heal yourself once. You will know if your target is attacked.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Vampire Hunter", new Object[]{"(Town Killing)", "A priest turned monster hunter, this person slays Vampires.", "Check for Vampires each night.", "If you find a Vampire you will stake them in the heart. If a Vampire visits you they will be staked. You can hear Vampires talk at night. If you kill all Vampires you will become a Vigilante.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Veteran", new Object[]{"(Town Killing)\n(Unique Role)", "A paranoid war hero who will shoot anyone who visits him.", "Decide if you will go on alert.", "While on alert you can not be killed at night. If anyone visits you while you are on alert they will be shot. You can only go on alert 3 times. You are immune to role blocks.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Vigilante", new Object[]{"(Town Killing)", "A corrupt cop who takes the law into his own hands.", "Choose to take justice into your own hands and shoot someone.", "If you shoot another Town member you will commit suicide over the guilt. You can only shoot your gun 3 times.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Godfather", new Object[]{"(Mafia Killing)\n(Unique Role)", "The leader of organized crime.", "Kill someone each night.", "You can't be killed at night. If there is a Mafioso he will attack the target instead of you. You will appear to be a Town member to the Sheriff. You can talk with the other Mafia at night.", "Kill anyone that will not submit to the Mafia.", new SpannableStringBuilder()});
+            put("Mafioso", new Object[]{"(Mafia Killing)\n(Unique Role)", "A member of organized crime, trying to work their way to the top.", "Carry out the Godfather's orders.", "You can kill if the Godfather doesn't give you orders. If the Godfather dies you will become the next Godfather. You can talk with the other Mafia at night.", "Kill anyone that will not submit to the Mafia.", new SpannableStringBuilder()});
+            put("Blackmailer", new Object[]{"(Mafia Support)", "An eavesdropper who uses information to keep people quiet.", "Prevents one person from speaking during the next day each night.", "Blackmailed targets can not talk during the day. If there are no kill capable Mafia roles left you will become a Mafioso. You can talk with the other Mafia at night.", "Kill anyone that will not submit to the Mafia.", new SpannableStringBuilder()});
+            put("Consigliere", new Object[]{"(Mafia Support)", "A corrupted investigator who gathers information for the Mafia.", "Check one person for their exact role each night.", "If there are no kill capable Mafia roles left you will become a Mafioso. You can talk with the other Mafia at night.", "Kill anyone that will not submit to the Mafia.", new SpannableStringBuilder()});
+            put("Consort", new Object[]{"(Mafia Support)", "A beautiful dancer working for organized crime.", "Distract someone each night.", "Distraction blocks your target from using their role's night ability. If there are no kill capable Mafia roles left you will become a Mafioso. You can talk with the other Mafia at night.", "Kill anyone that will not submit to the Mafia.", new SpannableStringBuilder()});
+            put("Disguiser", new Object[]{"(Mafia Deception)", "A master of disguise who pretends to be other people.", "Choose a target to disguise yourself as.", "You will appear to be the role of your target to the Investigator. If you are killed you will appear to be the role of your target. If there are no kill capable Mafia roles left you will become a Mafioso. You can talk with the other Mafia at night.", "Kill anyone that will not submit to the Mafia.", new SpannableStringBuilder()});
+            put("Forger", new Object[]{"(Mafia Deception)", "A crooked lawyer that replaces documents.", "Choose a person and rewrite their last will at night.", "If your target dies, their last will is replaced with your forgery. You may only perform 3 forgeries. If there are no kill capable Mafia roles left you will become a Mafioso. You can talk with the other Mafia at night.", "Kill anyone that will not submit to the Mafia.", new SpannableStringBuilder()});
+            put("Framer", new Object[]{"(Mafia Deception)", "A skilled counterfeiter who manipulates information.", "Choose someone to frame at night.", "If your target is investigated they will appear to be a member of the Mafia. If there are no kill capable Mafia roles left you will become a Mafioso. You can talk with the other Mafia at night.", "Kill anyone that will not submit to the Mafia.", new SpannableStringBuilder()});
+            put("Janitor", new Object[]{"(Mafia Deception)", "A sanitation expert working for organized crime.", "Choose a person to clean at night.", "If your target dies their role and last will won't be revealed to the town. Only you will see the cleaned targets role and last will. You may only perform 3 cleanings. If there are no kill capable Mafia roles left you will become a Mafioso. You can talk with the other Mafia at night.", "Kill anyone that will not submit to the Mafia.", new SpannableStringBuilder()});
+            put("Arsonist", new Object[]{"(Neutral Killing)", "A pyromaniac that wants to burn everyone.", "Douse someone in gasoline or ignite all doused targets.", "Targets will know that they are doused in gasoline. Death from fire can't be prevented by healing or night immunities. Select yourself to ignite doused people.", "Live to see everyone burn.", new SpannableStringBuilder()});
+            put("Serial Killer", new Object[]{"(Neutral Killing)", "A psychotic criminal who wants everyone to die.", "Kill someone each night.", "If you are role blocked you will attack the role blocker instead of your target. You can not be killed at night.", "Kill everyone who would oppose you.", new SpannableStringBuilder()});
+            put("Werewolf", new Object[]{"(Neutral Killing)\n(Unique Role)", "A beast that hides under the skin of a man.", "Transform into a Werewolf during the full moon.", "As a Werewolf you can not be killed at night. As a Werewolf you will attack your victim and anyone that visits them. Your attack goes through night immunity.", "Kill everyone who would oppose you.", new SpannableStringBuilder()});
+            put("Executioner", new Object[]{"(Neutral Evil)", "An obsessed lyncher who will stop at nothing to execute his target.", "Trick the Town into lynching your target.", "Your target is > Your target's name <. If your target is killed at night you will become a Jester.", "Get your target lynched at any cost.", new SpannableStringBuilder()});
+            put("Jester", new Object[]{"(Neutral Evil)", "A crazed lunatic whose life goal is to be publicly executed.", "Trick the Town into voting against you.", "If you are lynched you may kill one of your guilty voters the following night.", "Get yourself lynched by any means necessary.", new SpannableStringBuilder()});
+            put("Witch", new Object[]{"(Neutral Evil)", "A voodoo master who can control other people's actions.", "Control someone each night.", "You can only control targetable actions such as detection and killing. You can force people to target themselves. Your victim will know they are being controlled.", "Survive to see the Town lose the game.", new SpannableStringBuilder()});
+            put("Amnesiac", new Object[]{"(Neutral Benign)", "A trauma patient that does not remember who he was.", "Remember who you were by selecting a graveyard role.", "When you choose a role it will be revealed to the Town. You can't choose a unique role.", "Remember who you were and complete that roles objectives.", new SpannableStringBuilder()});
+            put("Survivor", new Object[]{"(Neutral Benign)", "A neutral character who just wants to live.", "Put on a bulletproof vest on at night, protecting you from attacks.", "You can only use the bulletproof vest 4 times.", "Live until the end of the game.", new SpannableStringBuilder()});
+            put("Vampire", new Object[]{"(Neutral Chaos)", "A blood thirsty Vampire that bites and converts humans to Vampires at night.", "Convert others to Vampires at night.", "Vampires vote at night to bite a target. The youngest Vampire will visit the target at night. You must wait 1 night between conversions.", "Convert everyone who would oppose you.", new SpannableStringBuilder()});
+
+            put("Psychic", new Object[]{"(Town Investigative)", "A powerful seer with a gift for finding one's secrets.", "Receive a vision every night.", "On odd nights you will have a vision of three players, at least one will be Evil. On even nights you will have a vision of two players, at least one will be Good.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Tracker", new Object[]{"(Town Investigative)", "You are a skilled tracker who will follow their prey to any destination.", "Track one person at night to see who they visit.", "None.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Crusader", new Object[]{"(Town Protective)", "A divine protector whose skills in combat are only matched by the miracles he performs.", "Protect one person during the night.", "Grant your target Powerful defense. You will know if your target is attacked. You attack one person who visits your target on the same night. You do not attack Vampires, but you do block their attacks.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+            put("Trapper", new Object[]{"(Town Protective)", "You are an intelligent woodsman with a knack for traps.", "You may set up a Trap at another player's house.", "Traps take one day to build. Traps can be torn down by selecting yourself at night. You may only have one Trap out at a time.", "Lynch every criminal and evildoer.", new SpannableStringBuilder()});
+
+            put("Hypnotist", new Object[]{"(Mafia Deception)", "A skilled hypnotist who can alter the perception of others.", "You may sneak into a players house at night and plant a memory.", "A planted memory will confuse the player. If there are no kill capable Mafia roles left, you will become a Mafioso.", "Kill anyone that will not submit to the Mafia.", new SpannableStringBuilder()});
+            put("Ambusher", new Object[]{"(Mafia Killing)\n(Unique Role)", "A stealthy killer who lies in wait for the perfect moment to strike.", "You may choose to lie in wait outside your target's house.", "You will attack one player who visits your target. All players visiting your target will learn your name. If there are no kill-capable Mafia roles left you will become a Mafioso.", "Kill anyone that will not submit to the Mafia.", new SpannableStringBuilder()});
+
+            put("Guardian Angel", new Object[]{"(Neutral Benign)", "An Angel whose only goal is the protection of their charge.", "Keep your target alive.", "Your target is <Your target's name>. If your target is killed you will become a Survivor without any bulletproof vests. Twice a game you may Heal and Purge your target. This may be done from the grave. Watching over a player ignores Jail.", "Keep your target alive until the end of the game.", new SpannableStringBuilder()});
+            put("Pirate", new Object[]{"(Neutral Chaos)", "You are a swashbuckler with an obsession of gold.", "Choose a player to plunder each night.", "When you plunder a player, you will duel the player for their valuables. If the player defends against your attack, you get no loot.", "Successfully plunder two players.", new SpannableStringBuilder()});
+
+            put("Pirate", new Object[]{"(Neutral Chaos)", "You are a swashbuckler with an obsession of gold.", "Choose a player to plunder each night.", "When you plunder a player, you will duel the player for their valuables. If the player defends against your attack, you get no loot.", "Successfully plunder two players.", new SpannableStringBuilder()});
+            put("Plaguebearer", new Object[]{"(Neutral Chaos)", "You are an acolyte of Pestilence who spreads disease among the Town.", "You may choose to infect a player with the Plague each night.", "Players will not know they have been infected. When all living players are infected you become Pestilence.", "Infect all living players and become Pestilence.", new SpannableStringBuilder()});
+            put("Pestilence", new Object[]{"(Neutral Chaos)", "You are an acolyte of Pestilence who spreads disease among the Town.", "You may choose to Rampage at a player's house each night.", "You will attack anyone who visits you or your target. You cannot be role blocked or controlled. If you are jailed you will attack the Jailor.", "Infect all living players and become Pestilence.", new SpannableStringBuilder()});
+            put("Juggernaut", new Object[]{"(Neutral Killing)", "You are an unstoppable force that only gets stronger with each kill.", "You may choose to attack a player on Full Moon nights.", "With each kill your powers grow.", "Kill everyone who would oppose you.", new SpannableStringBuilder()});
+
+            put("Coven Leader", new Object[]{"(Coven Evil)", "A voodoo master who can control the actions of others.", "You may choose to Control someone each night.", "Your victim will know they are being controlled. With the Necronomicon, your victim is dealt a Basic attack and you gain Basic defense. You will know the role of the player you control.", "Kill all who would oppose the Coven.", new SpannableStringBuilder()});
+            put("Hex Master", new Object[]{"(Coven Evil)", "A spell slinger with a proficiency in hexes.", "You may choose to hex a player each night.", "With the Necronomicon you gain Astral and Basic attacks. Players are still Hexed when you have the Necronomicon.", "Kill all who would oppose the Coven.", new SpannableStringBuilder()});
+            put("Medusa", new Object[]{"(Coven Evil)", "A snake haired monster gifted with a gaze that turns people to stone leaving no trace of who they were.", "You may choose to Stone Gaze all visitors at night.", "You may choose to stone gaze thrice. With the Necronomicon, you may visit players and turn them to stone.", "Kill all who would oppose the Coven.", new SpannableStringBuilder()});
+            put("Necromancer", new Object[]{"(Coven Evil)", "You are a failed Retributionist who has a grudge against the Town.", "You may reanimate a dead player and use their ability on a player.", "Create zombies from dead players who use their abilities on your second target. Each zombie can be used once before it rots. With the Necronomicon, you can summon a ghoul to perform a Basic attack against your target by selecting yourself.", "Kill all who would oppose the Coven.", new SpannableStringBuilder()});
+            put("Poisoner", new Object[]{"(Coven Evil)", "You are a women who lives in the woods and has a knowledge of poisonous plants.", "You may choose to poison a player each night.", "Your poisons take one day to take effect. Poison can be removed by Heals. With the Necronomicon, your poison can no longer be Healed.", "Kill all who would oppose the Coven.", new SpannableStringBuilder()});
+            put("Potion Master", new Object[]{"(Coven Evil)", "You are an experienced alchemist with potent recipes for potions.", "You may choose to use a potion on a player each night.", "You may choose to use a Heal, reveal, or attack potion on a player. Each potion has a three day cooldown. With the Necronomicon, your potions no longer have a cooldown.", "Kill all who would oppose the Coven.", new SpannableStringBuilder()});
         }
     };
 
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         int position = getIntent().getIntExtra("position", 0);
         String role = getIntent().getStringExtra("selection");
         setContentView(R.layout.activity_roleinfo_page);
+        setSpans(role);
         setInfo(role, position);
     }
 
-    private void setInfo(String role, int position) {
-        TextView infoField = (TextView) findViewById(R.id.roleTitle);
-        infoField.setText(role);
-        infoField.setTextColor(ContextCompat.getColor(Role_Information.this, customAdapter.textColor[position]));
+    private void setSpans(String role) {
+        SpannableStringBuilder builder = new SpannableStringBuilder();
+        Context context = this;
 
-        infoField = (TextView) findViewById(R.id.roleAttribute);
-        infoField.setText(infoData.get(role)[0]);
+        int tempLength;
+        SpannableStringBuilder extraBuilder;
+        switch (role) {
+            case "Jailor" /*0*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target knows your darkest secrets. They could be the ");
+                tempLength = builder.length();
+                builder.append("Spy");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Blackmailer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Jailor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target detains people at night. They must be a ");
+                tempLength = builder.length();
+                builder.append("Jailor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Investigator" /*1*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target has sensitive information to reveal. They could be the ");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Mayor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target gathers information about people. They must be an ");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                extraBuilder = new SpannableStringBuilder();
+                extraBuilder.append("Escort");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Transporter");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", or ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Consort");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" - Your target is skilled at disrupting others.\n\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Investigator");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Consigliere");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", or ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Mayor");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" - Your target has sensitive information to reveal.\n\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Sheriff");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Executioner");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", or ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Werewolf");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.wwText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" - Your target is waiting for the perfect moment to strike.\n\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Vigilante");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Mafioso");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", or ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Veteran");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" - Your target owns a gun.\n\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Lookout");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Forger");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", or ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Amnesiac");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.amneText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" - Your target sticks to the shadows.\n\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Spy");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Blackmailer");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", or ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Jailor");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" - Your target knows your darkest secrets.\n\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Doctor");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Disguiser");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", or ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Serial Killer");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.skText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" - Your target is covered in blood.\n\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Bodyguard");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Godfather");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", or ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Arsonist");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.arsonistText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" - Your target is not afraid to get their hands dirty.\n\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Medium");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Janitor");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", or ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Retributionist");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" - Your target works with dead bodies.\n\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Survivor");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.survivorText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Vampire Hunter");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", or ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Witch");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.witchText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" - Your target keeps to themselves.\n\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Framer");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Vampire");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", or ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Jester");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.jesterText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" - Your target may not be what they seem. (Note: You will also receive this message if your target was framed)");
+                infoData.get(role)[6] = extraBuilder;
+                break;
+            case "Lookout" /*2*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target sticks to the shadows. They could be the ");
+                tempLength = builder.length();
+                builder.append("Lookout");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Forger");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Amnesiac");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.amneText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target watches who visits people at night. They must be a ");
+                tempLength = builder.length();
+                builder.append("Lookout");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Sheriff" /*3*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is waiting for the perfect moment to strike. They could be the ");
+                tempLength = builder.length();
+                builder.append("Sheriff");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Executioner");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Werewolf");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.wwText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is a protector of the town. They must be a ");
+                tempLength = builder.length();
+                builder.append("Sheriff");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                extraBuilder = new SpannableStringBuilder("Your target is not suspicious:\nAll Townies\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Amnesiac");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.amneText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Survivor");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.survivorText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append("\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Executioner");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Jester");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.jesterText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(", ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Witch");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.witchText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append("\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Vampire");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append("\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Godfather");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append("\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Arsonist");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.arsonistText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append("\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Werewolf");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.wwText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" during odd-numbered nights\n\nYour target is a member of the Mafia:\nAll Mafia except ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Godfather");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append("\nAnyone who was visited by a ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Framer");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append("\n\nYour target is a ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Serial Killer");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.skText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append("!:\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Serial Killer");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.skText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append("\n\nYour target is a ");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Werewolf");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.wwText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(":\n");
+                tempLength = extraBuilder.length();
+                extraBuilder.append("Werewolf");
+                extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.wwText)), tempLength, extraBuilder.length(), 33);
+                extraBuilder.append(" during Full Moon\n\n");
+                infoData.get(role)[6] = extraBuilder;
+                break;
+            case "Spy" /*4*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target knows your darkest secrets. They could be the ");
+                tempLength = builder.length();
+                builder.append("Spy");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Blackmailer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Jailor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target secretly listens in on private conversations. They must be a ");
+                tempLength = builder.length();
+                builder.append("Spy");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Escort" /*5*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is skilled at disrupting others. They could be an ");
+                tempLength = builder.length();
+                builder.append("Escort");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Transporter");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Consort");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is a beautiful woman working for the town. She must be an ");
+                tempLength = builder.length();
+                builder.append("Escort");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Mayor" /*6*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target has sensitive information to reveal. They could be the ");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Mayor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is the leader of the town. They must be the ");
+                tempLength = builder.length();
+                builder.append("Mayor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Medium" /*7*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target works with dead bodies. They could be the ");
+                tempLength = builder.length();
+                builder.append("Medium");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Janitor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Retributionist");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target speaks with the dead. They must be a ");
+                tempLength = builder.length();
+                builder.append("Medium");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Retributionist" /*8*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target works with dead bodies. They could be the ");
+                tempLength = builder.length();
+                builder.append("Medium");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Janitor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Retributionist");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is a ");
+                tempLength = builder.length();
+                builder.append("Retributionist");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Transporter" /*9*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is skilled at disrupting others. They could be an ");
+                tempLength = builder.length();
+                builder.append("Escort");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Transporter");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Consort");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target specializes in transportation, they must be a ");
+                tempLength = builder.length();
+                builder.append("Transporter");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Bodyguard" /*10*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is not afraid to get their hands dirty. They could be the ");
+                tempLength = builder.length();
+                builder.append("Bodyguard");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Godfather");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Arsonist");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.arsonistText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is a trained protector, they must be a ");
+                tempLength = builder.length();
+                builder.append("Bodyguard");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Doctor" /*11*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is covered in blood. They could be the ");
+                tempLength = builder.length();
+                builder.append("Doctor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Disguiser");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Serial Killer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.skText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is a professional surgeon, they must be a ");
+                tempLength = builder.length();
+                builder.append("Doctor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Vampire Hunter" /*12*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target keeps to themselves. They could be a ");
+                tempLength = builder.length();
+                builder.append("Survivor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.survivorText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Vampire Hunter");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Witch");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.witchText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target tracks ");
+                tempLength = builder.length();
+                builder.append("Vampires");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, builder.length(), 33);
+                builder.append(". They must be a ");
+                tempLength = builder.length();
+                builder.append("Vampire Hunter");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Veteran" /*13*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target owns weapons. They could be a ");
+                tempLength = builder.length();
+                builder.append("Vigilante");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Veteran");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Mafioso");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is a paranoid war hero. They must be a ");
+                tempLength = builder.length();
+                builder.append("Veteran");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Vigilante" /*14*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target owns weapons. They could be a ");
+                tempLength = builder.length();
+                builder.append("Vigilante");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Veteran");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Mafioso");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target will bend the law to enact justice. They must be a ");
+                tempLength = builder.length();
+                builder.append("Vigilante");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Godfather" /*15*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is not afraid to get their hands dirty. They could be the ");
+                tempLength = builder.length();
+                builder.append("Bodyguard");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Godfather");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Arsonist");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.arsonistText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is the leader of the Mafia. They must be the ");
+                tempLength = builder.length();
+                builder.append("Godfather");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Mafioso" /*16*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a member of the Mafia.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target owns weapons. They could be a ");
+                tempLength = builder.length();
+                builder.append("Vigilante");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Veteran");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Mafioso");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target does the Godfather's dirty work. They must be a ");
+                tempLength = builder.length();
+                builder.append("Mafioso");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Blackmailer" /*17*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a member of the Mafia.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target knows your darkest secrets. They could be the ");
+                tempLength = builder.length();
+                builder.append("Spy");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Blackmailer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Jailor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target uses information to silence people. They must be a ");
+                tempLength = builder.length();
+                builder.append("Blackmailer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Consigliere" /*18*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a member of the Mafia.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target has sensitive information to reveal. They could be the ");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Mayor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target gathers information for the Mafia. They must be a ");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Consort" /*19*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a member of the Mafia.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is skilled at disrupting others. They could be an ");
+                tempLength = builder.length();
+                builder.append("Escort");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Transporter");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Consort");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is a beautiful woman working for the Mafia. She must be a ");
+                tempLength = builder.length();
+                builder.append("Consort");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Disguiser" /*20*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a member of the Mafia.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is covered in blood. They could be the ");
+                tempLength = builder.length();
+                builder.append("Doctor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Disguiser");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Serial Killer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.skText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target pretends to be other people. They must be a ");
+                tempLength = builder.length();
+                builder.append("Disguiser");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Forger" /*21*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a member of the Mafia.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target sticks to the shadows. They could be the ");
+                tempLength = builder.length();
+                builder.append("Lookout");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Forger");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Amnesiac");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.amneText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target forges documents. They must be a ");
+                tempLength = builder.length();
+                builder.append("Framer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" or a ");
+                tempLength = builder.length();
+                builder.append("Forger");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Framer" /*22*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a member of the Mafia.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target may not be what they seem. They could be a ");
+                tempLength = builder.length();
+                builder.append("Framer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Vampire");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Jester");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.jesterText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target forges documents. They must be a ");
+                tempLength = builder.length();
+                builder.append("Framer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" or a ");
+                tempLength = builder.length();
+                builder.append("Forger");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Janitor" /*23*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a member of the Mafia.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target works with dead bodies. They could be the ");
+                tempLength = builder.length();
+                builder.append("Medium");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Janitor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Retributionist");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target cleans up dead bodies. They must be a ");
+                tempLength = builder.length();
+                builder.append("Janitor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Arsonist" /*24*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is not afraid to get their hands dirty. They could be the ");
+                tempLength = builder.length();
+                builder.append("Bodyguard");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Godfather");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Arsonist");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.arsonistText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target likes to watch things burn. They must be an ");
+                tempLength = builder.length();
+                builder.append("Arsonist");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.arsonistText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Serial Killer" /*25*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a ");
+                tempLength = builder.length();
+                builder.append("Serial Killer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.skText)), tempLength, builder.length(), 33);
+                builder.append("!\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is covered in blood. They could be the ");
+                tempLength = builder.length();
+                builder.append("Doctor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Disguiser");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Serial Killer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.skText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target wants to kill everyone. They must be a ");
+                tempLength = builder.length();
+                builder.append("Serial Killer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.skText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Werewolf" /*26*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a ");
+                tempLength = builder.length();
+                builder.append("Werewolf");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.wwText)), tempLength, builder.length(), 33);
+                builder.append("(Only during Full Moons).\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is waiting for the perfect moment to strike. They could be the ");
+                tempLength = builder.length();
+                builder.append("Sheriff");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Executioner");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Werewolf");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.wwText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target howls at the moon. They must be a ");
+                tempLength = builder.length();
+                builder.append("Werewolf");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.wwText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Executioner" /*27*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is waiting for the perfect moment to strike. They could be the ");
+                tempLength = builder.length();
+                builder.append("Sheriff");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Executioner");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Werewolf");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.wwText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target wants someone to be lynched at any cost. They must be an ");
+                tempLength = builder.length();
+                builder.append("Executioner");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Jester" /*28*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a member of the Mafia.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target may not be what they seem. They could be a ");
+                tempLength = builder.length();
+                builder.append("Framer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Vampire");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Jester");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.jesterText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target wants to be lynched. They must be a ");
+                tempLength = builder.length();
+                builder.append("Jester");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.jesterText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Witch" /*29*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target keeps to themselves. They could be a ");
+                tempLength = builder.length();
+                builder.append("Survivor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.survivorText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Vampire Hunter");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Witch");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.witchText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target casts spells on people. They must be a ");
+                tempLength = builder.length();
+                builder.append("Witch");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.witchText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Amnesiac" /*30*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target sticks to the shadows. They could be the ");
+                tempLength = builder.length();
+                builder.append("Lookout");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Forger");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Amnesiac");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.amneText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target does not remember their role. They must be an ");
+                tempLength = builder.length();
+                builder.append("Amnesiac");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.amneText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Survivor" /*31*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target keeps to themselves. They could be a ");
+                tempLength = builder.length();
+                builder.append("Survivor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.survivorText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Vampire Hunter");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Witch");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.witchText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target simply wants to live. They must be a ");
+                tempLength = builder.length();
+                builder.append("Survivor");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.survivorText)), tempLength, builder.length(), 33);
+                builder.append(".");
+                break;
+            case "Vampire" /*32*/:
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a member of the Mafia.\n\n");
+                tempLength = builder.length();
+                builder.append("Investigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target may not be what they seem. They could be a ");
+                tempLength = builder.length();
+                builder.append("Framer");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(", ");
+                tempLength = builder.length();
+                builder.append("Vampire");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, builder.length(), 33);
+                builder.append(", or ");
+                tempLength = builder.length();
+                builder.append("Jester");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.jesterText)), tempLength, builder.length(), 33);
+                builder.append(".\n\n");
+                tempLength = builder.length();
+                builder.append("Consigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target drinks blood. They must be a ");
+                tempLength = builder.length();
+                builder.append("Vampire");
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.exeText)), tempLength, builder.length(), 33);
+                builder.append("!");
+                break;
 
-        infoField = (TextView) findViewById(R.id.summaryInfo);
-        infoField.setText(infoData.get(role)[1]);
+            case "Ambusher":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a member of the Mafia.");
 
-        infoField = (TextView) findViewById(R.id.abilitiesInfo);
-        infoField.setText(infoData.get(role)[2]);
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Vigilante, Veteran, Mafioso, Pirate or Ambusher.");
 
-        infoField = (TextView) findViewById(R.id.attributesInfo);
-        infoField.setText(infoData.get(role)[3]);
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target lies in wait. They must be an Ambusher.");
+                break;
 
-        infoField = (TextView) findViewById(R.id.goalInfo);
-        infoField.setText(infoData.get(role)[4]);
+            case "Hypnotist":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is a member of the Mafia.");
 
-        infoField = (TextView) findViewById(R.id.investResultsInfo);
-        infoField.setText(infoData.get(role)[5]);
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Escort, Transporter, Consort, or Hypnotist.");
 
-        if (infoData.get(role).length > 6) {
-            infoField = (TextView) findViewById(R.id.mechanicsTitle);
-            infoField.setVisibility(View.VISIBLE);
-            infoField = (TextView) findViewById(R.id.mechanicsInfo);
-            infoField.setVisibility(View.VISIBLE);
-            infoField.setPadding(0, 10, 0, 10);
-            infoField.setText(infoData.get(role)[6]);
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is skilled at disrupting others. They must be a Hypnotist.");
+                break;
+
+            case "Pirate":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Vigilante, Veteran, Mafioso, Pirate or Ambusher.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target wants to plunder the Town. They must be a Pirate.");
+
+            case "Coven Leader":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nWithout the Necronomicon:\nYour target is a member of the Coven!\nWith the Necronomicon:\nYour target is not suspicious");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Lookout, Forger, Amnesiac, or Coven Leader.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target leads the mystical. They must be the Coven Leader.");
+                break;
+            case "Hex Master":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nWithout the Necronomicon:\nYour target is a member of the Coven!\nWith the Necronomicon:\nYour target is not suspicious");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Framer, Vampire, Jester, or Hex Master.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is versed in the ways of hexes. They must be the Hex Master.");
+                break;
+
+            case "Medusa":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nWithout the Necronomicon:\nYour target is a member of the Coven!\nWith the Necronomicon:\nYour target is not suspicious");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Survivor, Vampire Hunter, Witch, Medusa or Psychic.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target has a gaze of stone. They must be a Medusa.");
+                break;
+
+
+            case "Necromancer":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nWithout the Necronomicon:\nYour target is a member of the Coven!\nWith the Necronomicon:\nYour target is not suspicious");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Medium, Janitor, Retributionist, Necromancer or Trapper.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target uses the deceased to do their dirty work. They must be the Necromancer.");
+                break;
+
+            case "Poisoner":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nWithout the Necronomicon:\nYour target is a member of the Coven!\nWith the Necronomicon:\nYour target is not suspicious");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Sheriff, Executioner, Werewolf, or Poisoner.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target uses herbs and plants to kill their victims. They must be a Poisoner.");
+                break;
+
+            case "Potion Master":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nWithout the Necronomicon:\nYour target is a member of the Coven!\nWith the Necronomicon:\nYour target is not suspicious");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Doctor, Disguiser, Serial Killer, or Potion Master.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target works with alchemy. They must be a Potion Master.");
+                break;
+
+            case "Crusader":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Bodyguard, Godfather, Arsonist, or Crusader.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is a knight protector. They must be a Crusader.");
+                break;
+
+            case "Psychic":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Survivor, Vampire Hunter, Witch, Medusa or Psychic.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target has the sight. They must be a Psychic.");
+                break;
+
+            case "Tracker":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Investigator, Consigliere, Mayor, Tracker, or Plaguebearer.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is skilled in the art of tracking. They must be a Tracker.");
+                break;
+
+            case "Trapper":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Medium, Janitor, Retributionist, Necromancer or Trapper.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is waiting for a big catch. They must be a Trapper.");
+                break;
+
+            case "Guardian Angel":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Medium, Janitor, Retributionist, Necromancer or Trapper.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is waiting for a big catch. They must be a Trapper.");
+                break;
+
+            case "Plaguebearer":
+            case "Pestilence":
+                builder.append("Sheriff");
+                builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
+                builder.append(" -\nYour target is not suspicious.");
+
+                tempLength = builder.length();
+                builder.append("\n\nInvestigator");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target could be a Investigator, Consigliere, Mayor, Tracker, or Plaguebearer.");
+
+                tempLength = builder.length();
+                builder.append("\n\nConsigliere");
+                builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
+                builder.append(" -\nYour target is a carrier of disease. They must be the Plaguebearer.");
+                break;
+
+            default:
+                break;
         }
+        infoData.get(role)[5] = builder;
     }
 
-
+    private void setInfo(String role, int position) {
+        TextView infoField = findViewById(R.id.roleTitle);
+        infoField.setText(role);
+        infoField.setTextColor(ContextCompat.getColor(this, infoTabAdapter.textColor[position]));
+        ((TextView) findViewById(R.id.roleAttribute)).setText((String) infoData.get(role)[0]);
+        ((TextView) findViewById(R.id.summaryInfo)).setText((String) infoData.get(role)[1]);
+        ((TextView) findViewById(R.id.abilitiesInfo)).setText((String) infoData.get(role)[2]);
+        ((TextView) findViewById(R.id.attributesInfo)).setText((String) infoData.get(role)[3]);
+        ((TextView) findViewById(R.id.goalInfo)).setText((String) infoData.get(role)[4]);
+        ((TextView) findViewById(R.id.investResultsInfo)).setText((SpannableStringBuilder) infoData.get(role)[5]);
+        if (infoData.get(role).length > 6) {
+            findViewById(R.id.mechanicsTitle).setVisibility(View.VISIBLE);
+            infoField = findViewById(R.id.mechanicsInfo);
+            infoField.setVisibility(View.VISIBLE);
+            infoField.setPadding(0, 10, 0, 10);
+            infoField.setText((SpannableStringBuilder) infoData.get(role)[6]);
+        }
+    }
 }

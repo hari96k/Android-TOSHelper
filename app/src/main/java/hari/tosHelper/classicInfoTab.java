@@ -8,62 +8,38 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ListView;
 
-import java.util.Arrays;
+import hari.tosHelper.infoTab.OnInfoTabListener;
 
 public class classicInfoTab extends ListFragment {
-
+    private final String[] AllRoles = new String[]{"Bodyguard", "Doctor", "Escort", "Investigator", "Jailor", "Lookout", "Mayor", "Medium", "Retributionist", "Sheriff", "Spy", "Transporter", "Veteran", "Vigilante", "Framer", "Godfather", "Mafioso", "Serial Killer", "Executioner", "Jester"};
     private Activity activity;
-    private customAdapter adapter;
+    private infoTabAdapter adapter;
 
-    private final String[] TownRoles = {"Jailor", "Investigator", "Lookout", "Sheriff", "Spy", "Escort", "Mayor", "Medium", "Retributionist", "Transporter", "Bodyguard", "Doctor", "Veteran", "Vigilante"};
-    private final String[] MafRoles = {"Godfather", "Mafioso", "Framer"};
-    private final String[] NeutralRoles = {"Serial Killer", "Executioner", "Jester"};
-
-
-    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //View rootView = inflater.inflate(R.layout.players_layout, container, false);
-
-        Arrays.sort(TownRoles);
-
-        String[] AllRoles = infoTab.concat(TownRoles, MafRoles);
-        AllRoles = infoTab.concat(AllRoles, NeutralRoles);
-
-        //String[] AnyRoles = {"Investigator", "Lookout", "Sheriff", "Spy", "Escort", "Mayor", "Medium", "Retributionist", "Transporter", "Bodyguard", "Doctor", "Vampire Hunter", "Veteran", "Vigilante", "Blackmailer", "Consigliere", "Consort", "Disguiser", "Forger", "Framer", "Janitor", "Arsonist", "Serial Killer", "Werewolf", "Executioner", "Jester", "Witch", "Amnesiac", "Survivor", "Vampire"};
-        adapter = new customAdapter(getActivity(), AllRoles, "Classic");
-
-        setListAdapter(adapter);
+        this.adapter = new infoTabAdapter(getActivity(), this.AllRoles);
+        setListAdapter(this.adapter);
         ListView listView = getListView();
-
         if (listView != null) {
             listView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.town));
-
-//        for(int i = 10; i <=13; i++) {
-//            listView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(getContext(), R.color.mafia));
-//        }
         }
     }
 
-    @Override
     public void onListItemClick(ListView l, View view, int position, long id) {
-
-        String selection = (String) l.getItemAtPosition(position);
         try {
-            ((infoTab.OnInfoTabListener) activity).onRoleSelected(selection, position);
+            ((OnInfoTabListener) this.activity).onRoleSelected((String) l.getItemAtPosition(position), position);
         } catch (ClassCastException ignored) {
         }
     }
 
-    @Override
     public void onAttach(Context activity) {
         super.onAttach(activity);
         this.activity = (Activity) activity;
     }
 
-    public void updateListView(){
-        if (adapter != null){
-            adapter.notifyDataSetChanged();
+    public void updateListView() {
+        if (this.adapter != null) {
+            this.adapter.notifyDataSetChanged();
         }
     }
 }

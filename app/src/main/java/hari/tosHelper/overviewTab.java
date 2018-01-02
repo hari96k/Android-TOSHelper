@@ -5,57 +5,58 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
 public class overviewTab extends ListFragment {
-
+    protected static String[] allPlayerNames = new String[15];
+    protected static String[] allPlayerRoles = new String[15];
+    View header;
+    View view;
     private Activity activity;
     private overviewAdapter adapter;
 
-    protected String[] allPlayers = new String[15];
-
-    public interface OnInfoTabListener{
-        void onRoleSelected(String role, int position);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        this.view = inflater.inflate(R.layout.overview_listview, null);
+        this.header = this.view.findViewById(R.id.header);
+        this.view.post(new Runnable() {
+            public void run() {
+                overviewTab.this.header.getLayoutParams().height = mainPage.standardTitleHeight;
+            }
+        });
+        return this.view;
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState){
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //View rootView = inflater.inflate(R.layout.players_layout, container, false);
-
-        //String[] AnyRoles = {"Investigator", "Lookout", "Sheriff", "Spy", "Escort", "Mayor", "Medium", "Retributionist", "Transporter", "Bodyguard", "Doctor", "Vampire Hunter", "Veteran", "Vigilante", "Blackmailer", "Consigliere", "Consort", "Disguiser", "Forger", "Framer", "Janitor", "Arsonist", "Serial Killer", "Werewolf", "Executioner", "Jester", "Witch", "Amnesiac", "Survivor", "Vampire"};
-        adapter = new overviewAdapter(getActivity(), allPlayers);
-
-        setListAdapter(adapter);
+        this.adapter = new overviewAdapter(getActivity(), allPlayerNames, this.header);
         ListView listView = getListView();
+        setListAdapter(this.adapter);
+        listView.setEnabled(false);
+        listView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
+    }
 
-        if(listView != null) {
-            listView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
+    public void onListItemClick(ListView l, View view, int position, long id) {
+        try {
+            ((OnInfoTabListener) this.activity).onRoleSelected((String) l.getItemAtPosition(position), position);
+        } catch (ClassCastException ignored) {
         }
     }
 
-
-    @Override
-    public void onListItemClick(ListView l, View view, int position, long id) {
-
-        String selection = (String) l.getItemAtPosition(position);
-        try{
-            ((OnInfoTabListener) activity).onRoleSelected(selection, position);
-        }catch (ClassCastException ignored){}
-
-    }
-
-    @Override
-    public void onAttach(Context activity){
+    public void onAttach(Context activity) {
         super.onAttach(activity);
         this.activity = (Activity) activity;
     }
 
-    public void updateListView(){
-        if (adapter != null){
-            adapter.notifyDataSetChanged();
+    public void updateListView() {
+        if (this.adapter != null) {
+            this.adapter.notifyDataSetChanged();
         }
     }
 
+    interface OnInfoTabListener {
+        void onRoleSelected(String str, int i);
+    }
 }

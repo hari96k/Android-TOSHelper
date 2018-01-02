@@ -8,77 +8,57 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ListView;
 
-import java.util.Arrays;
-
 public class infoTab extends ListFragment {
-
+    protected static String[] AllAlignments;
+    protected static String[] AllRoles;
     private Activity activity;
-    private customAdapter adapter;
+    private infoTabAdapter adapter;
 
-    protected static final String[] TownRoles = {"Jailor", "Investigator", "Lookout", "Sheriff", "Spy", "Escort", "Mayor", "Medium", "Retributionist", "Transporter", "Bodyguard", "Doctor", "Vampire Hunter", "Veteran", "Vigilante"};
-    protected static final String[] MafRoles = {"Godfather", "Mafioso", "Blackmailer", "Consigliere", "Consort", "Disguiser", "Forger", "Framer", "Janitor"};
-    protected static final String[] NeutralRoles = {"Arsonist", "Serial Killer", "Werewolf", "Executioner", "Jester", "Witch", "Amnesiac", "Survivor", "Vampire"};
-
-    public interface OnInfoTabListener{
-        void onRoleSelected(String role, int position);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState){
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //View rootView = inflater.inflate(R.layout.players_layout, container, false);
 
-        Arrays.sort(TownRoles);
-        Arrays.sort(MafRoles);
+        String[] modeNameParsed = startPage.mode.split(" ");
+        if (!modeNameParsed[0].equals("Coven")) {
+            AllAlignments = new String[]{"Town Investigative", "Town Killing", "Town Protective", "Town Support", "Random Town", "Mafia Deception", "Mafia Killing", "Mafia Support", "Random Mafia", "Neutral Benign", "Neutral Evil", "Neutral Killing", "Random Neutral", "Any"};
+            AllRoles = new String[]{"Bodyguard", "Doctor", "Escort", "Investigator", "Jailor", "Lookout", "Mayor", "Medium", "Retributionist", "Sheriff", "Spy", "Transporter", "Vampire Hunter", "Veteran", "Vigilante", "Blackmailer", "Consigliere", "Consort", "Disguiser", "Forger", "Framer", "Godfather", "Janitor", "Mafioso", "Arsonist", "Serial Killer", "Werewolf", "Executioner", "Jester", "Witch", "Amnesiac", "Survivor", "Vampire"};
+        } else {
+            // If Coven Custom
+            if (modeNameParsed.length == 2 && modeNameParsed[1].equals("Custom")) {
+                AllAlignments = new String[]{"Town Investigative", "Town Killing", "Town Protective", "Town Support", "Random Town", "Mafia Deception", "Mafia Killing", "Mafia Support", "Random Mafia", "Neutral Benign", "Neutral Evil", "Neutral Killing", "Random Neutral", "Coven Evil", "Any"};
+                AllRoles = new String[]{"Bodyguard", "Crusader", "Doctor", "Escort", "Investigator", "Jailor", "Lookout", "Mayor", "Medium", "Psychic", "Retributionist", "Sheriff", "Spy", "Tracker", "Transporter", "Trapper", "Vampire Hunter", "Veteran", "Vigilante", "Ambusher", "Blackmailer", "Consigliere", "Consort", "Disguiser", "Forger", "Framer", "Godfather", "Hypnotist", "Janitor", "Mafioso", "Coven Leader", "Hex Master", "Medusa", "Necromancer", "Poisoner", "Potion Master", "Arsonist", "Serial Killer", "Werewolf", "Executioner", "Jester", "Witch", "Amnesiac", "Guardian Angel", "Survivor", "Pirate", "Plaguebearer", "Pestilence", "Vampire"};
+            } else {
+                AllAlignments = new String[]{"Town Investigative", "Town Killing", "Town Protective", "Town Support", "Random Town", "Neutral Benign", "Neutral Evil", "Neutral Killing", "Random Neutral", "Coven Evil", "Any"};
+                AllRoles = new String[]{"Bodyguard", "Crusader", "Doctor", "Escort", "Investigator", "Jailor", "Lookout", "Mayor", "Medium", "Psychic", "Retributionist", "Sheriff", "Spy", "Tracker", "Transporter", "Trapper", "Vampire Hunter", "Veteran", "Vigilante", "Coven Leader", "Hex Master", "Medusa", "Necromancer", "Poisoner", "Potion Master", "Arsonist", "Serial Killer", "Werewolf", "Executioner", "Jester", "Amnesiac", "Guardian Angel", "Survivor", "Pirate", "Plaguebearer", "Pestilence", "Vampire"};
+            }
+        }
 
-        String[] AllRoles = concat(TownRoles,MafRoles);
-        AllRoles = concat(AllRoles,NeutralRoles);
-
-        //String[] AnyRoles = {"Investigator", "Lookout", "Sheriff", "Spy", "Escort", "Mayor", "Medium", "Retributionist", "Transporter", "Bodyguard", "Doctor", "Vampire Hunter", "Veteran", "Vigilante", "Blackmailer", "Consigliere", "Consort", "Disguiser", "Forger", "Framer", "Janitor", "Arsonist", "Serial Killer", "Werewolf", "Executioner", "Jester", "Witch", "Amnesiac", "Survivor", "Vampire"};
-        adapter = new customAdapter(getActivity(), AllRoles, "Ranked");
-
-        setListAdapter(adapter);
+        this.adapter = new infoTabAdapter(getActivity(), AllRoles);
+        setListAdapter(this.adapter);
         ListView listView = getListView();
-
-        if(listView != null) {
+        if (listView != null) {
             listView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.town));
-
-//        for(int i = 10; i <=13; i++) {
-//            listView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(getContext(), R.color.mafia));
-//        }
         }
     }
 
-
-    @Override
     public void onListItemClick(ListView l, View view, int position, long id) {
-
-        String selection = (String) l.getItemAtPosition(position);
-        try{
-            ((OnInfoTabListener) activity).onRoleSelected(selection, position);
-        }catch (ClassCastException ignored){}
-
+        try {
+            ((OnInfoTabListener) this.activity).onRoleSelected((String) l.getItemAtPosition(position), position);
+        } catch (ClassCastException ignored) {
+        }
     }
 
-    @Override
-    public void onAttach(Context activity){
+    public void onAttach(Context activity) {
         super.onAttach(activity);
         this.activity = (Activity) activity;
     }
 
-    protected static String[] concat(String[] a, String[] b) {
-        int aLen = a.length;
-        int bLen = b.length;
-        String[] c= new String[aLen+bLen];
-        System.arraycopy(a, 0, c, 0, aLen);
-        System.arraycopy(b, 0, c, aLen, bLen);
-        return c;
-    }
-
-    public void updateListView(){
-        if (adapter != null){
-            adapter.notifyDataSetChanged();
+    public void updateListView() {
+        if (this.adapter != null) {
+            this.adapter.notifyDataSetChanged();
         }
     }
 
+    interface OnInfoTabListener {
+        void onRoleSelected(String str, int i);
+    }
 }

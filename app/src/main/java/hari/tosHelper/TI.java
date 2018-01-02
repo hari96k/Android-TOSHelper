@@ -5,43 +5,46 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class TI extends Activity {
-
     private ListView list;
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selection_ti);
-        
         populateListView();
         registerClickCallBack();
     }
 
     private void populateListView() {
-        String[] TIRoles = {"Investigator", "Lookout", "Sheriff", "Spy"};
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_view_element, TIRoles);
-        list = (ListView) findViewById(R.id.listViewTI);
-        list.setAdapter(adapter);
+        String[] roles;
+        roles = startPage.mode.split(" ");
+        switch (roles[0]) {
+            case "Coven":
+                roles = new String[]{"Investigator", "Lookout", "Psychic", "Sheriff", "Spy", "Tracker"};
+                break;
+            default:
+                roles = new String[]{"Investigator", "Lookout", "Sheriff", "Spy"};
+                break;
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_view_element, roles);
+        this.list = findViewById(R.id.listViewTI);
+        this.list.setAdapter(adapter);
     }
 
     private void registerClickCallBack() {
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
+        this.list.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView textView = (TextView) view;
-                String selection = textView.getText().toString();
-
-                Intent intent = new Intent(TI.this,rainbowPage.class);
-                intent.putExtra("selection", selection );
-                setResult(Activity.RESULT_OK, intent);
-                finish();
+                String selection = ((TextView) view).getText().toString();
+                Intent intent = new Intent(TI.this, rainbowPage.class);
+                intent.putExtra("selection", selection);
+                TI.this.setResult(-1, intent);
+                TI.this.finish();
             }
         });
     }
-
 }

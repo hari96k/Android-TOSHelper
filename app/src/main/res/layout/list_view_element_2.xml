@@ -5,7 +5,7 @@
     android:gravity="center">
 
     <TextView
-        android:id="@id/listViewElement"
+        android:id="@+id/listViewElement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -24,11 +24,10 @@
 
     <TextView
         android:id="@+id/confirmedFlag"
-        android:visibility="invisible"
-        android:layout_width="10dp"
+        android:layout_width="5dp"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:text=""
-        android:textSize="30sp" />
-
+        android:textSize="30sp"
+        android:visibility="invisible" />
 </RelativeLayout>

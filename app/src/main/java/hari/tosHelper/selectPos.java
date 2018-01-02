@@ -4,126 +4,169 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
 public class selectPos extends Activity {
-
     private ListView list;
-    private RelativeLayout.LayoutParams params;
+    private LayoutParams params;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selection_pos);
-        list = (ListView) findViewById(R.id.listViewPos);
-        params = (RelativeLayout.LayoutParams) list.getLayoutParams();
-
-        String[] player = getIntent().getStringArrayExtra("player");
-        setDynamicText(player);
+        this.list = findViewById(R.id.listViewPos);
+        this.params = (LayoutParams) this.list.getLayoutParams();
+        setDynamicText(getIntent().getStringArrayExtra("player"));
         populateListView();
         registerClickCallBack();
     }
 
+    protected void onRestart() {
+        super.onRestart();
+        populateListView();
+    }
+
     private void setDynamicText(String[] array) {
-        TextView currentPosition = (TextView) findViewById(R.id.currentPos);
-        Button deleteButton = (Button) findViewById(R.id.buttonPosField);
-        String curPos;
-
-        // Set alignment color and text
-        TextView alignmentText = (TextView) findViewById(R.id.alignmentDescrip);
+        TextView currentPosition = findViewById(R.id.currentPos);
+        Button deleteButton = findViewById(R.id.buttonPosField);
+        TextView alignmentText = findViewById(R.id.alignmentDescrip);
         alignmentText.setText(array[0]);
-
-        alignmentText.setTextColor(ContextCompat.getColor(getApplicationContext(), mainPage.alignmentColors.get(array[0])));
-
-        // If there is no role for this position
-
-        if (array[2].length() == 0) {
+        try {
+            alignmentText.setTextColor(ContextCompat.getColor(getApplicationContext(), mainPage.alignmentColors.get(array[0])));
+        } catch (NullPointerException e) {
+            alignmentText.setTextColor(ContextCompat.getColor(getApplicationContext(), mainPage.roleColors.get(array[0])));
+        }
+        if (array[2].length() == 0 || array[0].equals(array[2])) {
             View slash = findViewById(R.id.slash);
             View role = findViewById(R.id.roleDescrip);
             ((ViewGroup) slash.getParent()).removeView(slash);
             ((ViewGroup) role.getParent()).removeView(role);
-        }
-
-        // If there is a role for this position
-        else {
-            // Set role color and text
-            TextView roleText = (TextView) findViewById(R.id.roleDescrip);
+        } else {
+            TextView roleText = findViewById(R.id.roleDescrip);
             roleText.setText(array[2]);
             roleText.setTextColor(ContextCompat.getColor(getApplicationContext(), mainPage.roleColors.get(array[2])));
         }
-
-        // If position exists
         if (array[1].length() != 0) {
-            curPos = "Current Position: " + array[1] + " ";
-            currentPosition.setText(curPos);
+            String playerName = overviewTab.allPlayerNames[Integer.parseInt(array[1]) - 1];
+            if (!(playerName == null || playerName.isEmpty())) {
+                playerName = "(" + playerName + ")";
+            }
+            currentPosition.setText("Current Position: " + array[1] + " " + playerName + " ");
             currentPosition.setVisibility(View.VISIBLE);
             deleteButton.setVisibility(View.VISIBLE);
-            params.addRule(RelativeLayout.BELOW, R.id.prevRoleGroup);
-            list.setLayoutParams(params);
-        } else {
-            currentPosition.setVisibility(View.INVISIBLE);
-            deleteButton.setVisibility(View.INVISIBLE);
-            params.addRule(RelativeLayout.BELOW, R.id.posDescripGroup);
-            list.setLayoutParams(params);
+            this.params.addRule(3, R.id.prevRoleGroup);
+            this.list.setLayoutParams(this.params);
+            findViewById(R.id.prevRoleGroup).setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.tint, null));
+            return;
         }
-
-
+        currentPosition.setVisibility(View.INVISIBLE);
+        deleteButton.setVisibility(View.INVISIBLE);
+        this.params.addRule(3, R.id.posDescripGroup);
+        this.list.setLayoutParams(this.params);
     }
 
     private void populateListView() {
         String[] positions;
-        if (startPage.mode.equals("Ranked")) {
-            positions = new String[mainPage.remainingPositions.size()];
-            for (int i = 0; i < positions.length; i++) {
-                positions[i] = mainPage.remainingPositions.get(i).toString();
-            }
-        } else {// if (startPage.mode.equals("Rainbow"))
-            positions = new String[rainbowPage.remainingPositions.size()];
-            for (int i = 0; i < positions.length; i++) {
-                positions[i] = rainbowPage.remainingPositions.get(i).toString();
-            }
+        String str = startPage.mode;
+        int i2;
+        int posNumber;
+        String playerName;
+        switch (str) {
+            case "Ranked" /*0*/:
+                positions = new String[mainPage.remainingPositions.size()];
+                for (i2 = 0; i2 < positions.length; i2++) {
+                    positions[i2] = (mainPage.remainingPositions.get(i2)).toString();
+                    if (positions[i2].length() <= 1) {
+                        posNumber = Integer.parseInt(positions[i2]);
+                    } else if (positions[i2].charAt(1) == '.') {
+                        posNumber = Character.getNumericValue(positions[i2].charAt(0));
+                    } else {
+                        posNumber = Integer.parseInt(positions[i2].substring(0, 2));
+                    }
+                    playerName = overviewTab.allPlayerNames[posNumber - 1];
+                    if (!(playerName == null || playerName.length() == 0)) {
+                        positions[i2] = positions[i2] + ". " + playerName;
+                    }
+                }
+                break;
+            case "Custom" /*1*/:
+                positions = new String[customTemplate.remainingPositions.size()];
+                for (i2 = 0; i2 < positions.length; i2++) {
+                    positions[i2] = (customTemplate.remainingPositions.get(i2)).toString();
+                    if (positions[i2].length() <= 1) {
+                        posNumber = Integer.parseInt(positions[i2]);
+                    } else if (positions[i2].charAt(1) == '.') {
+                        posNumber = Character.getNumericValue(positions[i2].charAt(0));
+                    } else {
+                        posNumber = Integer.parseInt(positions[i2].substring(0, 2));
+                    }
+                    playerName = overviewTab.allPlayerNames[posNumber - 1];
+                    if (!(playerName == null || playerName.length() == 0)) {
+                        positions[i2] = positions[i2] + ". " + playerName;
+                    }
+                }
+                break;
+            case "Rainbow":
+                positions = new String[rainbowPage.remainingPositions.size()];
+                for (i2 = 0; i2 < positions.length; i2++) {
+                    positions[i2] = rainbowPage.remainingPositions.get(i2).toString();
+                }
+                break;
+            default:
+                positions = new String[template.remainingPositions.size()];
+                for (i2 = 0; i2 < positions.length; i2++) {
+                    positions[i2] = (template.remainingPositions.get(i2)).toString();
+                    if (positions[i2].length() <= 1) {
+                        posNumber = Integer.parseInt(positions[i2]);
+                    } else if (positions[i2].charAt(1) == '.') {
+                        posNumber = Character.getNumericValue(positions[i2].charAt(0));
+                    } else {
+                        posNumber = Integer.parseInt(positions[i2].substring(0, 2));
+                    }
+                    playerName = overviewTab.allPlayerNames[posNumber - 1];
+                    if (!(playerName == null || playerName.length() == 0)) {
+                        positions[i2] = positions[i2] + ". " + playerName;
+                    }
+                }
+                break;
         }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_view_element, positions);
-        list.setAdapter(adapter);
+        this.list.setAdapter(new ArrayAdapter<>(this, R.layout.list_view_element, positions));
     }
 
     private void registerClickCallBack() {
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
+        this.list.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView textView = (TextView) view;
-                String selection = textView.getText().toString();
-
                 Intent intent;
-                if (startPage.mode.equals("Ranked"))
+                String selection = ((TextView) view).getText().toString();
+                if (startPage.mode.equals("Ranked")) {
                     intent = new Intent(selectPos.this, mainPage.class);
-                else
+                } else {
                     intent = new Intent(selectPos.this, rainbowPage.class);
-
+                }
                 intent.putExtra("selection", selection);
-                setResult(Activity.RESULT_OK, intent);
-                finish();
+                selectPos.this.setResult(-1, intent);
+                selectPos.this.finish();
             }
         });
     }
 
     public void deletePos(View view) {
-
         Intent intent;
-        if (startPage.mode.equals("Ranked"))
-            intent = new Intent(selectPos.this, mainPage.class);
-        else
-            intent = new Intent(selectPos.this, rainbowPage.class);
-
+        if (startPage.mode.equals("Ranked")) {
+            intent = new Intent(this, mainPage.class);
+        } else {
+            intent = new Intent(this, rainbowPage.class);
+        }
         intent.putExtra("selection", "delete");
-        setResult(Activity.RESULT_OK, intent);
+        setResult(-1, intent);
         finish();
     }
 }

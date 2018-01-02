@@ -12,21 +12,21 @@
         android:text="@string/Alignments"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="25sp"
-        app:layout_heightPercent="8%"
+        app:layout_heightPercent="7.5%"
         app:layout_widthPercent="50%" />
 
     <View
         android:id="@+id/align_jailor"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/alignmentsTitle"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/alignmentsTitle"
         android:background="@color/gray" />
 
     <RelativeLayout
         android:id="@+id/jailorTitleGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/align_jailor"
+        android:layout_below="@+id/align_jailor"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
@@ -50,37 +50,33 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
-
 
     <View
         android:id="@+id/jailor_TI"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/jailorTitleGroup"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/jailorTitleGroup"
         android:background="@color/gray" />
-
 
     <RelativeLayout
         android:id="@+id/TITitleGroup1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/jailor_TI"
+        android:layout_below="@+id/jailor_TI"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/TITitle1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/town"
             android:gravity="center"
             android:text="@string/TI"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="19sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
@@ -92,22 +88,19 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
-
 
     <RelativeLayout
         android:id="@+id/TITitleGroup2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TITitleGroup1"
+        android:layout_below="@+id/TITitleGroup1"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/TITitle2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/town"
@@ -126,32 +119,29 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <View
         android:id="@+id/TI_TS"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/TITitleGroup2"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/TITitleGroup2"
         android:background="@color/gray" />
 
     <RelativeLayout
         android:id="@+id/TSTitleGroup1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TI_TS"
+        android:layout_below="@+id/TI_TS"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/TSTitle1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/town"
-
             android:gravity="center"
             android:text="@string/TS"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -167,21 +157,19 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/TSTitleGroup2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TSTitleGroup1"
+        android:layout_below="@+id/TSTitleGroup1"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/TSTitle2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/town"
@@ -200,29 +188,26 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <View
         android:id="@+id/TS_TP"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/TSTitleGroup2"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/TSTitleGroup2"
         android:background="@color/gray" />
-
 
     <RelativeLayout
         android:id="@+id/TPTitleGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TS_TP"
+        android:layout_below="@+id/TS_TP"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/TPTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/town"
@@ -241,28 +226,26 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <View
         android:id="@+id/TP_TK"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/TPTitleGroup"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/TPTitleGroup"
         android:background="@color/gray" />
 
     <RelativeLayout
         android:id="@+id/TKTitleGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TP_TK"
+        android:layout_below="@+id/TP_TK"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/TKTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/town"
@@ -281,28 +264,26 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <View
         android:id="@+id/TK_RT"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/TKTitleGroup"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/TKTitleGroup"
         android:background="@color/gray" />
 
     <RelativeLayout
         android:id="@+id/RTTitleGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TK_RT"
+        android:layout_below="@+id/TK_RT"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/RTTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/town"
@@ -321,21 +302,20 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <View
         android:id="@+id/RT_GF"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/RTTitleGroup"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/RTTitleGroup"
         android:background="@color/gray" />
 
     <RelativeLayout
         android:id="@+id/GFTitleGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/RT_GF"
+        android:layout_below="@+id/RT_GF"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
@@ -361,14 +341,13 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/MafTitleGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/GFTitleGroup"
+        android:layout_below="@+id/GFTitleGroup"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
@@ -394,28 +373,26 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <View
         android:id="@+id/Maf_RM"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/MafTitleGroup"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/MafTitleGroup"
         android:background="@color/gray" />
 
     <RelativeLayout
         android:id="@+id/RMTitleGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/Maf_RM"
+        android:layout_below="@+id/Maf_RM"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/RMTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/mafia"
@@ -434,28 +411,26 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <View
         android:id="@+id/RM_NK"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/RMTitleGroup"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/RMTitleGroup"
         android:background="@color/gray" />
 
     <RelativeLayout
         android:id="@+id/NKTitleGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/RM_NK"
+        android:layout_below="@+id/RM_NK"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/NKTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
@@ -474,28 +449,26 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <View
         android:id="@+id/NK_NE"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/NKTitleGroup"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/NKTitleGroup"
         android:background="@color/gray" />
 
     <RelativeLayout
         android:id="@+id/NETitleGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/NK_NE"
+        android:layout_below="@+id/NK_NE"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/NETitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
@@ -514,28 +487,26 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <View
         android:id="@+id/NE_NB"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/NETitleGroup"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/NETitleGroup"
         android:background="@color/gray" />
 
     <RelativeLayout
         android:id="@+id/NBTitleGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/NE_NB"
+        android:layout_below="@+id/NE_NB"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/NBTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
@@ -554,28 +525,26 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <View
         android:id="@+id/NB_Any"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/NBTitleGroup"
+        android:layout_height="@dimen/separator_height"
+        android:layout_below="@+id/NBTitleGroup"
         android:background="@color/gray" />
 
     <RelativeLayout
         android:id="@+id/AnyTitleGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/NB_Any"
+        android:layout_below="@+id/NB_Any"
         android:gravity="center"
         android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/AnyTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -593,12 +562,11 @@
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
             android:visibility="invisible" />
-
     </RelativeLayout>
 
     <View
         android:id="@+id/leftBisector"
-        android:layout_width="1dp"
+        android:layout_width="@dimen/separator_height"
         android:layout_height="match_parent"
         android:layout_toEndOf="@+id/alignmentsTitle"
         android:layout_toRightOf="@+id/alignmentsTitle"
@@ -607,7 +575,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/align_jailor"
+        android:layout_below="@+id/align_jailor"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/town"
@@ -627,13 +595,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/jailor_TI"
+        android:layout_below="@+id/jailor_TI"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/town"
@@ -653,13 +620,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TITitleGroup1"
+        android:layout_below="@+id/TITitleGroup1"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/town"
@@ -679,13 +645,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TI_TS"
+        android:layout_below="@+id/TI_TS"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/town"
@@ -705,13 +670,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TSTitleGroup1"
+        android:layout_below="@+id/TSTitleGroup1"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/town"
@@ -731,13 +695,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TS_TP"
+        android:layout_below="@+id/TS_TP"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/town"
@@ -757,13 +720,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TP_TK"
+        android:layout_below="@+id/TP_TK"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/town"
@@ -783,13 +745,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/TK_RT"
+        android:layout_below="@+id/TK_RT"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/town"
@@ -809,13 +770,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/RT_GF"
+        android:layout_below="@+id/RT_GF"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/mafia"
@@ -835,13 +795,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/GFTitleGroup"
+        android:layout_below="@+id/GFTitleGroup"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/mafia"
@@ -861,13 +820,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/Maf_RM"
+        android:layout_below="@+id/Maf_RM"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/mafia"
@@ -887,13 +845,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/RM_NK"
+        android:layout_below="@+id/RM_NK"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/neutral"
@@ -913,13 +870,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/NK_NE"
+        android:layout_below="@+id/NK_NE"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/neutral"
@@ -939,13 +895,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/NE_NB"
+        android:layout_below="@+id/NE_NB"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/neutral"
@@ -965,13 +920,12 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/NB_Any"
+        android:layout_below="@+id/NB_Any"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:gravity="center"
@@ -990,13 +944,11 @@
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
             android:textSize="20sp" />
-
     </FrameLayout>
-
 
     <View
         android:id="@+id/rightBisector"
-        android:layout_width="1dp"
+        android:layout_width="@dimen/separator_height"
         android:layout_height="match_parent"
         android:layout_toEndOf="@+id/positionTitle"
         android:layout_toRightOf="@+id/positionTitle"
@@ -1012,11 +964,10 @@
         android:text="@string/positionTitle"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="25sp"
-        app:layout_heightPercent="8%"
+        app:layout_heightPercent="7.5%"
         app:layout_widthPercent="10%" />
 
     <TextView
-        android:id="@+id/roles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/rightBisector"
@@ -1025,14 +976,13 @@
         android:text="@string/Roles"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="25sp"
-        app:layout_heightPercent="8%"
+        app:layout_heightPercent="7.5%"
         app:layout_widthPercent="50%" />
-
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/align_jailor"
+        android:layout_below="@+id/align_jailor"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/town"
@@ -1046,9 +996,9 @@
 
     <RelativeLayout
         android:id="@+id/TIGroup1"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/jailor_TI"
+        android:layout_below="@+id/jailor_TI"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/town"
@@ -1083,9 +1033,9 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TIGroup1"
+        android:layout_below="@+id/TIGroup1"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/town"
@@ -1109,7 +1059,7 @@
             android:id="@+id/TIField2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="start|bottom"
+            android:layout_gravity="center"
             android:focusable="false"
             android:gravity="center"
             android:inputType="none"
@@ -1120,13 +1070,11 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-
     <RelativeLayout
         android:id="@+id/TSGroup1"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TI_TS"
-
+        android:layout_below="@+id/TI_TS"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/town"
@@ -1161,11 +1109,9 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TSGroup1"
-
-
+        android:layout_below="@+id/TSGroup1"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/town"
@@ -1200,10 +1146,9 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TS_TP"
-
+        android:layout_below="@+id/TS_TP"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/town"
@@ -1238,10 +1183,9 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TP_TK"
-
+        android:layout_below="@+id/TP_TK"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/town"
@@ -1276,10 +1220,9 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TK_RT"
-
+        android:layout_below="@+id/TK_RT"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/town"
@@ -1316,7 +1259,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/RT_GF"
+        android:layout_below="@+id/RT_GF"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/mafia"
@@ -1331,7 +1274,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/GFTitleGroup"
+        android:layout_below="@+id/GFTitleGroup"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/mafia"
@@ -1344,9 +1287,9 @@
         app:layout_widthPercent="50%" />
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Maf_RM"
+        android:layout_below="@+id/Maf_RM"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/mafia"
@@ -1381,9 +1324,9 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/RM_NK"
+        android:layout_below="@+id/RM_NK"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/neutral"
@@ -1419,9 +1362,9 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/NK_NE"
+        android:layout_below="@+id/NK_NE"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/neutral"
@@ -1456,9 +1399,9 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/NE_NB"
+        android:layout_below="@+id/NE_NB"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/neutral"
@@ -1492,14 +1435,13 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/NB_Any"
+        android:layout_below="@+id/NB_Any"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:gravity="center_horizontal"
+        android:gravity="end"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
@@ -1528,6 +1470,4 @@
             android:paddingTop="0dp"
             android:textSize="20sp" />
     </RelativeLayout>
-
-
 </android.support.percent.PercentRelativeLayout>

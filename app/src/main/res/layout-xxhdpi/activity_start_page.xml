@@ -5,111 +5,101 @@
     android:background="@drawable/background">
 
     <ImageView
-        android:id="@+id/TOSTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:contentDescription="@string/town_of_salem"
-        android:src="@drawable/tos" />
-
-    <ImageView
-        android:id="@+id/HelperTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/TOSTitle"
-        android:layout_alignRight="@+id/TOSTitle"
-        android:layout_below="@+id/TOSTitle"
-        android:contentDescription="@string/helper"
-        android:src="@drawable/assistant_text" />
-
-    <ImageView
         android:id="@+id/Helper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView5"
+        android:layout_alignRight="@+id/textView5"
+        android:layout_alignTop="@+id/textView5"
+        android:layout_toLeftOf="@+id/textView5"
+        android:layout_toStartOf="@+id/textView5"
         android:contentDescription="@string/helper_lady"
-        android:src="@drawable/helper"
-        android:layout_toStartOf="@+id/buttonAbout"
-        android:layout_toLeftOf="@+id/buttonAbout"
-        android:layout_alignTop="@+id/textView5" />
+        android:src="@drawable/helper" />
 
-    <ImageView
-        android:id="@+id/buttonRanked"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonClassic"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:contentDescription="@string/ranked_button"
-        android:onClick="goToRanked"
-        android:src="@drawable/button_ranked" />
-
-    <ImageView
-        android:id="@+id/buttonClassic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonRainbow"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:contentDescription="@string/ranked_button"
-        android:onClick="goToClassic"
-        android:src="@drawable/button_classic" />
-
-    <ImageView
-        android:id="@+id/buttonRainbow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonTips"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:contentDescription="@string/rainbow_mode"
-        android:onClick="goToRainbow"
-        android:src="@drawable/button_rainbow" />
+        android:layout_above="@+id/HelperTitle"
+        android:layout_alignEnd="@+id/HelperTitle"
+        android:layout_alignRight="@+id/HelperTitle"
+        android:background="@color/lightTint"
+        android:paddingTop="5dp"
+        android:text="@string/patch"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/HelperTitle"
-        android:layout_alignEnd="@+id/patchNumber"
-        android:layout_alignRight="@+id/patchNumber"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:background="@color/lightTint"
+        android:gravity="center"
         android:text="@string/version"
         android:textSize="15sp" />
 
-    <ImageView
-        android:id="@+id/buttonTips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonAbout"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:contentDescription="@string/tips"
-        android:onClick="goToTips"
-        android:src="@drawable/button_tips" />
-
-    <ImageView
-        android:id="@+id/buttonAbout"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:paddingBottom="15dp"
         android:layout_alignParentRight="true"
-        android:contentDescription="@string/aboutTitle"
-        android:onClick="goToAbout"
-        android:src="@drawable/button_about" />
+        android:layout_below="@+id/textView5"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/patchNumber"
+        <ImageView
+            android:id="@+id/buttonSalemClassic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/buttonCovenModes"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/salem_classic"
+            android:onClick="goToClassicModes"
+            android:src="@drawable/button_salem_classic" />
+
+        <ImageView
+            android:id="@+id/buttonCovenModes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/buttonTips"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/coven_modes"
+            android:onClick="goToCovenModes"
+            android:src="@drawable/buttton_coven_modes" />
+
+        <ImageView
+            android:id="@+id/buttonTips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/tips"
+            android:onClick="goToTips"
+            android:src="@drawable/button_tips" />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/HelperTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/HelperTitle"
-        android:layout_alignEnd="@+id/buttonRainbow"
-        android:layout_alignRight="@+id/buttonRainbow"
-        android:paddingTop="5dp"
-        android:text="@string/patch"
-        android:textSize="15sp" />
+        android:layout_below="@+id/TOSTitle"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/helper"
+        android:onClick="goToAbout"
+        android:src="@drawable/assistant_text" />
+
+    <ImageView
+        android:id="@+id/TOSTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/town_of_salem"
+        android:src="@drawable/tos" />
+
 
 </RelativeLayout>

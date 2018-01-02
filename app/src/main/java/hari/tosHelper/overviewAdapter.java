@@ -1,80 +1,78 @@
 package hari.tosHelper;
 
 import android.content.Context;
-import android.support.percent.PercentLayoutHelper;
-import android.support.percent.PercentRelativeLayout;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.TextView;
-
-class ViewHolder2 {
-    protected View nameView;
-    protected View presentFlag;
-    public View confirmedFlag;
-}
-
 
 class overviewAdapter extends ArrayAdapter<String> {
     private final Context context;
     private final String[] names;
+    private View header;
 
-
-    public overviewAdapter(Context context, String[] names) {
+    overviewAdapter(Context context, String[] names, View header) {
         super(context, R.layout.overview_element, names);
         this.context = context;
         this.names = names;
+        this.header = header;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    @NonNull
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View rowView = convertView;
+        LayoutParams hparams = this.header.getLayoutParams();
+        if (hparams != null) {
+            hparams.height = mainPage.standardTitleHeight;
+        }
+        LayoutParams params;
         ViewHolder2 holder;
         if (rowView == null) {
-            LayoutInflater inflater = (LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            rowView = inflater.inflate(R.layout.overview_element, parent, false);
-
+            rowView = ((LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.overview_element, parent, false);
+            params = rowView.getLayoutParams();
+            if (params != null) {
+                params.height = mainPage.standardHeight;
+            }
             holder = new ViewHolder2();
-            holder.nameView = rowView.findViewById(R.id.player);
-            holder.presentFlag = rowView.findViewById(R.id.presentFlag);
-            holder.confirmedFlag = rowView.findViewById(R.id.confirmedFlag);
+            holder.name = rowView.findViewById(R.id.playerContainer);
+            holder.name.addTextChangedListener(new TextWatcher() {
+                public void afterTextChanged(Editable s) {
+                }
 
-            if (position >= 1) {
-                ((EditText) holder.nameView).setText(names[position]);
-            }
-            else{
-                PercentRelativeLayout.LayoutParams params = (PercentRelativeLayout.LayoutParams) holder.nameView.getLayoutParams();
-                ViewGroup layout = (ViewGroup) holder.nameView.getParent();
-                layout.removeView(holder.nameView);
-                TextView title = new TextView(context);
-                title.setText(R.string.players);
-                title.setId(R.id.player);
-                holder.nameView = title;
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
 
-                PercentLayoutHelper.PercentLayoutInfo info = params.getPercentLayoutInfo();
-                info.heightPercent = 0.08f;
-                holder.nameView.requestLayout();
-            }
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    overviewAdapter.this.names[position] = s.toString();
+                }
+            });
+            holder.position = rowView.findViewById(R.id.positionTitle);
+            holder.role = rowView.findViewById(R.id.playerRole);
+            holder.name.setText(this.names[position]);
+            holder.position.setText(Integer.toString(position + 1));
+            holder.name.setHorizontallyScrolling(false);
             rowView.setTag(holder);
         } else {
             holder = (ViewHolder2) rowView.getTag();
-
-            if (position >= 1) {
-                ((EditText) holder.nameView).setText(names[position]);
+            holder.role.setText(overviewTab.allPlayerRoles[position]);
+            params = rowView.getLayoutParams();
+            if (params != null) {
+                params.height = mainPage.standardHeight;
             }
-            else{
-                PercentRelativeLayout.LayoutParams params = (PercentRelativeLayout.LayoutParams) holder.nameView.getLayoutParams();
-                PercentLayoutHelper.PercentLayoutInfo info = params.getPercentLayoutInfo();
-                info.heightPercent = 0.08f;
-                holder.nameView.requestLayout();
+            if (overviewTab.allPlayerRoles[position] == null || overviewTab.allPlayerRoles[position].length() == 0) {
+                rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.white));
+            } else {
+                int color;
+                color = mainPage.roleBackground.get(overviewTab.allPlayerRoles[position]);
+                holder.role.setTextColor(ContextCompat.getColor(getContext(), mainPage.roleColors.get(overviewTab.allPlayerRoles[position])));
+                rowView.setBackgroundColor(ContextCompat.getColor(getContext(), color));
             }
         }
         return rowView;
     }
-
 }
-
-
