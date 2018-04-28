@@ -1,0 +1,1557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/alignmentsTitle"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="7.5%"
+        android:layout_width="wrap_content"
+        app:layout_widthPercent="50%"
+        android:text="@string/categories"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp" />
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/align_0"
+        android:layout_below="@+id/alignmentsTitle"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup0"
+        android:layout_below="@+id/align_0"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title0"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="true"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status0"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_01"
+        android:layout_below="@+id/titleGroup0"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup1"
+        android:layout_below="@+id/_01"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title1"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status1"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_12"
+        android:layout_below="@+id/titleGroup1"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup2"
+        android:layout_below="@+id/_12"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title2"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status2"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_23"
+        android:layout_below="@+id/titleGroup2"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup3"
+        android:layout_below="@+id/_23"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title3"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status3"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_34"
+        android:layout_below="@+id/titleGroup3"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup4"
+        android:layout_below="@+id/_34"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title4"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status4"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_45"
+        android:layout_below="@+id/titleGroup4"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup5"
+        android:layout_below="@+id/_45"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title5"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status5"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_56"
+        android:layout_below="@+id/titleGroup5"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup6"
+        android:layout_below="@+id/_56"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title6"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status6"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_67"
+        android:layout_below="@+id/titleGroup6"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup7"
+        android:layout_below="@+id/_67"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title7"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status7"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_78"
+        android:layout_below="@+id/titleGroup7"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup8"
+        android:layout_below="@+id/_78"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title8"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status8"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_89"
+        android:layout_below="@+id/titleGroup8"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup9"
+        android:layout_below="@+id/_89"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title9"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status9"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_910"
+        android:layout_below="@+id/titleGroup9"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup10"
+        android:layout_below="@+id/_910"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title10"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status10"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_1011"
+        android:layout_below="@+id/titleGroup10"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup11"
+        android:layout_below="@+id/_1011"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title11"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status11"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_1112"
+        android:layout_below="@+id/titleGroup11"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup12"
+        android:layout_below="@+id/_1112"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title12"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status12"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_1213"
+        android:layout_below="@+id/titleGroup12"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:id="@+id/titleGroup13"
+        android:layout_below="@+id/_1213"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title13"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status13"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/_1314"
+        android:layout_below="@+id/titleGroup13"
+        android:layout_height="@dimen/separator_height"
+        android:layout_width="match_parent" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_1314"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/title14"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="6%"
+            android:layout_width="match_parent"
+            app:layout_widthPercent="50%"
+            android:onClick="fetchAlignment"
+            android:text="@string/select"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="18sp" />
+
+        <View
+            android:background="@color/colorAccent"
+            android:id="@+id/status14"
+            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
+            android:layout_width="5dp"
+            android:onClick="toggleStatus"
+            android:visibility="invisible"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/leftBisector"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/alignmentsTitle"
+        android:layout_width="@dimen/separator_height"
+        android:layout_toEndOf="@+id/alignmentsTitle" />
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/align_0"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos0"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_01"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos1"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_12"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos2"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_23"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos3"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_34"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos4"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_45"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos5"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_56"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos6"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_67"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos7"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_78"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos8"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_89"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos9"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_910"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos10"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_1011"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos11"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_1112"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos12"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_1213"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos13"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:gravity="center"
+        android:layout_below="@+id/_1314"
+        android:layout_height="match_parent"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="10%"
+        android:layout_toEndOf="@+id/leftBisector">
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/pos14"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <View
+        android:background="@color/gray"
+        android:id="@+id/rightBisector"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/positionTitle"
+        android:layout_width="@dimen/separator_height"
+        android:layout_toEndOf="@+id/positionTitle" />
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/positionTitle"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="7.5%"
+        android:layout_toRightOf="@+id/alignmentsTitle"
+        android:layout_width="wrap_content"
+        app:layout_widthPercent="10%"
+        android:text="@string/positionTitle"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp"
+        android:layout_toEndOf="@+id/alignmentsTitle" />
+
+    <TextView
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="7.5%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="wrap_content"
+        app:layout_widthPercent="50%"
+        android:text="@string/Roles"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/align_0"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield0"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field0"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_01"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield1"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field1"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_12"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield2"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field2"
+            android:inputType="none"
+            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_23"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield3"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field3"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_34"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield4"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field4"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_45"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield5"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field5"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_56"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield6"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field6"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_67"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield7"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field7"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_78"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield8"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field8"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_89"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield9"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field9"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_910"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield10"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field10"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_1011"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield11"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field11"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_1112"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield12"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field12"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_below="@+id/_1213"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield13"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field13"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:gravity="end"
+        android:layout_below="@+id/_1314"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="6%"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_width="match_parent"
+        app:layout_widthPercent="50%">
+
+        <Button
+            android:background="@drawable/delete2"
+            android:id="@+id/buttonfield14"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_height="25dp"
+            android:layout_width="25dp"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
+            android:focusable="false"
+            android:gravity="center"
+            android:id="@+id/field14"
+            android:inputType="none"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+</android.support.percent.PercentRelativeLayout>

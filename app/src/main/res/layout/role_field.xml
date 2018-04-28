@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/field0"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:gravity="center"
+    android:inputType="none"
+    android:longClickable="false"
+    android:maxLines="1"
+    android:onClick="fetchRole"
+    android:paddingBottom="5dp"
+    android:paddingTop="0dp"
+    android:textSize="18sp" />
