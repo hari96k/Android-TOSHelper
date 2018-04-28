@@ -38,7 +38,6 @@ import java.util.Map.Entry;
 
 import hari.tosHelper.customAlignmentsTab.OnCustomRolesTabListener;
 import hari.tosHelper.infoTab.OnInfoTabListener;
-import hotchemi.android.rate.BuildConfig;
 
 public class template extends AppCompatActivity implements OnCustomRolesTabListener, OnInfoTabListener {
     private static final int POS_0 = 29;
@@ -128,9 +127,6 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
             put("Vampire", 0);
 
             put("Psychic", 0);
-            put("Tracker", 0);
-            put("Crusader", 0);
-            put("Trapper", 0);
 
             put("Coven Leader", 0);
             put("Hex Master", 0);
@@ -181,17 +177,12 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
             put("Mafioso", 0);
             put("Arsonist", 0);
             put("Werewolf", 0);
-            put("Executioner", 0);
-            put("Jester", 0);
             put("Witch", 0);
             put("Amnesiac", 0);
             put("Survivor", 0);
             put("Vampire", 0);
 
             put("Psychic", 0);
-            put("Tracker", 0);
-            put("Crusader", 0);
-            put("Trapper", 0);
 
             put("Coven Leader", 0);
             put("Hex Master", 0);
@@ -248,7 +239,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
     }
 
     protected static boolean isUnique(String role) {
-        return role.equals("Jailor") || role.equals("Mayor") || role.equals("Retributionist") || role.equals("Veteran") || role.equals("Werewolf") || role.equals("Godfather") || role.equals("Mafioso") || role.equals("Coven Leader") || role.equals("Medusa");
+        return role.equals("Jailor") || role.equals("Mayor") || role.equals("Retributionist") || role.equals("Veteran") || role.equals("Werewolf") || role.equals("Godfather") || role.equals("Mafioso") || role.equals("Ambusher") || role.equals("Coven Leader") || role.equals("Necromancer") || role.equals("Potion Master") || role.equals("Poisoner") || role.equals("Hex Master") || role.equals("Medusa") || role.equals("Juggernaut") || role.equals("Plaguebearer") || role.equals("Pestilence") || role.equals("Pirate");
     }
 
     protected static boolean isAvailableUnique(String role) {
@@ -257,7 +248,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
 
     protected static void updateRealizedRole(String role, boolean status) {
         if (status) {
-            realizedRoles.put(role, realizedRoles.get(role) + REQUEST_1);
+            realizedRoles.put(role, realizedRoles.get(role) + 1);
         } else {
             realizedRoles.put(role, realizedRoles.get(role) - 1);
         }
@@ -265,7 +256,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
 
     protected static void updateConfirmedRole(String role, boolean status) {
         if (status) {
-            confirmedRoles.put(role, confirmedRoles.get(role) + REQUEST_1);
+            confirmedRoles.put(role, confirmedRoles.get(role) + 1);
         } else {
             confirmedRoles.put(role, confirmedRoles.get(role) - 1);
         }
@@ -281,7 +272,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
         setContentView(R.layout.activity_custom_page);
         resetStates();
         this.viewPager = findViewById(R.id.viewPager);
-        this.viewPager.setOffscreenPageLimit(REQUEST_2);
+        this.viewPager.setOffscreenPageLimit(2);
         this.adapter = new CustomAdapter(getSupportFragmentManager());
         this.viewPager.setAdapter(this.adapter);
         this.viewPager.addOnPageChangeListener(new OnPageChangeListener() {
@@ -290,7 +281,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
 
             public void onPageScrollStateChanged(int state) {
                 if (state == 0 && template.this.viewPager.getCurrentItem() != 0) {
-                    ((InputMethodManager) template.this.getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(template.this.viewPager.getWindowToken(), template.REQUEST_0);
+                    ((InputMethodManager) template.this.getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(template.this.viewPager.getWindowToken(), 0);
                     View current = template.this.getCurrentFocus();
                     if (current != null) {
                         current.clearFocus();
@@ -316,15 +307,20 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
                 template.this.viewPager.setCurrentItem(tab.getPosition());
             }
         });
-        this.viewPager.setCurrentItem(REQUEST_1);
+        this.viewPager.setCurrentItem(1);
         customStatesSaved = false;
-        this.toast = Toast.makeText(getBaseContext(), BuildConfig.VERSION_NAME, Toast.LENGTH_LONG);
+        this.toast = Toast.makeText(getBaseContext(), "", Toast.LENGTH_LONG);
 
         displayToast("Don't forget to input your role!");
     }
 
     public void onRoleSelected(String role, int position) {
-        Intent intent = new Intent(this, Role_Information.class);
+        Intent intent;
+        if (startPage.mode.split(" ")[0].equals("Coven")) {
+            intent = new Intent(this, Role_Info_Coven.class);
+        } else {
+            intent = new Intent(this, Role_Info_Classic.class);
+        }
         intent.putExtra("selection", role);
         intent.putExtra("position", position);
         startActivity(intent);
@@ -334,7 +330,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
         int i;
         String[] savedCategories = roles;
 
-        for (i = 0; i < titles.length; i += REQUEST_1) {
+        for (i = 0; i < titles.length; i += 1) {
             TextView title = findViewById(titles[i]);
             title.setText(savedCategories[i]);
             int color;
@@ -531,14 +527,14 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
             }
         }
         LayoutParams params = (LayoutParams) findViewById(fieldID).getLayoutParams();
-        params.addRule(REQUEST_0, REQUEST_0);
+        params.addRule(0, 0);
         editText.setLayoutParams(params);
-        editText.setText(BuildConfig.VERSION_NAME);
+        editText.setText("");
         updateRealizedRole(role, false);
         this.InfoTab.updateListView();
         button.setVisibility(View.INVISIBLE);
         if (pos.length() != 0) {
-            updatePlayerRole(Integer.parseInt(pos), BuildConfig.VERSION_NAME);
+            updatePlayerRole(Integer.parseInt(pos), "");
             this.OverviewTab.updateListView();
         }
     }
@@ -652,10 +648,10 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
             displayToast("Select a category first!");
             return;
         }
-        String[] player = new String[REQUEST_3];
-        player[REQUEST_0] = alignment;
-        player[REQUEST_1] = position;
-        player[REQUEST_2] = role;
+        String[] player = new String[3];
+        player[0] = alignment;
+        player[1] = position;
+        player[2] = role;
         intent.putExtra("player", player);
         startActivityForResult(intent, constant);
     }
@@ -921,7 +917,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
                     this.InfoTab.updateListView();
                 }
                 if (pos.length() != 0) {
-                    updatePlayerRole(Integer.parseInt(pos), BuildConfig.VERSION_NAME);
+                    updatePlayerRole(Integer.parseInt(pos), "");
                     this.OverviewTab.updateListView();
                 }
                 statusBox = findViewById(statusID);
@@ -929,7 +925,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
                     updateConfirmedRole(role, false);
                     statusBox.setVisibility(View.INVISIBLE);
                 }
-                positionField.setText(BuildConfig.VERSION_NAME);
+                positionField.setText("");
                 parent.setBackgroundColor(color);
                 Button delete_button = (Button) getLayoutInflater().inflate(R.layout.delete_button, parent, false);
                 delete_button.setId(buttonID);
@@ -964,9 +960,9 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
                     updateRealizedRole(roleOrPosition, true);
                     this.InfoTab.updateListView();
                     if (pos.length() != 0) {
-                        updatePlayerRole(Integer.parseInt(pos), BuildConfig.VERSION_NAME);
+                        updatePlayerRole(Integer.parseInt(pos), "");
                         this.OverviewTab.updateListView();
-                        positionField.setText(BuildConfig.VERSION_NAME);
+                        positionField.setText("");
                     }
                     parent.setBackgroundColor(color);
                     findViewById(statusID).setVisibility(View.VISIBLE);
@@ -998,7 +994,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
                     }
                     resizeText(textField, roleOrPosition);
                     LayoutParams params = (LayoutParams) findViewById(fieldID).getLayoutParams();
-                    params.addRule(REQUEST_0, buttonID);
+                    params.addRule(0, buttonID);
                     textField.setLayoutParams(params);
                     updateRealizedRole(roleOrPosition, true);
                     this.InfoTab.updateListView();
@@ -1020,17 +1016,17 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
                     if (role.length() == 0) {
                         findViewById(statusID).setVisibility(View.INVISIBLE);
                     }
-                    positionField.setText(BuildConfig.VERSION_NAME);
+                    positionField.setText("");
                     updateRemainingPos(prevPos, false);
-                    updatePlayerRole(Integer.parseInt(prevPos), BuildConfig.VERSION_NAME);
+                    updatePlayerRole(Integer.parseInt(prevPos), "");
                     this.OverviewTab.updateListView();
                     return;
                 }
-                if (roleOrPosition.length() != REQUEST_1) {
-                    if (roleOrPosition.charAt(REQUEST_1) < '0' || roleOrPosition.charAt(REQUEST_1) > '9') {
-                        roleOrPosition = roleOrPosition.substring(REQUEST_0, REQUEST_1);
+                if (roleOrPosition.length() != 1) {
+                    if (roleOrPosition.charAt(1) < '0' || roleOrPosition.charAt(1) > '9') {
+                        roleOrPosition = roleOrPosition.substring(0, 1);
                     } else {
-                        roleOrPosition = roleOrPosition.substring(REQUEST_0, REQUEST_2);
+                        roleOrPosition = roleOrPosition.substring(0, 2);
                     }
                 }
                 try {
@@ -1040,7 +1036,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
                 }
                 if (prevPos.length() != 0) {
                     updateRemainingPos(prevPos, false);
-                    updatePlayerRole(Integer.parseInt(prevPos), BuildConfig.VERSION_NAME);
+                    updatePlayerRole(Integer.parseInt(prevPos), "");
                 }
                 positionField.setText(roleOrPosition);
                 updateRemainingPos(roleOrPosition, true);
@@ -1209,11 +1205,11 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
 
         customPresets.settings = PreferenceManager.getDefaultSharedPreferences(this);
         JSONArray jsonArray = new JSONArray();
-        int i = REQUEST_0;
+        int i = 0;
         while (i < titles.length) {
             try {
                 jsonArray.put(i, ((TextView) findViewById(titles[i])).getText().toString());
-                i += REQUEST_1;
+                i += 1;
             } catch (JSONException ignored) {
             }
         }
@@ -1298,7 +1294,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
         overviewTab.allPlayerNames = new String[15];
         overviewTab.allPlayerRoles = new String[15];
         remainingPositions.clear();
-        for (int i = REQUEST_1; i <= 15; i += REQUEST_1) {
+        for (int i = 1; i <= 15; i += 1) {
             remainingPositions.add(i);
         }
         for (Entry<String, Integer> entry : realizedRoles.entrySet()) {
@@ -1317,22 +1313,22 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
 
         CustomAdapter(FragmentManager supportFragmentManager) {
             super(supportFragmentManager);
-            String[] strArr = new String[template.REQUEST_3];
-            strArr[template.REQUEST_0] = "Overview";
-            strArr[template.REQUEST_1] = "Alignments";
-            strArr[template.REQUEST_2] = "Info";
+            String[] strArr = new String[3];
+            strArr[0] = "Overview";
+            strArr[1] = "Alignments";
+            strArr[2] = "Info";
             this.fragments = strArr;
         }
 
 
         public Fragment getItem(int position) {
             switch (position) {
-                case template.REQUEST_0 /*0*/:
+                case 0 /*0*/:
                     template.this.OverviewTab = new overviewTab();
                     return template.this.OverviewTab;
-                case template.REQUEST_1 /*1*/:
+                case 1 /*1*/:
                     return new alignmentsTab();
-                case template.REQUEST_2 /*2*/:
+                case 2 /*2*/:
                     template.this.InfoTab = new infoTab();
                     return template.this.InfoTab;
                 default:

@@ -678,7 +678,7 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
     }
 
     public void onRoleSelected(String role, int position) {
-        Intent intent = new Intent(this, Role_Information.class);
+        Intent intent = new Intent(this, Role_Info_Classic.class);
         intent.putExtra("selection", role);
         intent.putExtra("position", position);
         startActivity(intent);

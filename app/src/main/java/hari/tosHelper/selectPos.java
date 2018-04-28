@@ -75,15 +75,14 @@ public class selectPos extends Activity {
 
     private void populateListView() {
         String[] positions;
-        String str = startPage.mode;
         int i2;
         int posNumber;
         String playerName;
-        switch (str) {
+        switch (startPage.mode) {
             case "Ranked" /*0*/:
-                positions = new String[mainPage.remainingPositions.size()];
+                positions = new String[template.remainingPositions.size()];
                 for (i2 = 0; i2 < positions.length; i2++) {
-                    positions[i2] = (mainPage.remainingPositions.get(i2)).toString();
+                    positions[i2] = (template.remainingPositions.get(i2)).toString();
                     if (positions[i2].length() <= 1) {
                         posNumber = Integer.parseInt(positions[i2]);
                     } else if (positions[i2].charAt(1) == '.') {
@@ -98,6 +97,7 @@ public class selectPos extends Activity {
                 }
                 break;
             case "Custom" /*1*/:
+            case "Coven Custom":
                 positions = new String[customTemplate.remainingPositions.size()];
                 for (i2 = 0; i2 < positions.length; i2++) {
                     positions[i2] = (customTemplate.remainingPositions.get(i2)).toString();
@@ -147,7 +147,7 @@ public class selectPos extends Activity {
                 Intent intent;
                 String selection = ((TextView) view).getText().toString();
                 if (startPage.mode.equals("Ranked")) {
-                    intent = new Intent(selectPos.this, mainPage.class);
+                    intent = new Intent(selectPos.this, template.class);
                 } else {
                     intent = new Intent(selectPos.this, rainbowPage.class);
                 }
@@ -161,7 +161,7 @@ public class selectPos extends Activity {
     public void deletePos(View view) {
         Intent intent;
         if (startPage.mode.equals("Ranked")) {
-            intent = new Intent(this, mainPage.class);
+            intent = new Intent(this, template.class);
         } else {
             intent = new Intent(this, rainbowPage.class);
         }

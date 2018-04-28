@@ -17,10 +17,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="hari.tosHelper.mainPage"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|adjustNothing" />
-        <activity
             android:name="hari.tosHelper.classicPage"
             android:screenOrientation="portrait" />
         <activity
@@ -29,23 +25,23 @@
         <activity
             android:name="hari.tosHelper.customPresets"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|adjustNothing" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="hari.tosHelper.classicModesPage"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|adjustNothing" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="hari.tosHelper.covenModesPage"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|adjustNothing" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="hari.tosHelper.customTemplate"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|adjustNothing" />
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="hari.tosHelper.template"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|adjustNothing" />
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name="hari.tosHelper.tipsPage" />
         <activity android:name="hari.tosHelper.aboutPage" />
         <activity android:name="hari.tosHelper.TI" />
@@ -69,6 +65,7 @@
         <activity android:name="hari.tosHelper.TK_classic" />
         <activity android:name="hari.tosHelper.RT_classic" />
         <activity android:name="hari.tosHelper.Any_rainbow" />
-        <activity android:name="hari.tosHelper.Role_Information" />
+        <activity android:name="hari.tosHelper.Role_Info_Classic" />
+        <activity android:name="hari.tosHelper.Role_Info_Coven" />
     </application>
 </manifest>

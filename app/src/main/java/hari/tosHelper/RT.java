@@ -21,7 +21,19 @@ public class RT extends Activity {
     }
 
     private void populateListView() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_view_element, startPage.mode.equals("Ranked") ? new String[]{"Investigator", "Lookout", "Sheriff", "Spy", "Escort", "Mayor", "Medium", "Retributionist", "Transporter", "Bodyguard", "Doctor", "Vampire Hunter", "Veteran", "Vigilante"} : new String[]{"Investigator", "Lookout", "Sheriff", "Spy", "Escort", "Mayor", "Medium", "Retributionist", "Transporter", "Bodyguard", "Doctor", "Jailor", "Vampire Hunter", "Veteran", "Vigilante"});
+        String[] roleList;
+        switch (startPage.mode) {
+            case "Ranked":
+                roleList = new String[]{"Investigator", "Lookout", "Sheriff", "Spy", "Escort", "Mayor", "Medium", "Retributionist", "Transporter", "Bodyguard", "Doctor", "Vampire Hunter", "Veteran", "Vigilante"};
+                break;
+            case "Coven Ranked":
+                roleList = new String[]{"Investigator", "Lookout", "Psychic", "Sheriff", "Spy", "Tracker", "Escort", "Mayor", "Medium", "Retributionist", "Transporter", "Bodyguard", "Crusader", "Doctor", "Trapper", "Jailor", "Vampire Hunter", "Veteran", "Vigilante"};
+                break;
+            default:
+                roleList = new String[]{"Investigator", "Lookout", "Psychic", "Sheriff", "Spy", "Tracker", "Escort", "Mayor", "Medium", "Retributionist", "Transporter", "Bodyguard", "Crusader", "Doctor", "Trapper", "Vampire Hunter", "Veteran", "Vigilante"};
+                break;
+        }
+        ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.list_view_element, roleList);
         this.list = findViewById(R.id.listViewRT);
         this.list.setAdapter(adapter);
     }

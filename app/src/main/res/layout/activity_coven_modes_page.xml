@@ -23,23 +23,11 @@
         android:src="@drawable/button_ranked" />
 
     <ImageView
-        android:id="@+id/buttonClassic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buttonRanked"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:contentDescription="@string/classic_mode"
-        android:onClick="goToClassic"
-        android:src="@drawable/button_classic" />
-
-    <ImageView
         android:id="@+id/buttonCustom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonClassic"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/buttonRanked"
         android:contentDescription="@string/custom_mode"
         android:onClick="goToCustom"
         android:src="@drawable/button_custom" />
@@ -60,7 +48,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:contentDescription="@string/Townie"
+        android:contentDescription="@string/Pirate"
         android:scaleType="fitXY"
         android:src="@drawable/coven_leader" />
 </RelativeLayout>

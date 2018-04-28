@@ -11,8 +11,8 @@ import android.widget.ArrayAdapter;
 class infoTabAdapter extends ArrayAdapter<String> {
     static int[] textColor;
     private final Context context;
-    private final String[] roles;
     private String mode = startPage.mode;
+    private final String[] roles;
 
     infoTabAdapter(Context context, String[] roles) {
         super(context, R.layout.list_view_element_2, roles);
@@ -42,7 +42,7 @@ class infoTabAdapter extends ArrayAdapter<String> {
 
     private void initializeCovenCustomTextColors() {
 
-        textColor = new int[49];
+        textColor = new int[50];
         for (int i = 0; i < textColor.length; i++) {
             if (i >= 19) {
                 if (i >= 30) {
@@ -52,40 +52,43 @@ class infoTabAdapter extends ArrayAdapter<String> {
                             case 36 /*24*/:
                                 textColor[i] = R.color.arsonistText;
                                 break;
-                            case 37 /*25*/:
+                            case 37:
+                                textColor[i] = R.color.juggernautText;
+                                break;
+                            case 38 /*25*/:
                                 textColor[i] = R.color.skText;
                                 break;
-                            case 38 /*26*/:
+                            case 39 /*26*/:
                                 textColor[i] = R.color.wwText;
                                 break;
-                            case 39 /*27*/:
+                            case 40 /*27*/:
                                 textColor[i] = R.color.exeText;
                                 break;
-                            case 40   /*28*/:
+                            case 41   /*28*/:
                                 textColor[i] = R.color.jesterText;
                                 break;
-                            case 41 /*29*/:
+                            case 42 /*29*/:
                                 textColor[i] = R.color.witchText;
                                 break;
-                            case 42 /*30*/:
+                            case 43 /*30*/:
                                 textColor[i] = R.color.amneText;
                                 break;
-                            case 43 /*32*/:
-                                textColor[i] = R.color.offWhite;
+                            case 44 /*32*/:
+                                textColor[i] = R.color.gaText;
                                 break;
-                            case 44 /*31*/:
+                            case 45 /*31*/:
                                 textColor[i] = R.color.survivorText;
                                 break;
-                            case 45 /*32*/:
+                            case 46 /*32*/:
                                 textColor[i] = R.color.pirateText;
                                 break;
-                            case 46 /*32*/:
+                            case 47 /*32*/:
                                 textColor[i] = R.color.plaguebearerText;
                                 break;
-                            case 47 /*32*/:
+                            case 48 /*32*/:
                                 textColor[i] = R.color.pestilenceText;
                                 break;
-                            case 48 /*32*/:
+                            case 49 /*32*/:
                                 textColor[i] = R.color.exeText;
                                 break;
                             default:
@@ -104,45 +107,48 @@ class infoTabAdapter extends ArrayAdapter<String> {
     }
 
     private void initializeCovenRankedTextColors() {
-        textColor = new int[39];
+        textColor = new int[38];
         for (int i = 0; i < textColor.length; i++) {
             if (i >= 19) {
-                if (i >= 27) {
+                if (i >= 25) {
                     switch (i) {
-                        case 27 /*24*/:
+                        case 25 /*24*/:
                             textColor[i] = R.color.arsonistText;
                             break;
-                        case 28 /*25*/:
+                        case 26 /*25*/:
+                            textColor[i] = R.color.juggernautText;
+                            break;
+                        case 27 /*25*/:
                             textColor[i] = R.color.skText;
                             break;
-                        case 29 /*26*/:
+                        case 28 /*26*/:
                             textColor[i] = R.color.wwText;
                             break;
-                        case 30 /*27*/:
+                        case 29 /*27*/:
                             textColor[i] = R.color.exeText;
                             break;
-                        case 31   /*28*/:
+                        case 30   /*28*/:
                             textColor[i] = R.color.jesterText;
                             break;
-                        case 32 /*30*/:
+                        case 31 /*30*/:
                             textColor[i] = R.color.amneText;
                             break;
-                        case 33 /*32*/:
-                            textColor[i] = R.color.offWhite;
+                        case 32 /*32*/:
+                            textColor[i] = R.color.gaText;
                             break;
-                        case 34 /*31*/:
+                        case 33 /*31*/:
                             textColor[i] = R.color.survivorText;
                             break;
-                        case 35 /*32*/:
+                        case 34 /*32*/:
                             textColor[i] = R.color.pirateText;
                             break;
-                        case 36 /*32*/:
+                        case 35 /*32*/:
                             textColor[i] = R.color.plaguebearerText;
                             break;
-                        case 37 /*32*/:
+                        case 36 /*32*/:
                             textColor[i] = R.color.pestilenceText;
                             break;
-                        case 38 /*32*/:
+                        case 37 /*32*/:
                             textColor[i] = R.color.exeText;
                             break;
                         default:
@@ -300,12 +306,12 @@ class infoTabAdapter extends ArrayAdapter<String> {
     private void fixVisuals(int position, View rowView, ViewHolder holder) {
         switch (mode) {
             case "Ranked" /*0*/:
-                if (mainPage.realizedRoles.get(this.roles[position]) >= 1 || this.roles[position].equals("Jailor") || this.roles[position].equals("Godfather") || this.roles[position].equals("Mafioso")) {
+                if (template.realizedRoles.get(this.roles[position]) >= 1 || this.roles[position].equals("Jailor") || this.roles[position].equals("Godfather") || this.roles[position].equals("Mafioso")) {
                     holder.presentFlag.setVisibility(View.VISIBLE);
                 } else {
                     holder.presentFlag.setVisibility(View.INVISIBLE);
                 }
-                if (mainPage.confirmedRoles.get(this.roles[position]) >= 1) {
+                if (template.confirmedRoles.get(this.roles[position]) >= 1) {
                     holder.confirmedFlag.setVisibility(View.VISIBLE);
                 } else {
                     holder.confirmedFlag.setVisibility(View.INVISIBLE);
@@ -374,12 +380,12 @@ class infoTabAdapter extends ArrayAdapter<String> {
                 break;
 
             case "Coven Custom":
-                if (template.realizedRoles.get(this.roles[position]) >= 1) {
+                if (customTemplate.realizedRoles.get(this.roles[position]) >= 1) {
                     holder.presentFlag.setVisibility(View.VISIBLE);
                 } else {
                     holder.presentFlag.setVisibility(View.INVISIBLE);
                 }
-                if (template.confirmedRoles.get(this.roles[position]) >= 1) {
+                if (customTemplate.confirmedRoles.get(this.roles[position]) >= 1) {
                     holder.confirmedFlag.setVisibility(View.VISIBLE);
                 } else {
                     holder.confirmedFlag.setVisibility(View.INVISIBLE);
@@ -397,7 +403,6 @@ class infoTabAdapter extends ArrayAdapter<String> {
                 }
                 break;
             case "Coven Ranked":
-                System.out.println(this.roles[position]);
                 if (template.realizedRoles.get(this.roles[position]) >= 1) {
                     holder.presentFlag.setVisibility(View.VISIBLE);
                 } else {
@@ -417,7 +422,6 @@ class infoTabAdapter extends ArrayAdapter<String> {
                 }
                 break;
             default:
-                System.out.println(this.roles[position]);
                 if (template.realizedRoles.get(this.roles[position]) >= 1) {
                     holder.presentFlag.setVisibility(View.VISIBLE);
                 } else {
