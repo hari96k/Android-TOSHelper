@@ -322,45 +322,11 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
         startActivity(intent);
     }
 
+    String[] savedCategories = new String[15];
+
     public void onPageInflated() {
-        int i;
-        String[] savedCategories = new String[15];
-        try {
-            JSONArray jsonArray = new JSONArray(customPresets.settings.getString(customPresets.conditional + Integer.valueOf(customPresets.presetNumber).toString(), "[]"));
-            for (i = 0; i < jsonArray.length(); i ++) {
-                savedCategories[i] = (String) jsonArray.get(i);
-            }
-        } catch (JSONException ignored) {
-        }
-        if (savedCategories[0] != null) {
-            for (i = 0; i < titles.length; i ++) {
-                TextView title = findViewById(titles[i]);
-                title.setText(savedCategories[i]);
-                if (!savedCategories[i].equals(getResources().getString(R.string.select))) {
-                    int color;
-                    try {
-                        color = ContextCompat.getColor(getApplicationContext(), mainPage.alignmentBackground.get(mainPage.decodeRole(savedCategories[i])));
-                    } catch (NullPointerException e2) {
-                        color = ContextCompat.getColor(getApplicationContext(), mainPage.roleBackground.get(mainPage.decodeRole(savedCategories[i])));
-                        ViewGroup parent = (ViewGroup) findViewById(fields[i]).getParent();
-                        parent.removeAllViews();
-                        CheckBox checkBox = (CheckBox) getLayoutInflater().inflate(R.layout.check_box, parent, false);
-                        checkBox.setId(fields[i]);
-                        parent.addView(checkBox);
-                        updateRealizedRole(savedCategories[i], true);
-                    }
-                    title.setBackgroundColor(color);
-                    ((ViewGroup) findViewById(positions[i]).getParent()).setBackgroundColor(color);
-                    ((ViewGroup) findViewById(fields[i]).getParent()).setBackgroundColor(color);
-                    title.setOnLongClickListener(new OnLongClickListener() {
-                        public boolean onLongClick(View view) {
-                            customTemplate.this.toggleStatus(view);
-                            return true;
-                        }
-                    });
-                }
-            }
-        }
+        loadCustomState();
+        this.InfoTab.updateListView();
     }
 
     public void fetchAlignment(View view) {
@@ -1022,6 +988,7 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
                     });
                     if (statusBox.getVisibility() == View.VISIBLE && role != null) {
                         updateConfirmedRole(role, false);
+                        findViewById(statusID).setVisibility(View.INVISIBLE);
                     }
                     if (!(role == null || role.length() == 0)) {
                         updateRealizedRole(role, false);
@@ -1035,7 +1002,6 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
                         positionField.setText("");
                     }
                     parent.setBackgroundColor(color);
-                    findViewById(statusID).setVisibility(View.VISIBLE);
                     parent.removeAllViews();
                     CheckBox checkBox = (CheckBox) getLayoutInflater().inflate(R.layout.check_box, parent, false);
                     checkBox.setId(fieldID);
@@ -1298,6 +1264,47 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
         Editor editor = customPresets.settings.edit();
         editor.putString(customPresets.conditional + Integer.valueOf(customPresets.presetNumber).toString(), jsonArray.toString());
         editor.apply();
+    }
+
+
+    private void loadCustomState() {
+        int i;
+        try {
+            JSONArray jsonArray = new JSONArray(customPresets.settings.getString(customPresets.conditional + Integer.valueOf(customPresets.presetNumber).toString(), "[]"));
+            for (i = 0; i < jsonArray.length(); i++) {
+                savedCategories[i] = (String) jsonArray.get(i);
+            }
+        } catch (JSONException ignored) {
+        }
+        if (savedCategories[0] != null) {
+            for (i = 0; i < titles.length; i++) {
+                TextView title = findViewById(titles[i]);
+                title.setText(savedCategories[i]);
+                if (!savedCategories[i].equals(getResources().getString(R.string.select))) {
+                    int color;
+                    try {
+                        color = ContextCompat.getColor(getApplicationContext(), mainPage.alignmentBackground.get(mainPage.decodeRole(savedCategories[i])));
+                    } catch (NullPointerException e2) {
+                        color = ContextCompat.getColor(getApplicationContext(), mainPage.roleBackground.get(mainPage.decodeRole(savedCategories[i])));
+                        ViewGroup parent = (ViewGroup) findViewById(fields[i]).getParent();
+                        parent.removeAllViews();
+                        CheckBox checkBox = (CheckBox) getLayoutInflater().inflate(R.layout.check_box, parent, false);
+                        checkBox.setId(fields[i]);
+                        parent.addView(checkBox);
+                        updateRealizedRole(savedCategories[i], true);
+                    }
+                    title.setBackgroundColor(color);
+                    ((ViewGroup) findViewById(positions[i]).getParent()).setBackgroundColor(color);
+                    ((ViewGroup) findViewById(fields[i]).getParent()).setBackgroundColor(color);
+                    title.setOnLongClickListener(new OnLongClickListener() {
+                        public boolean onLongClick(View view) {
+                            customTemplate.this.toggleStatus(view);
+                            return true;
+                        }
+                    });
+                }
+            }
+        }
     }
 
     protected static boolean isAvailableUnique(String role) {
