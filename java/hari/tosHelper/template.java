@@ -217,7 +217,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
     private boolean doubleBackToExitPressedOnce = false;
     private ViewPager viewPager;
 
-    private static String decodeRole(String role) {
+    protected static String decodeRole(String role) {
         switch (role) {
             case "Vamp Hunter" /*0*/:
                 return "Vampire Hunter";
@@ -228,7 +228,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
 
     protected static void resizeText(EditText field, String role) {
         if (role.length() >= 12) {
-            field.setTextSize(2, 17.0f);
+            field.setTextSize(2, 16.5f);
         } else {
             if (role.length() >= 9) {
                 field.setTextSize(2, 18.0f);
@@ -1173,7 +1173,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
         this.InfoTab.updateListView();
     }
 
-    private String encodeRole(String role) {
+    protected static String encodeRole(String role) {
         switch (role) {
             case "Vampire Hunter" /*0*/:
                 return "Vamp Hunter";

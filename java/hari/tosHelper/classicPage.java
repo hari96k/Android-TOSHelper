@@ -98,10 +98,10 @@ public class classicPage extends AppCompatActivity implements OnInfoTabListener 
 
     public void fetchRole(View view) {
         switch (view.getId()) {
-            case 0 /*2131558596*/:
+            case R.id.classicTKField /*2131558596*/:
                 startActivityForResult(new Intent(this, TK_classic.class), TK_REQUEST);
                 return;
-            case 1 /*2131558599*/:
+            case R.id.classicRTField /*2131558599*/:
                 startActivityForResult(new Intent(this, RT_classic.class), RT_REQUEST);
                 return;
             default:

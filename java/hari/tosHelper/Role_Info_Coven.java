@@ -2102,7 +2102,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Consigliere");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.mafiaText)), tempLength, builder.length(), 33);
-                builder.append(" -\nYour target is waiting for a big catch. They must be a Trapper.");
+                builder.append(" -\nYour target is watching over someone. They must be a Guardian Angel.");
                 break;
 
             case "Plaguebearer":

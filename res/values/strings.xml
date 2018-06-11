@@ -96,7 +96,7 @@
     <string name="tipsText">• Don\'t find the game mode you\'re looking for? Use one of the custom presets, they\'re saved after the first time you change them!\n\n• Tap the corresponding alignment in Ranked Mode to confirm a player\'s position or role.\n\n• Fill out the player names in the overview tab on Night 1 for your convenience.\n\n• You can use the Ranked role tracker in the Ranked Practice Mode as well!\n\n• The role tracker will let you know if you attempt to duplicate a unique role =P\n\n• Don\'t leave a game mode unless you are done with the game, it will be reset upon leaving!\n\n• Be sure to put in your own role!\n\n• The info tab contains a list of all investigative results for Sheriff and Investigator in their respective pages.\n\n• Even if you are an evil role, keep track of the remaining alignments to determine what roles you can claim.\n\n• Got Vampires? Be careful of those you\'ve already assumed to be town!</string>
     <string name="tipsTitle">Tips</string>
     <string name="town_of_salem">Town of Salem</string>
-    <string name="version">V 9012</string>
+    <string name="version">V 9013</string>
     <string name="x2">(x2)</string>
     <string name="salem_classic">Salem Classic</string>
     <string name="coven_modes">Coven Modes</string>
@@ -110,4 +110,5 @@
     <string name="Plaguebearer">Plaguebearer</string>
     <string name="Pirate">Pirate</string>
     <string name="NC">Neutral Chaos</string>
+    <string name="coven">Coven</string>
 </resources>

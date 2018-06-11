@@ -40,6 +40,8 @@ import java.util.Map.Entry;
 import hari.tosHelper.customAlignmentsTab.OnCustomRolesTabListener;
 import hari.tosHelper.infoTab.OnInfoTabListener;
 
+import static hari.tosHelper.template.decodeRole;
+
 public class customTemplate extends AppCompatActivity implements OnCustomRolesTabListener, OnInfoTabListener {
     private static final int POS_0 = 29;
     private static final int POS_1 = 15;
@@ -1028,13 +1030,13 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
                         updatePlayerRole(Integer.parseInt(positionField.getText().toString()), roleOrPosition);
                         this.OverviewTab.updateListView();
                     }
-                    resizeText(textField, roleOrPosition);
+                    template.resizeText(textField, roleOrPosition);
                     LayoutParams params = (LayoutParams) findViewById(fieldID).getLayoutParams();
                     params.addRule(0, buttonID);
                     textField.setLayoutParams(params);
                     updateRealizedRole(roleOrPosition, true);
                     this.InfoTab.updateListView();
-                    roleOrPosition = encodeRole(roleOrPosition);
+                    roleOrPosition = template.encodeRole(roleOrPosition);
                     textField.setText(roleOrPosition);
                     textField.setTextColor(ContextCompat.getColor(getApplicationContext(), mainPage.roleColors.get(decodeRole(roleOrPosition))));
                     button.setVisibility(View.VISIBLE);
@@ -1202,36 +1204,6 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
             }
         }
         this.InfoTab.updateListView();
-    }
-
-    private String encodeRole(String role) {
-        switch (role) {
-            case "Vampire Hunter" /*0*/:
-                return "Vamp Hunter";
-            default:
-                return role;
-        }
-    }
-
-    private static String decodeRole(String role) {
-        switch (role) {
-            case "Vamp Hunter" /*0*/:
-                return "Vampire Hunter";
-            default:
-                return role;
-        }
-    }
-
-    protected static void resizeText(EditText field, String role) {
-        if (role.length() >= 12) {
-            field.setTextSize(2, 17.0f);
-        } else {
-            if (role.length() >= 9) {
-                field.setTextSize(2, 18.0f);
-            } else {
-                field.setTextSize(2, 20.0f);
-            }
-        }
     }
 
     public void onBackPressed() {

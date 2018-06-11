@@ -17,13 +17,8 @@ public class alignmentsTab extends Fragment {
     private Activity activity;
 
     public static void setModeLayout(int modeLayout) {
-        if (modeLayout == R.layout.new_alignments_layout) {
-            roleHeight = R.id.jailorTitle;
-            titleHeight = R.id.alignmentsTitle;
-        } else {
-            roleHeight = R.id.title0;
-            titleHeight = R.id.alignmentsTitle;
-        }
+        roleHeight = R.id.title0;
+        titleHeight = R.id.alignmentsTitle;
         mode_layout = modeLayout;
     }
 
