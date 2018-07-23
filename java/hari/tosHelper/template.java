@@ -330,20 +330,20 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
         int i;
         String[] savedCategories = roles;
 
-        for (i = 0; i < titles.length; i += 1) {
-            TextView title = findViewById(titles[i]);
-            title.setText(savedCategories[i]);
-            int color;
-            try {
-                color = ContextCompat.getColor(getApplicationContext(), mainPage.alignmentBackground.get(mainPage.decodeRole(savedCategories[i])));
-            } catch (NullPointerException e2) {
-                color = ContextCompat.getColor(getApplicationContext(), mainPage.roleBackground.get(mainPage.decodeRole(savedCategories[i])));
-            }
-
-            title.setBackgroundColor(color);
-            ((ViewGroup) findViewById(positions[i]).getParent()).setBackgroundColor(color);
-            ((ViewGroup) findViewById(fields[i]).getParent()).setBackgroundColor(color);
-        }
+//        for (i = 0; i < titles.length; i += 1) {
+//            TextView title = findViewById(titles[i]);
+//            title.setText(savedCategories[i]);
+//            int color;
+//            try {
+//                color = ContextCompat.getColor(getApplicationContext(), mainPage.alignmentBackground.get(mainPage.decodeRole(savedCategories[i])));
+//            } catch (NullPointerException e2) {
+//                color = ContextCompat.getColor(getApplicationContext(), mainPage.roleBackground.get(mainPage.decodeRole(savedCategories[i])));
+//            }
+//
+//            title.setBackgroundColor(color);
+//            ((ViewGroup) findViewById(positions[i]).getParent()).setBackgroundColor(color);
+//            ((ViewGroup) findViewById(fields[i]).getParent()).setBackgroundColor(color);
+//        }
     }
 
     public void fetchRole(View view) {
