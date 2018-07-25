@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 class alignAdapter1 extends ArrayAdapter<String> {
     private static int[] textColor;
@@ -17,8 +18,7 @@ class alignAdapter1 extends ArrayAdapter<String> {
         super(context, R.layout.list_view_element, roles);
         this.context = context;
         this.roles = roles;
-        String[] modeNameParsed = startPage.mode.split(" ");
-        if (modeNameParsed[0].equals("Coven")) {
+        if (startPage.modeCoven) {
             initializeCovenTextColors();
         } else {
             initializeTextColors();
@@ -140,7 +140,7 @@ class alignAdapter1 extends ArrayAdapter<String> {
         View rowView = convertView;
         if (rowView == null) {
             rowView = ((LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.list_view_element_3, parent, false);
-            ViewHolder4 holder = new ViewHolder4();
+            ViewHolder3 holder = new ViewHolder3();
             holder.textView = rowView.findViewById(R.id.listViewElement);
             holder.textView.setText(this.roles[position]);
             holder.textView.setTextColor(ContextCompat.getColor(getContext(), textColor[position]));
@@ -149,10 +149,11 @@ class alignAdapter1 extends ArrayAdapter<String> {
             rowView.setTag(holder);
             return rowView;
         }
-        ViewHolder4 holder = (ViewHolder4) rowView.getTag();
+        ViewHolder3 holder = (ViewHolder3) rowView.getTag();
         holder.textView = rowView.findViewById(R.id.listViewElement);
         holder.textView.setText(this.roles[position]);
         holder.textView.setTextColor(ContextCompat.getColor(getContext(), textColor[position]));
         return rowView;
     }
 }
+

@@ -19,23 +19,27 @@ public class classicModesPage extends Activity {
 
     public void goToClassic(View view) {
         startPage.mode = "Classic";
+        startPage.modeCoven = false;
         startActivity(new Intent(this, classicPage.class));
     }
 
     public void goToRainbow(View view) {
         startPage.mode = "Rainbow";
+        startPage.modeCoven = false;
         startActivity(new Intent(this, rainbowPage.class));
     }
 
     public void goToRanked(View view) {
         template.roles = new String[]{"Jailor", "Town Investigative", "Town Support", "Town Protective", "Town Killing", "Random Town", "Random Town", "Random Town", "Random Town", "Godfather", "Mafioso", "Random Mafia", "Random Mafia", "Neutral Killing", "Neutral Evil"};
         startPage.mode = "Ranked";
+        startPage.modeCoven = false;
         alignmentsTab.setModeLayout(R.layout.ranked_roles_tab);
         startActivity(new Intent(this, template.class));
     }
 
     public void goToCustom(View view) {
         startPage.mode = "Custom";
+        startPage.modeCoven = false;
         startActivity(new Intent(this, customPresets.class));
     }
 }

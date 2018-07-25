@@ -9,6 +9,7 @@ import hotchemi.android.rate.AppRate;
 
 public class startPage extends Activity {
     protected static String mode;
+    protected static boolean modeCoven;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

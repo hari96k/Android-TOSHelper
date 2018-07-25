@@ -52,13 +52,11 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
             put("Investigator", 0);
             put("Jailor", 0);
             put("Medium", 0);
-            put("Executioner", 0);
             put("Escort", 0);
             put("Lookout", 0);
             put("Serial Killer", 0);
             put("Veteran", 0);
             put("Vigilante", 0);
-            put("Jester", 0);
             put("Bodyguard", 0);
             put("Mayor", 0);
             put("Retributionist", 0);
@@ -91,13 +89,11 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
             put("Investigator", 0);
             put("Jailor", 0);
             put("Medium", 0);
-            put("Executioner", 0);
             put("Escort", 0);
             put("Lookout", 0);
             put("Serial Killer", 0);
             put("Veteran", 0);
             put("Vigilante", 0);
-            put("Jester", 0);
             put("Bodyguard", 0);
             put("Mayor", 0);
             put("Retributionist", 0);
@@ -174,7 +170,9 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
     }
 
     public void fetchRole(View view) {
-        startActivityForResult(new Intent(this, Any_rainbow.class), ANY_REQUEST);
+        Intent intent = new Intent(this, roleSelectionPage.class);
+        intent.putExtra("alignment", "Any");
+        startActivityForResult( intent, ANY_REQUEST);
     }
 
     public void deleteRole(View view) {

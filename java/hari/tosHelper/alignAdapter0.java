@@ -18,8 +18,7 @@ class alignAdapter0 extends ArrayAdapter<String> {
         super(context, R.layout.list_view_element, roles);
         this.context = context;
         this.roles = roles;
-        String[] modeNameParsed = startPage.mode.split(" ");
-        if(modeNameParsed[0].equals("Coven")){
+        if(startPage.modeCoven){
             initializeCovenAlignColors();
         }else{
             initializeAlignColors();
@@ -80,4 +79,10 @@ class alignAdapter0 extends ArrayAdapter<String> {
         holder1.textView.setTextColor(ContextCompat.getColor(getContext(), textColor[position]));
         return rowView;
     }
+}
+
+class ViewHolder3 {
+    View confirmedFlag;
+    View presentFlag;
+    TextView textView;
 }

@@ -40,39 +40,10 @@ import java.util.Map.Entry;
 import hari.tosHelper.customAlignmentsTab.OnCustomRolesTabListener;
 import hari.tosHelper.infoTab.OnInfoTabListener;
 
+import static hari.tosHelper.template.RequestCode.*;
 import static hari.tosHelper.template.decodeRole;
 
 public class customTemplate extends AppCompatActivity implements OnCustomRolesTabListener, OnInfoTabListener {
-    private static final int POS_0 = 29;
-    private static final int POS_1 = 15;
-    private static final int POS_10 = 24;
-    private static final int POS_11 = 25;
-    private static final int POS_12 = 26;
-    private static final int POS_13 = 27;
-    private static final int POS_14 = 28;
-    private static final int POS_2 = 16;
-    private static final int POS_3 = 17;
-    private static final int POS_4 = 18;
-    private static final int POS_5 = 19;
-    private static final int POS_6 = 20;
-    private static final int POS_7 = 21;
-    private static final int POS_8 = 22;
-    private static final int POS_9 = 23;
-    private static final int REQUEST_0 = 0;
-    private static final int REQUEST_1 = 1;
-    private static final int REQUEST_10 = 10;
-    private static final int REQUEST_11 = 11;
-    private static final int REQUEST_12 = 12;
-    private static final int REQUEST_13 = 13;
-    private static final int REQUEST_14 = 14;
-    private static final int REQUEST_2 = 2;
-    private static final int REQUEST_3 = 3;
-    private static final int REQUEST_4 = 4;
-    private static final int REQUEST_5 = 5;
-    private static final int REQUEST_6 = 6;
-    private static final int REQUEST_7 = 7;
-    private static final int REQUEST_8 = 8;
-    private static final int REQUEST_9 = 9;
 
     private static boolean confTipShown = false;
     protected static SparseBooleanArray confirmedPlayers = new SparseBooleanArray() {
@@ -314,7 +285,7 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
 
     public void onRoleSelected(String role, int position) {
         Intent intent;
-        if(startPage.mode.split(" ")[0].equals("Coven")) {
+        if(startPage.modeCoven) {
             intent = new Intent(this, Role_Info_Coven.class);
         }else{
             intent = new Intent(this, Role_Info_Classic.class);
@@ -333,59 +304,60 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
 
     public void fetchAlignment(View view) {
         Intent intent = new Intent(this, selectAlign.class);
+
         switch (view.getId()) {
             case R.id.title0 /*2131558603*/:
-                startActivityForResult(intent, REQUEST_0);
+                startActivityForResult(intent, REQUEST_0.ordinal());
                 return;
             case R.id.title1 /*2131558607*/:
-                startActivityForResult(intent, REQUEST_1);
+                startActivityForResult(intent, REQUEST_1.ordinal());
                 return;
             case R.id.title2 /*2131558611*/:
-                startActivityForResult(intent, REQUEST_2);
+                startActivityForResult(intent, REQUEST_2.ordinal());
                 return;
             case R.id.title3 /*2131558615*/:
-                startActivityForResult(intent, REQUEST_3);
+                startActivityForResult(intent, REQUEST_3.ordinal());
                 return;
             case R.id.title4 /*2131558619*/:
-                startActivityForResult(intent, REQUEST_4);
+                startActivityForResult(intent, REQUEST_4.ordinal());
                 return;
             case R.id.title5 /*2131558623*/:
-                startActivityForResult(intent, REQUEST_5);
+                startActivityForResult(intent, REQUEST_5.ordinal());
                 return;
             case R.id.title6 /*2131558627*/:
-                startActivityForResult(intent, REQUEST_6);
+                startActivityForResult(intent, REQUEST_6.ordinal());
                 return;
             case R.id.title7 /*2131558631*/:
-                startActivityForResult(intent, REQUEST_7);
+                startActivityForResult(intent, REQUEST_7.ordinal());
                 return;
             case R.id.title8 /*2131558635*/:
-                startActivityForResult(intent, REQUEST_8);
+                startActivityForResult(intent, REQUEST_8.ordinal());
                 return;
             case R.id.title9 /*2131558639*/:
-                startActivityForResult(intent, REQUEST_9);
+                startActivityForResult(intent, REQUEST_9.ordinal());
                 return;
             case R.id.title10 /*2131558643*/:
-                startActivityForResult(intent, REQUEST_10);
+                startActivityForResult(intent, REQUEST_10.ordinal());
                 return;
             case R.id.title11 /*2131558647*/:
-                startActivityForResult(intent, REQUEST_11);
+                startActivityForResult(intent, REQUEST_11.ordinal());
                 return;
             case R.id.title12 /*2131558651*/:
-                startActivityForResult(intent, REQUEST_12);
+                startActivityForResult(intent, REQUEST_12.ordinal());
                 return;
             case R.id.title13 /*2131558655*/:
-                startActivityForResult(intent, REQUEST_13);
+                startActivityForResult(intent, REQUEST_13.ordinal());
                 return;
             case R.id.title14 /*2131558658*/:
-                startActivityForResult(intent, REQUEST_14);
-                return;
             default:
+                startActivityForResult(intent, REQUEST_14.ordinal());
+
         }
     }
 
     public void fetchRole(View view) {
         int titleID;
-        int request;
+        template.RequestCode request;
         switch (view.getId()) {
             case R.id.field0 /*2131558678*/:
                 titleID = R.id.title0;
@@ -451,8 +423,10 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
         if (((TextView) findViewById(titleID)).getText().toString().equals(getResources().getString(R.string.select))) {
             displayToast("Select a category first!");
         } else {
-            startActivityForResult(generateIntent(titleID), request);
-        }
+            alignment = ((TextView) findViewById(titleID)).getText().toString();
+            Intent intent = new Intent(this, roleSelectionPage.class);
+            intent.putExtra("alignment", alignment);
+            startActivityForResult(intent, request.ordinal());        }
     }
 
     public void deleteRole(View view) {
@@ -580,7 +554,7 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
         int posID;
         String alignment;
         int roleID;
-        int constant;
+        template.RequestCode constant;
         Intent intent = new Intent(this, selectPos.class);
         String position = "";
         switch (view.getId()) {
@@ -690,7 +664,7 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
         player[1] = position;
         player[2] = role;
         intent.putExtra("player", player);
-        startActivityForResult(intent, constant);
+        startActivityForResult(intent, constant.ordinal());
     }
 
     public void onClickedChkBox(View view) {
@@ -795,7 +769,9 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
                 confTipShown = true;
                 displayToast("*Hold* the alignment to confirm this Player / Role!");
             }
-            switch (requestCode) {
+
+            template.RequestCode rc = template.RequestCode.values()[requestCode];
+            switch (rc) {
                 case REQUEST_1 /*1*/:
                 case POS_1 /*15*/:
                     titleID = R.id.title1;
@@ -1011,7 +987,7 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
                     return;
                 }
                 displayToast("The " + roleOrPosition + " is a unique role and is already present!");
-            } else if (requestCode <= REQUEST_14) {
+            } else if (requestCode <= REQUEST_14.ordinal()) {
                 EditText textField = findViewById(fieldID);
                 Button button = findViewById(buttonID);
                 String prevRole = decodeRole(textField.getText().toString());
@@ -1320,43 +1296,6 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
     protected void onStop() {
         saveCustomState();
         super.onStop();
-    }
-
-    private Intent generateIntent(int viewID) {
-        alignment = ((TextView) findViewById(viewID)).getText().toString();
-
-        switch (alignment) {
-            case "Town Investigative" /*0*/:
-                return new Intent(this, TI.class);
-            case "Town Support" /*1*/:
-                return new Intent(this, TS.class);
-            case "Town Protective" /*2*/:
-                return new Intent(this, TP.class);
-            case "Town Killing" /*3*/:
-                return new Intent(this, TK.class);
-            case "Random Town" /*4*/:
-                return new Intent(this, RT.class);
-            case "Mafia Killing" /*5*/:
-                return new Intent(this, MK.class);
-            case "Mafia Deception" /*6*/:
-                return new Intent(this, MD.class);
-            case "Mafia Support" /*7*/:
-                return new Intent(this, MS.class);
-            case "Random Mafia" /*8*/:
-                return new Intent(this, RM.class);
-            case "Neutral Killing" /*9*/:
-                return new Intent(this, NK.class);
-            case "Neutral Evil" /*10*/:
-                return new Intent(this, NE.class);
-            case "Neutral Benign" /*11*/:
-                return new Intent(this, NB.class);
-            case "Random Neutral" /*12*/:
-                return new Intent(this, RN.class);
-            case "Coven Evil":
-                return new Intent(this, CE.class);
-            default:
-                return new Intent(this, Any.class);
-        }
     }
 
 

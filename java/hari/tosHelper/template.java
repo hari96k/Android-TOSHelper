@@ -39,54 +39,32 @@ import java.util.Map.Entry;
 import hari.tosHelper.customAlignmentsTab.OnCustomRolesTabListener;
 import hari.tosHelper.infoTab.OnInfoTabListener;
 
+import static hari.tosHelper.template.RequestCode.*;
+
 public class template extends AppCompatActivity implements OnCustomRolesTabListener, OnInfoTabListener {
-    private static final int POS_0 = 29;
-    private static final int POS_1 = 15;
-    private static final int POS_10 = 24;
-    private static final int POS_11 = 25;
-    private static final int POS_12 = 26;
-    private static final int POS_13 = 27;
-    private static final int POS_14 = 28;
-    private static final int POS_2 = 16;
-    private static final int POS_3 = 17;
-    private static final int POS_4 = 18;
-    private static final int POS_5 = 19;
-    private static final int POS_6 = 20;
-    private static final int POS_7 = 21;
-    private static final int POS_8 = 22;
-    private static final int POS_9 = 23;
-    private static final int REQUEST_0 = 0;
-    private static final int REQUEST_1 = 1;
-    private static final int REQUEST_10 = 10;
-    private static final int REQUEST_11 = 11;
-    private static final int REQUEST_12 = 12;
-    private static final int REQUEST_13 = 13;
-    private static final int REQUEST_14 = 14;
-    private static final int REQUEST_2 = 2;
-    private static final int REQUEST_3 = 3;
-    private static final int REQUEST_4 = 4;
-    private static final int REQUEST_5 = 5;
-    private static final int REQUEST_6 = 6;
-    private static final int REQUEST_7 = 7;
-    private static final int REQUEST_8 = 8;
-    private static final int REQUEST_9 = 9;
+
+    public static enum RequestCode {
+        REQUEST_0, REQUEST_1, REQUEST_2, REQUEST_3, REQUEST_4, REQUEST_5, REQUEST_6, REQUEST_7, REQUEST_8, REQUEST_9, REQUEST_10, REQUEST_11, REQUEST_12, REQUEST_13, REQUEST_14,
+        POS_0, POS_1, POS_2, POS_3, POS_4, POS_5, POS_6, POS_7, POS_8, POS_9, POS_10, POS_11, POS_12, POS_13, POS_14,
+    }
+
     protected static SparseBooleanArray confirmedPlayers = new SparseBooleanArray() {
         {
-            put(template.REQUEST_1, false);
-            put(template.REQUEST_2, false);
-            put(template.REQUEST_3, false);
-            put(template.REQUEST_4, false);
-            put(template.REQUEST_5, false);
-            put(template.REQUEST_6, false);
-            put(template.REQUEST_7, false);
-            put(template.REQUEST_8, false);
-            put(template.REQUEST_9, false);
-            put(template.REQUEST_10, false);
-            put(template.REQUEST_11, false);
-            put(template.REQUEST_12, false);
-            put(template.REQUEST_13, false);
-            put(template.REQUEST_14, false);
-            put(template.POS_1, false);
+            put(1, false);
+            put(2, false);
+            put(3, false);
+            put(4, false);
+            put(5, false);
+            put(6, false);
+            put(7, false);
+            put(8, false);
+            put(9, false);
+            put(10, false);
+            put(11, false);
+            put(12, false);
+            put(13, false);
+            put(14, false);
+            put(15, false);
         }
     };
     protected static String[] roles;
@@ -316,7 +294,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
 
     public void onRoleSelected(String role, int position) {
         Intent intent;
-        if (startPage.mode.split(" ")[0].equals("Coven")) {
+        if (startPage.modeCoven) {
             intent = new Intent(this, Role_Info_Coven.class);
         } else {
             intent = new Intent(this, Role_Info_Classic.class);
@@ -327,9 +305,9 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
     }
 
     public void onPageInflated() {
-        int i;
-        String[] savedCategories = roles;
-
+//        int i;
+//        String[] savedCategories = roles;
+//
 //        for (i = 0; i < titles.length; i += 1) {
 //            TextView title = findViewById(titles[i]);
 //            title.setText(savedCategories[i]);
@@ -348,7 +326,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
 
     public void fetchRole(View view) {
         int titleID;
-        int request;
+        RequestCode request;
         switch (view.getId()) {
             case R.id.field0 /*2131558678*/:
                 titleID = R.id.title0;
@@ -414,7 +392,10 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
         if (((TextView) findViewById(titleID)).getText().toString().equals(getResources().getString(R.string.select))) {
             displayToast("Select a category first!");
         } else {
-            startActivityForResult(generateIntent(titleID), request);
+            alignment = ((TextView) findViewById(titleID)).getText().toString();
+            Intent intent = new Intent(this, roleSelectionPage.class);
+            intent.putExtra("alignment", alignment);
+            startActivityForResult(intent, request.ordinal());
         }
     }
 
@@ -543,7 +524,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
         int posID;
         String alignment;
         int roleID;
-        int constant;
+        RequestCode constant;
         Intent intent = new Intent(this, selectPos.class);
         String position = "";
         switch (view.getId()) {
@@ -653,7 +634,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
         player[1] = position;
         player[2] = role;
         intent.putExtra("player", player);
-        startActivityForResult(intent, constant);
+        startActivityForResult(intent, constant.ordinal());
     }
 
     public void onClickedChkBox(View view) {
@@ -763,7 +744,9 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
                     displayToast("Tap the alignment to confirm this Player / Role!");
                 }
             }
-            switch (requestCode) {
+
+            RequestCode rc = RequestCode.values()[requestCode];
+            switch (rc) {
                 case REQUEST_1 /*1*/:
                 case POS_1 /*15*/:
                     titleID = R.id.title1;
@@ -973,7 +956,7 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
                     return;
                 }
                 displayToast("The " + roleOrPosition + " is a unique role and is already present!");
-            } else if (requestCode <= REQUEST_14) {
+            } else if (requestCode <= REQUEST_14.ordinal()) {
                 EditText textField = findViewById(fieldID);
                 Button button = findViewById(buttonID);
                 String prevRole = decodeRole(textField.getText().toString());
@@ -1235,45 +1218,6 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
     protected void onStop() {
         saveCustomState();
         super.onStop();
-    }
-
-    private Intent generateIntent(int viewID) {
-        alignment = ((TextView) findViewById(viewID)).getText().toString();
-
-        switch (alignment) {
-            case "Town Investigative" /*0*/:
-                return new Intent(this, TI.class);
-            case "Town Support" /*1*/:
-                return new Intent(this, TS.class);
-            case "Town Protective" /*2*/:
-                return new Intent(this, TP.class);
-            case "Town Killing" /*3*/:
-                return new Intent(this, TK.class);
-            case "Random Town" /*4*/:
-                return new Intent(this, RT.class);
-            case "Mafia Killing" /*5*/:
-                return new Intent(this, MK.class);
-            case "Mafia Deception" /*6*/:
-                return new Intent(this, MD.class);
-            case "Mafia Support" /*7*/:
-                return new Intent(this, MS.class);
-            case "Random Mafia" /*8*/:
-                return new Intent(this, RM.class);
-            case "Neutral Killing" /*9*/:
-                return new Intent(this, NK.class);
-            case "Neutral Evil" /*10*/:
-                return new Intent(this, NE.class);
-            case "Neutral Benign" /*11*/:
-                return new Intent(this, NB.class);
-            case "Neutral Chaos" /*11*/:
-                return new Intent(this, NC.class);
-            case "Random Neutral" /*12*/:
-                return new Intent(this, RN.class);
-            case "Coven Evil" /*13*/:
-                return new Intent(this, CE.class);
-            default:
-                return new Intent(this, Any.class);
-        }
     }
 
     private String getAlignment(int viewID) {

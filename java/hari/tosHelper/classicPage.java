@@ -97,12 +97,15 @@ public class classicPage extends AppCompatActivity implements OnInfoTabListener 
     }
 
     public void fetchRole(View view) {
+        Intent intent = new Intent(this, roleSelectionPage.class);
         switch (view.getId()) {
             case R.id.classicTKField /*2131558596*/:
-                startActivityForResult(new Intent(this, TK_classic.class), TK_REQUEST);
+                intent.putExtra("alignment", "Town Killing");
+                startActivityForResult(intent, TK_REQUEST);
                 return;
             case R.id.classicRTField /*2131558599*/:
-                startActivityForResult(new Intent(this, RT_classic.class), RT_REQUEST);
+                intent.putExtra("alignment", "Random Town");
+                startActivityForResult(intent, RT_REQUEST);
                 return;
             default:
         }

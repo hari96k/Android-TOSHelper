@@ -9,7 +9,7 @@
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/listViewNE"
+        android:layout_above="@+id/listView"
         android:gravity="center"
         android:paddingBottom="20dp"
         android:text="@string/NE"
@@ -17,7 +17,7 @@
         android:textSize="30sp" />
 
     <ListView
-        android:id="@+id/listViewNE"
+        android:id="@+id/listView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

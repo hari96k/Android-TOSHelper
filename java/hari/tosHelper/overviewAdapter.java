@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.TextView;
 
 class overviewAdapter extends ArrayAdapter<String> {
     private final Context context;
@@ -75,4 +77,10 @@ class overviewAdapter extends ArrayAdapter<String> {
         }
         return rowView;
     }
+}
+
+class ViewHolder2 {
+    EditText name;
+    TextView position;
+    TextView role;
 }
