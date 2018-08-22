@@ -437,7 +437,7 @@
             android:background="@color/mafia"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/Maf"
+            android:text="@string/Mafioso"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
@@ -582,6 +582,7 @@
         android:background="@color/gray" />
 
     <RelativeLayout
+        android:id="@+id/titleGroup14"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/_1314"

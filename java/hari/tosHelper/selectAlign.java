@@ -29,11 +29,11 @@ public class selectAlign extends Activity {
 
     private void populateListViews() {
 //        if(startPage.mode.equals("Custom")) {
-            this.list.setAdapter(new alignAdapter0(this, infoTab.AllAlignments));
-            this.list2.setAdapter(new alignAdapter1(this, infoTab.AllRoles));
+            this.list.setAdapter(new alignAdapter0(this, InfoTab.AllAlignments));
+            this.list2.setAdapter(new alignAdapter1(this, InfoTab.AllRoles));
 //        }else{
-//            this.list.setAdapter(new alignAdapter0(this, infoTab.AllAlignments, false));
-//            this.list2.setAdapter(new alignAdapter1(this, infoTab.AllRoles, false));
+//            this.list.setAdapter(new alignAdapter0(this, InfoTab.AllAlignments, false));
+//            this.list2.setAdapter(new alignAdapter1(this, InfoTab.AllRoles, false));
 //        }
     }
 

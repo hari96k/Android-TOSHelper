@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.TabLayout.OnTabSelectedListener;
-import android.support.design.widget.TabLayout.Tab;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -22,12 +20,11 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import hari.tosHelper.infoTab.OnInfoTabListener;
-import hotchemi.android.rate.BuildConfig;
+import hari.tosHelper.InfoTab.OnInfoTabListener;
 
 public class classicPage extends AppCompatActivity implements OnInfoTabListener {
-    private static final int RT_REQUEST = 2;
-    private static final int TK_REQUEST = 1;
+    private final int RT_REQUEST = 2;
+    private final int TK_REQUEST = 1;
     protected static HashMap<String, Integer> realizedClassicRoles = new HashMap<String, Integer>() {
         {
             put("Sheriff", 0);
@@ -53,7 +50,7 @@ public class classicPage extends AppCompatActivity implements OnInfoTabListener 
         }
     };
     protected CustomAdapter adapter;
-    private classicInfoTab ClassicInfoTab;
+    private InfoTab infoTab;
     private boolean doubleBackToExitPressedOnce = false;
     private Toast toast;
     private ViewPager viewPager;
@@ -79,20 +76,20 @@ public class classicPage extends AppCompatActivity implements OnInfoTabListener 
         this.viewPager.setAdapter(this.adapter);
         TabLayout tablayout = findViewById(R.id.tabLayout);
         tablayout.setupWithViewPager(this.viewPager);
-        tablayout.addOnTabSelectedListener(new OnTabSelectedListener() {
-            public void onTabSelected(Tab tab) {
-                classicPage.this.viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            public void onTabUnselected(Tab tab) {
-                classicPage.this.viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            public void onTabReselected(Tab tab) {
-                classicPage.this.viewPager.setCurrentItem(tab.getPosition());
-            }
-        });
-        this.toast = Toast.makeText(getBaseContext(), BuildConfig.VERSION_NAME, Toast.LENGTH_LONG);
+//        tablayout.addOnTabSelectedListener(new OnTabSelectedListener() {
+//            public void onTabSelected(Tab tab) {
+//                classicPage.this.viewPager.setCurrentItem(tab.getPosition());
+//            }
+//
+//            public void onTabUnselected(Tab tab) {
+//                classicPage.this.viewPager.setCurrentItem(tab.getPosition());
+//            }
+//
+//            public void onTabReselected(Tab tab) {
+//                classicPage.this.viewPager.setCurrentItem(tab.getPosition());
+//            }
+//        });
+        this.toast = Toast.makeText(getBaseContext(), "", Toast.LENGTH_LONG);
         displayToast("Don't forget to input your role!");
     }
 
@@ -125,14 +122,14 @@ public class classicPage extends AppCompatActivity implements OnInfoTabListener 
                 break;
         }
         updateRealizedRole(editText.getText().toString(), false);
-        this.ClassicInfoTab.updateListView();
-        editText.setText(BuildConfig.VERSION_NAME);
+        this.infoTab.updateListView();
+        editText.setText("");
         button.setVisibility(View.INVISIBLE);
     }
 
     public void onClickedChkBox(View view) {
         CheckBox checkBox = (CheckBox) view;
-        this.ClassicInfoTab.updateListView();
+        this.infoTab.updateListView();
         if (checkBox.isChecked()) {
             switch (view.getId()) {
                 case R.id.chkSheriff /*2131558552*/:
@@ -246,7 +243,7 @@ public class classicPage extends AppCompatActivity implements OnInfoTabListener 
             }
             if (!role.equals("Veteran") || prevRole.equals("Veteran") || veteranIsAvailable()) {
                 updateRealizedRole(role, true);
-                this.ClassicInfoTab.updateListView();
+                this.infoTab.updateListView();
                 textField.setText(role);
                 textField.setTextColor(ContextCompat.getColor(getApplicationContext(), mainPage.roleColors.get(role)));
                 button.setVisibility(View.VISIBLE);
@@ -263,8 +260,12 @@ public class classicPage extends AppCompatActivity implements OnInfoTabListener 
 
     public void onRoleSelected(String role, int position) {
         Intent intent = new Intent(this, Role_Info_Classic.class);
+        Bundle b = new Bundle();
+        b.putIntArray("colors", this.infoTab.adapter.textColor);
+
         intent.putExtra("selection", role);
         intent.putExtra("position", position);
+        intent.putExtras(b);
         startActivity(intent);
     }
 
@@ -314,8 +315,8 @@ public class classicPage extends AppCompatActivity implements OnInfoTabListener 
                 case 0 /*0*/:
                     return new classicAlignmentsTab();
                 case 1 /*1*/:
-                    classicPage.this.ClassicInfoTab = new classicInfoTab();
-                    return classicPage.this.ClassicInfoTab;
+                    classicPage.this.infoTab = new InfoTab();
+                    return classicPage.this.infoTab;
                 default:
                     return null;
             }

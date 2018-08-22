@@ -5,600 +5,626 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/rolesTitle"
+        android:id="@+id/alignmentsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/Roles"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="25sp"
-        app:layout_heightPercent="8%"
+        app:layout_heightPercent="7.5%"
         app:layout_widthPercent="50%" />
 
     <View
-        android:id="@+id/roles_GF"
+        android:id="@+id/align_0"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/rolesTitle"
+        android:layout_below="@+id/alignmentsTitle"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/GFTitleGroup"
+        android:id="@+id/titleGroup0"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/roles_GF"
+        android:layout_below="@+id/align_0"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/GFTitle"
+            android:id="@+id/title0"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/mafia"
             android:gravity="center"
+            android:longClickable="true"
+            android:onClick="toggleStatus"
             android:text="@string/GF"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/mafiaText"
-            android:textSize="20sp"
-            app:layout_heightPercent="6%"
-            app:layout_widthPercent="50%" />
+            android:textSize="18sp" />
 
         <View
-            android:id="@+id/GFStatus"
+            android:id="@+id/status0"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/GF_arso"
+        android:id="@+id/_01"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/GFTitleGroup"
+        android:layout_below="@+id/titleGroup0"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/arsoTitleGroup1"
+        android:id="@+id/titleGroup1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/GF_arso"
+        android:layout_below="@+id/_01"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
+            android:id="@+id/title1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/arsonist"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/arsonistText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/arsoStatus1"
+            android:id="@+id/status1"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/arso_surv"
+        android:id="@+id/_12"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/arsoTitleGroup1"
+        android:layout_below="@+id/titleGroup1"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/survTitleGroup1"
+        android:id="@+id/titleGroup2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/arso_surv"
+        android:layout_below="@+id/_12"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
+            android:id="@+id/title2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/survivor"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/survivorText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/survStatus1"
+            android:id="@+id/status2"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/surv_jailor"
+        android:id="@+id/_23"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/survTitleGroup1"
+        android:layout_below="@+id/titleGroup2"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/jailorTitleGroup"
+        android:id="@+id/titleGroup3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/surv_jailor"
+        android:layout_below="@+id/_23"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/jailorTitle"
+            android:id="@+id/title3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/town"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/Jailor"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/townText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/jailorStatus"
+            android:id="@+id/status3"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/jailor_amne"
+        android:id="@+id/_34"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/jailorTitleGroup"
+        android:layout_below="@+id/titleGroup3"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/amneTitleGroup1"
+        android:id="@+id/titleGroup4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/jailor_amne"
+        android:layout_below="@+id/_34"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
+            android:id="@+id/title4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/Amnesiac"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/amneText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/amneStatus1"
+            android:id="@+id/status4"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/amne_SK"
+        android:id="@+id/_45"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/amneTitleGroup1"
+        android:layout_below="@+id/titleGroup4"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/SKTitleGroup1"
+        android:id="@+id/titleGroup5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/amne_SK"
+        android:layout_below="@+id/_45"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
+            android:id="@+id/title5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/SerialKiller"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/skText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/SKStatus1"
+            android:id="@+id/status5"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/SK_witch"
+        android:id="@+id/_56"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/SKTitleGroup1"
+        android:layout_below="@+id/titleGroup5"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/witchTitleGroup1"
+        android:id="@+id/titleGroup6"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/SK_witch"
+        android:layout_below="@+id/_56"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
+            android:id="@+id/title6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/Witch"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/witchText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/witchStatus1"
+            android:id="@+id/status6"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/witch_Any"
+        android:id="@+id/_67"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/witchTitleGroup1"
+        android:layout_below="@+id/titleGroup6"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/AnyTitleGroup"
+        android:id="@+id/titleGroup7"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/witch_Any"
+        android:layout_below="@+id/_67"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
+            android:id="@+id/title7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/white"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/Any"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/AnyStatus"
+            android:id="@+id/status7"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/any_witch"
+        android:id="@+id/_78"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/AnyTitleGroup"
+        android:layout_below="@+id/titleGroup7"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/witchTitleGroup2"
+        android:id="@+id/titleGroup8"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/any_witch"
+        android:layout_below="@+id/_78"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
+            android:id="@+id/title8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/Witch"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/witchText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/witchStatus2"
+            android:id="@+id/status8"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/witch_SK"
+        android:id="@+id/_89"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/witchTitleGroup2"
+        android:layout_below="@+id/titleGroup8"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/SKTitleGroup2"
+        android:id="@+id/titleGroup9"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/witch_SK"
+        android:layout_below="@+id/_89"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
+            android:id="@+id/title9"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/SerialKiller"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/skText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/SKStatus2"
+            android:id="@+id/status9"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/SK_amne"
+        android:id="@+id/_910"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/SKTitleGroup2"
+        android:layout_below="@+id/titleGroup9"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/amneTitleGroup2"
+        android:id="@+id/titleGroup10"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/SK_amne"
+        android:layout_below="@+id/_910"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
+            android:id="@+id/title10"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/Amnesiac"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/amneText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/amneStatus2"
+            android:id="@+id/status10"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/amne_vet"
+        android:id="@+id/_1011"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/amneTitleGroup2"
+        android:layout_below="@+id/titleGroup10"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/vetTitleGroup"
+        android:id="@+id/titleGroup11"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/amne_vet"
+        android:layout_below="@+id/_1011"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
+            android:id="@+id/title11"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/town"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/Veteran"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/townText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/vetStatus"
+            android:id="@+id/status11"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/vet_surv"
+        android:id="@+id/_1112"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/vetTitleGroup"
+        android:layout_below="@+id/titleGroup11"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/survTitleGroup2"
+        android:id="@+id/titleGroup12"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/vet_surv"
+        android:layout_below="@+id/_1112"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
+            android:id="@+id/title12"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/survivor"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/survivorText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/survStatus2"
+            android:id="@+id/status12"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/surv_arso"
+        android:id="@+id/_1213"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/survTitleGroup2"
+        android:layout_below="@+id/titleGroup12"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/arsoTitleGroup2"
+        android:id="@+id/titleGroup13"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/surv_arso"
+        android:layout_below="@+id/_1213"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
+            android:id="@+id/title13"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/neutral"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/arsonist"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/arsonistText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/arsoStatus2"
+            android:id="@+id/status13"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
     <View
-        android:id="@+id/arso_maf"
+        android:id="@+id/_1314"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_height"
-        android:layout_below="@+id/arsoTitleGroup2"
+        android:layout_below="@+id/titleGroup13"
         android:background="@color/gray" />
 
     <RelativeLayout
-        android:id="@+id/MafTitleGroup"
+        android:id="@+id/titleGroup14"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/arso_maf"
+        android:layout_below="@+id/_1314"
         android:gravity="center"
-        android:onClick="toggleStatus"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
         <TextView
-            android:id="@+id/MafTitle"
+            android:id="@+id/title14"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/mafia"
             android:gravity="center"
+            android:onClick="toggleStatus"
             android:text="@string/Mafioso"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/mafiaText"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
 
         <View
-            android:id="@+id/MafStatus"
+            android:id="@+id/status14"
             android:layout_width="5dp"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@color/colorAccent"
+            android:onClick="toggleStatus"
             android:visibility="invisible" />
     </RelativeLayout>
 
@@ -606,14 +632,14 @@
         android:id="@+id/leftBisector"
         android:layout_width="@dimen/separator_height"
         android:layout_height="match_parent"
-        android:layout_toEndOf="@+id/rolesTitle"
-        android:layout_toRightOf="@+id/rolesTitle"
+        android:layout_toEndOf="@+id/alignmentsTitle"
+        android:layout_toRightOf="@+id/alignmentsTitle"
         android:background="@color/gray" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/roles_GF"
+        android:layout_below="@+id/align_0"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/mafia"
@@ -622,7 +648,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/GFPos"
+            android:id="@+id/pos0"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -638,7 +664,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/GF_arso"
+        android:layout_below="@+id/_01"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/neutral"
@@ -647,7 +673,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/arsoPos1"
+            android:id="@+id/pos1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -663,7 +689,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/arso_surv"
+        android:layout_below="@+id/_12"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/neutral"
@@ -672,7 +698,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/survPos1"
+            android:id="@+id/pos2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -688,7 +714,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/surv_jailor"
+        android:layout_below="@+id/_23"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/town"
@@ -697,7 +723,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/jailorPos"
+            android:id="@+id/pos3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -713,7 +739,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/jailor_amne"
+        android:layout_below="@+id/_34"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/neutral"
@@ -722,7 +748,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/amnePos1"
+            android:id="@+id/pos4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -738,7 +764,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/amne_SK"
+        android:layout_below="@+id/_45"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/neutral"
@@ -747,7 +773,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/SKPos1"
+            android:id="@+id/pos5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -763,7 +789,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/SK_witch"
+        android:layout_below="@+id/_56"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/neutral"
@@ -772,7 +798,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/witchPos1"
+            android:id="@+id/pos6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -788,15 +814,16 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/witch_Any"
+        android:layout_below="@+id/_67"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/white"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/AnyPos"
+            android:id="@+id/pos7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -812,32 +839,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/any_witch"
-        android:layout_toEndOf="@+id/leftBisector"
-        android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/neutral"
-        android:gravity="center"
-        app:layout_heightPercent="6%"
-        app:layout_widthPercent="10%">
-
-        <EditText
-            android:id="@+id/witchPos2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:focusable="false"
-            android:gravity="center"
-            android:inputType="none"
-            android:longClickable="false"
-            android:onClick="setPosition"
-            android:paddingBottom="5dp"
-            android:paddingTop="0dp"
-            android:textSize="20sp" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/witch_SK"
+        android:layout_below="@+id/_78"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/neutral"
@@ -846,7 +848,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/SKPos2"
+            android:id="@+id/pos8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -862,7 +864,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/SK_amne"
+        android:layout_below="@+id/_89"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/neutral"
@@ -871,7 +873,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/amnePos2"
+            android:id="@+id/pos9"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -887,7 +889,32 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/amne_vet"
+        android:layout_below="@+id/_910"
+        android:layout_toEndOf="@+id/leftBisector"
+        android:layout_toRightOf="@+id/leftBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="10%">
+
+        <EditText
+            android:id="@+id/pos10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:onClick="setPosition"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/_1011"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/town"
@@ -896,7 +923,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/vetPos"
+            android:id="@+id/pos11"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -912,7 +939,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/vet_surv"
+        android:layout_below="@+id/_1112"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/neutral"
@@ -921,7 +948,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/survPos2"
+            android:id="@+id/pos12"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -937,7 +964,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/surv_arso"
+        android:layout_below="@+id/_1213"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/neutral"
@@ -946,7 +973,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/arsoPos2"
+            android:id="@+id/pos13"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -962,7 +989,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/arso_maf"
+        android:layout_below="@+id/_1314"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
         android:background="@color/mafia"
@@ -971,7 +998,7 @@
         app:layout_widthPercent="10%">
 
         <EditText
-            android:id="@+id/MafPos"
+            android:id="@+id/pos14"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:focusable="false"
@@ -983,19 +1010,6 @@
             android:paddingTop="0dp"
             android:textSize="20sp" />
     </FrameLayout>
-
-    <TextView
-        android:id="@+id/positionTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/rolesTitle"
-        android:layout_toRightOf="@+id/rolesTitle"
-        android:gravity="center"
-        android:text="@string/positionTitle"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="25sp"
-        app:layout_heightPercent="8%"
-        app:layout_widthPercent="10%" />
 
     <View
         android:id="@+id/rightBisector"
@@ -1006,21 +1020,35 @@
         android:background="@color/gray" />
 
     <TextView
+        android:id="@+id/positionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/alignmentsTitle"
+        android:layout_toRightOf="@+id/alignmentsTitle"
+        android:gravity="center"
+        android:text="@string/positionTitle"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp"
+        app:layout_heightPercent="7.5%"
+        app:layout_widthPercent="10%" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:gravity="center"
-        android:text="@string/taken"
+        android:text="@string/Roles"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="25sp"
-        app:layout_heightPercent="8%"
-        app:layout_widthPercent="40%" />
+        app:layout_heightPercent="7.5%"
+        app:layout_widthPercent="50%" />
+
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/roles_GF"
+        android:layout_below="@+id/align_0"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/mafia"
@@ -1029,7 +1057,7 @@
         app:layout_widthPercent="40%">
 
         <CheckBox
-            android:id="@+id/chkGF"
+            android:id="@+id/field0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickedChkBox"
@@ -1040,7 +1068,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/GF_arso"
+        android:layout_below="@+id/_01"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/neutral"
@@ -1049,107 +1077,7 @@
         app:layout_widthPercent="40%">
 
         <CheckBox
-            android:id="@+id/chkArso1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickedChkBox"
-            android:scaleX="1.5"
-            android:scaleY="1.5" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/arso_surv"
-        android:layout_toEndOf="@+id/rightBisector"
-        android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
-        android:gravity="center"
-        app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
-
-        <CheckBox
-            android:id="@+id/chkSurv1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickedChkBox"
-            android:scaleX="1.5"
-            android:scaleY="1.5" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/surv_jailor"
-        android:layout_toEndOf="@+id/rightBisector"
-        android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/town"
-        android:gravity="center"
-        app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
-
-        <CheckBox
-            android:id="@+id/chkJailor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickedChkBox"
-            android:scaleX="1.5"
-            android:scaleY="1.5" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/jailor_amne"
-        android:layout_toEndOf="@+id/rightBisector"
-        android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
-        android:gravity="center"
-        app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
-
-        <CheckBox
-            android:id="@+id/chkAmne1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickedChkBox"
-            android:scaleX="1.5"
-            android:scaleY="1.5" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/amne_SK"
-        android:layout_toEndOf="@+id/rightBisector"
-        android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
-        android:gravity="center"
-        app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
-
-        <CheckBox
-            android:id="@+id/chkSK1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickedChkBox"
-            android:scaleX="1.5"
-            android:scaleY="1.5" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/SK_witch"
-        android:layout_toEndOf="@+id/rightBisector"
-        android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
-        android:gravity="center"
-        app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
-
-        <CheckBox
-            android:id="@+id/chkWitch1"
+            android:id="@+id/field1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickedChkBox"
@@ -1160,15 +1088,116 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/witch_Any"
+        android:layout_below="@+id/_12"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:gravity="end"
+        android:background="@color/neutral"
+        android:gravity="center"
         app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/field2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/_23"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:background="@color/town"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/field3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/_34"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/field4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/_45"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/field5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/_56"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:background="@color/neutral"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
+
+        <CheckBox
+            android:id="@+id/field6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/_67"
+        android:layout_toEndOf="@+id/rightBisector"
+        android:layout_toRightOf="@+id/rightBisector"
+        android:background="@color/white"
+        android:gravity="center"
+        app:layout_heightPercent="6%"
+        app:layout_widthPercent="50%">
 
         <Button
-            android:id="@+id/rainbowButtonAnyField"
+            android:id="@+id/buttonfield7"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentEnd="true"
@@ -1180,33 +1209,33 @@
             android:visibility="invisible" />
 
         <EditText
-            android:id="@+id/rainbowAnyField"
+            android:id="@+id/field7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
             android:focusable="false"
             android:gravity="center"
             android:inputType="none"
             android:longClickable="false"
+            android:maxLines="1"
             android:onClick="fetchRole"
             android:paddingBottom="5dp"
             android:paddingTop="0dp"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/any_witch"
+        android:layout_below="@+id/_78"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/neutral"
         android:gravity="center"
         app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
+        app:layout_widthPercent="50%">
 
         <CheckBox
-            android:id="@+id/chkWitch2"
+            android:id="@+id/field8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickedChkBox"
@@ -1215,18 +1244,18 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/witch_SK"
+        android:layout_below="@+id/_89"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/neutral"
         android:gravity="center"
         app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
+        app:layout_widthPercent="50%">
 
         <CheckBox
-            android:id="@+id/chkSK2"
+            android:id="@+id/field9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickedChkBox"
@@ -1235,18 +1264,18 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/SK_amne"
+        android:layout_below="@+id/_910"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/neutral"
         android:gravity="center"
         app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
+        app:layout_widthPercent="50%">
 
         <CheckBox
-            android:id="@+id/chkAmne2"
+            android:id="@+id/field10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickedChkBox"
@@ -1255,18 +1284,18 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/amne_vet"
+        android:layout_below="@+id/_1011"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
+        app:layout_widthPercent="50%">
 
         <CheckBox
-            android:id="@+id/chkVet"
+            android:id="@+id/field11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickedChkBox"
@@ -1275,18 +1304,18 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/vet_surv"
+        android:layout_below="@+id/_1112"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/neutral"
         android:gravity="center"
         app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
+        app:layout_widthPercent="50%">
 
         <CheckBox
-            android:id="@+id/chkSurv2"
+            android:id="@+id/field12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickedChkBox"
@@ -1295,18 +1324,18 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/surv_arso"
+        android:layout_below="@+id/_1213"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/neutral"
         android:gravity="center"
         app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
+        app:layout_widthPercent="50%">
 
         <CheckBox
-            android:id="@+id/chkArso2"
+            android:id="@+id/field13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickedChkBox"
@@ -1315,18 +1344,18 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/arso_maf"
+        android:layout_below="@+id/_1314"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:background="@color/mafia"
         android:gravity="center"
         app:layout_heightPercent="6%"
-        app:layout_widthPercent="40%">
+        app:layout_widthPercent="50%">
 
         <CheckBox
-            android:id="@+id/chkMafioso"
+            android:id="@+id/field14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickedChkBox"

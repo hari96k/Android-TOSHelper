@@ -49,6 +49,36 @@
         android:gravity="center">
 
         <ImageView
+            android:id="@+id/buttonSalemClassic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/buttonCovenModes"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/salem_classic"
+            android:onClick="goToClassicModes"
+            android:src="@drawable/button_salem_classic" />
+
+        <ImageView
+            android:id="@+id/buttonCovenModes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/buttonWiki"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/coven_modes"
+            android:onClick="goToCovenModes"
+            android:src="@drawable/buttton_coven_modes" />
+
+        <ImageView
+            android:id="@+id/buttonWiki"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/buttonTips"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/tips"
+            android:onClick="goToWiki"
+            android:src="@drawable/button_wiki" />
+
+        <ImageView
             android:id="@+id/buttonTips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,25 +88,6 @@
             android:onClick="goToTips"
             android:src="@drawable/button_tips" />
 
-        <ImageView
-            android:id="@+id/buttonCovenModes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/buttonTips"
-            android:layout_centerHorizontal="true"
-            android:contentDescription="@string/coven_modes"
-            android:onClick="goToCovenModes"
-            android:src="@drawable/buttton_coven_modes" />
-
-        <ImageView
-            android:id="@+id/buttonSalemClassic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/buttonCovenModes"
-            android:layout_centerHorizontal="true"
-            android:contentDescription="@string/salem_classic"
-            android:onClick="goToClassicModes"
-            android:src="@drawable/button_salem_classic" />
     </RelativeLayout>
 
 

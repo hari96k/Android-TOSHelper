@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import hotchemi.android.rate.BuildConfig;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -26,7 +25,7 @@ public class customPresets extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_presets_page);
         settings = PreferenceManager.getDefaultSharedPreferences(this);
-        this.toast = Toast.makeText(getBaseContext(), BuildConfig.VERSION_NAME, Toast.LENGTH_LONG);
+        this.toast = Toast.makeText(getBaseContext(), "", Toast.LENGTH_LONG);
         this.setupNamesUpdated = false;
         conditional = startPage.mode.equals("Coven Custom")? "Coven" : "";
     }

@@ -35,4 +35,8 @@ public class startPage extends Activity {
     public void goToCovenModes(View view) {
         startActivity(new Intent(this, covenModesPage.class));
     }
+
+    public void goToWiki(View view) {
+        startActivity(new Intent(this, wikiPage.class));
+    }
 }

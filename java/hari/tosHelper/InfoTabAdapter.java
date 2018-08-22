@@ -9,13 +9,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-class infoTabAdapter extends ArrayAdapter<String> {
-    static int[] textColor;
+class InfoTabAdapter extends ArrayAdapter<String> {
+    int[] textColor;
     private final Context context;
     private String mode = startPage.mode;
     private final String[] roles;
 
-    infoTabAdapter(Context context, String[] roles) {
+    InfoTabAdapter(Context context, String[] roles) {
         super(context, R.layout.list_view_element_2, roles);
         this.context = context;
         this.roles = roles;
@@ -35,6 +35,13 @@ class infoTabAdapter extends ArrayAdapter<String> {
                 return;
             case "Coven Custom":
                 initializeCovenCustomTextColors();
+                return;
+            case "Wiki":
+                if(InfoTab.position == 0){
+                    initializeTextColors();
+                }else{
+                    initializeCovenCustomTextColors();
+                }
                 return;
             default:
                 initializeTextColors();
@@ -277,6 +284,15 @@ class infoTabAdapter extends ArrayAdapter<String> {
                     rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.coven));
                 } else {
                     rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
+                }
+                break;
+            case "Wiki":
+                if(holder.presentFlag.getVisibility() == View.VISIBLE){
+                    holder.presentFlag.setVisibility(View.INVISIBLE);
+                }
+
+                if(holder.confirmedFlag.getVisibility() == View.VISIBLE){
+                    holder.confirmedFlag.setVisibility(View.INVISIBLE);
                 }
                 break;
             default:

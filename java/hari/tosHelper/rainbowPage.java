@@ -26,25 +26,24 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import hari.tosHelper.rainbowInfoTab.OnInfoTabListener;
-import hotchemi.android.rate.BuildConfig;
 
 public class rainbowPage extends AppCompatActivity implements OnInfoTabListener {
-    private static final int AMNE_POS_1 = 5;
-    private static final int AMNE_POS_2 = 11;
-    private static final int ANY_POS = 8;
-    private static final int ANY_REQUEST = 16;
-    private static final int ARSO_POS_1 = 2;
-    private static final int ARSO_POS_2 = 14;
-    private static final int GF_POS = 1;
-    private static final int JAILOR_POS = 4;
-    private static final int MAF_POS = 15;
-    private static final int SK_POS_1 = 6;
-    private static final int SK_POS_2 = 10;
-    private static final int SURV_POS_1 = 3;
-    private static final int SURV_POS_2 = 13;
-    private static final int VET_POS = 12;
-    private static final int WITCH_POS_1 = 7;
-    private static final int WITCH_POS_2 = 9;
+    private final int AMNE_POS_1 = 5;
+    private final int AMNE_POS_2 = 11;
+    private final int ANY_POS = 8;
+    private final int ANY_REQUEST = 16;
+    private final int ARSO_POS_1 = 2;
+    private final int ARSO_POS_2 = 14;
+    private final int GF_POS = 1;
+    private final int JAILOR_POS = 4;
+    private final int MAF_POS = 15;
+    private final int SK_POS_1 = 6;
+    private final int SK_POS_2 = 10;
+    private final int SURV_POS_1 = 3;
+    private final int SURV_POS_2 = 13;
+    private final int VET_POS = 12;
+    private final int WITCH_POS_1 = 7;
+    private final int WITCH_POS_2 = 9;
     protected static HashMap<String, Integer> confirmedRoles = new HashMap<String, Integer>() {
         {
             put("Sheriff", 0);
@@ -124,7 +123,7 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
     protected CustomAdapter adapter;
     Toast toast;
     private boolean doubleBackToExitPressedOnce = false;
-    private rainbowInfoTab infoTab;
+    private InfoTab infoTab;
     private ViewPager viewPager;
 
     protected static void updateRealizedRole(String role, boolean status) {
@@ -152,20 +151,20 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
         this.viewPager.setAdapter(this.adapter);
         TabLayout tablayout = findViewById(R.id.tabLayout);
         tablayout.setupWithViewPager(this.viewPager);
-        tablayout.addOnTabSelectedListener(new OnTabSelectedListener() {
-            public void onTabSelected(Tab tab) {
-                rainbowPage.this.viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            public void onTabUnselected(Tab tab) {
-                rainbowPage.this.viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            public void onTabReselected(Tab tab) {
-                rainbowPage.this.viewPager.setCurrentItem(tab.getPosition());
-            }
-        });
-        this.toast = Toast.makeText(getBaseContext(), BuildConfig.VERSION_NAME, Toast.LENGTH_LONG);
+//        tablayout.addOnTabSelectedListener(new OnTabSelectedListener() {
+//            public void onTabSelected(Tab tab) {
+//                rainbowPage.this.viewPager.setCurrentItem(tab.getPosition());
+//            }
+//
+//            public void onTabUnselected(Tab tab) {
+//                rainbowPage.this.viewPager.setCurrentItem(tab.getPosition());
+//            }
+//
+//            public void onTabReselected(Tab tab) {
+//                rainbowPage.this.viewPager.setCurrentItem(tab.getPosition());
+//            }
+//        });
+        this.toast = Toast.makeText(getBaseContext(), "", Toast.LENGTH_LONG);
         displayToast("Don't forget to input your role!");
     }
 
@@ -190,7 +189,7 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
         LayoutParams params = (LayoutParams) editText.getLayoutParams();
         params.addRule(0, 0);
         editText.setLayoutParams(params);
-        editText.setText(BuildConfig.VERSION_NAME);
+        editText.setText("");
         button.setVisibility(View.INVISIBLE);
     }
 
@@ -298,7 +297,7 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
         String role;
         int constant;
         Intent intent = new Intent(this, selectPos.class);
-        String position = BuildConfig.VERSION_NAME;
+        String position = "";
         switch (view.getId()) {
             case R.id.jailorPos /*2131558766*/:
                 posID = R.id.jailorPos;
@@ -405,7 +404,7 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         String role = null;
-        String roleText = BuildConfig.VERSION_NAME;
+        String roleText = "";
         if (data != null) {
             role = data.getStringExtra("selection");
         }
@@ -525,7 +524,7 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
                 updateRemainingPos(prevRole, false);
             }
             if (role.equals("delete")) {
-                textField.setText(BuildConfig.VERSION_NAME);
+                textField.setText("");
                 View status = findViewById(statusID);
                 if (requestCode == ANY_POS) {
                     TextView anyField = findViewById(R.id.rainbowAnyField);
@@ -552,7 +551,7 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
         int statusID = -1;
         int posID = -1;
         int fieldID = -1;
-        String roleText = BuildConfig.VERSION_NAME;
+        String roleText = "";
         switch (view.getId()) {
             case R.id.jailorTitleGroup /*2131558722*/:
                 statusID = R.id.jailorStatus;
@@ -677,8 +676,12 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
 
     public void onRoleSelected(String role, int position) {
         Intent intent = new Intent(this, Role_Info_Classic.class);
+        Bundle b = new Bundle();
+        b.putIntArray("colors", this.infoTab.adapter.textColor);
+
         intent.putExtra("selection", role);
         intent.putExtra("position", position);
+        intent.putExtras(b);
         startActivity(intent);
     }
 
@@ -733,9 +736,9 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
 
         CustomAdapter(FragmentManager supportFragmentManager) {
             super(supportFragmentManager);
-            String[] strArr = new String[rainbowPage.ARSO_POS_1];
+            String[] strArr = new String[2];
             strArr[0] = "Roles";
-            strArr[rainbowPage.GF_POS] = "Info";
+            strArr[1] = "Wiki";
             this.fragments = strArr;
         }
 
@@ -744,7 +747,7 @@ public class rainbowPage extends AppCompatActivity implements OnInfoTabListener 
                 case 0 /*0*/:
                     return new rainbowRolesTab();
                 case 1 /*1*/:
-                    rainbowPage.this.infoTab = new rainbowInfoTab();
+                    rainbowPage.this.infoTab = new InfoTab();
                     return rainbowPage.this.infoTab;
                 default:
                     return null;

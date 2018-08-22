@@ -8,22 +8,43 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ListView;
 
-public class infoTab extends ListFragment {
+public class InfoTab extends ListFragment {
     protected static String[] AllAlignments;
     protected static String[] AllRoles;
     private Activity activity;
-    private infoTabAdapter adapter;
+    InfoTabAdapter adapter;
+    static int position = 0;
+
+    public static InfoTab newInstance(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("position", position);
+
+        InfoTab fragment = new InfoTab();
+        fragment.setArguments(bundle);
+
+        return fragment;
+    }
 
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
         String[] modeNameParsed = startPage.mode.split(" ");
-        if (!modeNameParsed[0].equals("Coven")) {
+        if(modeNameParsed[0].equals("Wiki")){
+            if (this.getArguments() != null) {
+                position = this.getArguments().getInt("position");
+            }
+        }
+
+        if (modeNameParsed[0].equals("Classic")){
+            AllRoles = new String[]{"Bodyguard", "Doctor", "Escort", "Investigator", "Jailor", "Lookout", "Mayor", "Medium", "Retributionist", "Sheriff", "Spy", "Transporter", "Veteran", "Vigilante", "Framer", "Godfather", "Mafioso", "Serial Killer", "Executioner", "Jester"};
+        }else if (modeNameParsed[0].equals("Rainbow")) {
+            AllRoles = new String[]{"Bodyguard", "Doctor", "Escort", "Investigator", "Jailor", "Lookout", "Mayor", "Medium", "Retributionist", "Sheriff", "Spy", "Transporter", "Veteran", "Vigilante", "Blackmailer", "Consigliere", "Consort", "Disguiser", "Forger", "Framer", "Godfather", "Janitor", "Mafioso", "Arsonist", "Serial Killer", "Werewolf", "Executioner", "Jester", "Witch", "Amnesiac", "Survivor", "Vampire"};
+        }else if ((!modeNameParsed[0].equals("Coven") && !modeNameParsed[0].equals("Wiki") ) || (modeNameParsed[0].equals("Wiki") && position == 0)) {
             AllAlignments = new String[]{"Town Investigative", "Town Killing", "Town Protective", "Town Support", "Random Town", "Mafia Deception", "Mafia Killing", "Mafia Support", "Random Mafia", "Neutral Benign", "Neutral Evil", "Neutral Killing", "Random Neutral", "Any"};
             AllRoles = new String[]{"Bodyguard", "Doctor", "Escort", "Investigator", "Jailor", "Lookout", "Mayor", "Medium", "Retributionist", "Sheriff", "Spy", "Transporter", "Vampire Hunter", "Veteran", "Vigilante", "Blackmailer", "Consigliere", "Consort", "Disguiser", "Forger", "Framer", "Godfather", "Janitor", "Mafioso", "Arsonist", "Serial Killer", "Werewolf", "Executioner", "Jester", "Witch", "Amnesiac", "Survivor", "Vampire"};
-        } else {
+        }else{
             // If Coven Custom
-            if (modeNameParsed.length == 2 && modeNameParsed[1].equals("Custom")) {
+            if ((modeNameParsed.length == 2 && modeNameParsed[1].equals("Custom")) || (modeNameParsed[0].equals("Wiki") && position == 1) ) {
                 AllAlignments = new String[]{"Town Investigative", "Town Killing", "Town Protective", "Town Support", "Random Town", "Mafia Deception", "Mafia Killing", "Mafia Support", "Random Mafia", "Neutral Benign", "Neutral Evil", "Neutral Killing", "Random Neutral", "Coven Evil", "Any"};
                 AllRoles = new String[]{"Bodyguard", "Crusader", "Doctor", "Escort", "Investigator", "Jailor", "Lookout", "Mayor", "Medium", "Psychic", "Retributionist", "Sheriff", "Spy", "Tracker", "Transporter", "Trapper", "Vampire Hunter", "Veteran", "Vigilante", "Ambusher", "Blackmailer", "Consigliere", "Consort", "Disguiser", "Forger", "Framer", "Godfather", "Hypnotist", "Janitor", "Mafioso", "Coven Leader", "Hex Master", "Medusa", "Necromancer", "Poisoner", "Potion Master", "Arsonist", "Juggernaut", "Serial Killer", "Werewolf", "Executioner", "Jester", "Witch", "Amnesiac", "Guardian Angel", "Survivor", "Pirate", "Plaguebearer", "Pestilence", "Vampire"};
             } else {
@@ -32,7 +53,7 @@ public class infoTab extends ListFragment {
             }
         }
 
-        this.adapter = new infoTabAdapter(getActivity(), AllRoles);
+        this.adapter = new InfoTabAdapter(getActivity(), AllRoles);
         setListAdapter(this.adapter);
         ListView listView = getListView();
         if (listView != null) {

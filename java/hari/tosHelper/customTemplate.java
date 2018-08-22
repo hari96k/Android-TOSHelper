@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.TabLayout.OnTabSelectedListener;
-import android.support.design.widget.TabLayout.Tab;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -38,7 +36,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import hari.tosHelper.customAlignmentsTab.OnCustomRolesTabListener;
-import hari.tosHelper.infoTab.OnInfoTabListener;
+import hari.tosHelper.InfoTab.OnInfoTabListener;
 
 import static hari.tosHelper.template.RequestCode.*;
 import static hari.tosHelper.template.decodeRole;
@@ -186,7 +184,8 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
 
     protected static ArrayList<Integer> remainingPositions = new ArrayList<>();
     static int[] titles = new int[]{R.id.title0, R.id.title1, R.id.title2, R.id.title3, R.id.title4, R.id.title5, R.id.title6, R.id.title7, R.id.title8, R.id.title9, R.id.title10, R.id.title11, R.id.title12, R.id.title13, R.id.title14};
-    private infoTab InfoTab;
+    Row[] rows;
+    private hari.tosHelper.InfoTab infoTab;
     overviewTab OverviewTab;
     protected CustomAdapter adapter;
     String alignment;
@@ -194,6 +193,7 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
     Intent intent;
     Toast toast;
     private ViewPager viewPager;
+
 
     private class CustomAdapter extends FragmentPagerAdapter {
         private final String[] fragments;
@@ -203,7 +203,7 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
             String[] strArr = new String[3];
             strArr[0] = "Overview";
             strArr[1] = "Alignments";
-            strArr[2] = "Info";
+            strArr[2] = "Wiki";
             this.fragments = strArr;
         }
 
@@ -215,8 +215,8 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
                 case 1 /*1*/:
                     return new customAlignmentsTab();
                 case 2 /*2*/:
-                    customTemplate.this.InfoTab = new infoTab();
-                    return customTemplate.this.InfoTab;
+                    customTemplate.this.infoTab = new InfoTab();
+                    return customTemplate.this.infoTab;
                 default:
                     return null;
             }
@@ -264,20 +264,26 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
         });
         TabLayout tablayout = findViewById(R.id.tabLayout);
         tablayout.setupWithViewPager(this.viewPager);
-        tablayout.addOnTabSelectedListener(new OnTabSelectedListener() {
-            public void onTabSelected(Tab tab) {
-                customTemplate.this.viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            public void onTabUnselected(Tab tab) {
-                customTemplate.this.viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            public void onTabReselected(Tab tab) {
-                customTemplate.this.viewPager.setCurrentItem(tab.getPosition());
-            }
-        });
+//        tablayout.addOnTabSelectedListener(new OnTabSelectedListener() {
+//            public void onTabSelected(Tab tab) {
+//                customTemplate.this.viewPager.setCurrentItem(tab.getPosition());
+//            }
+//
+//            public void onTabUnselected(Tab tab) {
+//                customTemplate.this.viewPager.setCurrentItem(tab.getPosition());
+//            }
+//
+//            public void onTabReselected(Tab tab) {
+//                customTemplate.this.viewPager.setCurrentItem(tab.getPosition());
+//            }
+//        });
         this.viewPager.setCurrentItem(1);
+        rows = new Row[15];
+        for(int i = 0; i < rows.length; i++){
+            rows[i] = new Row(i);
+        }
+
+
         customStatesSaved = false;
         this.toast = Toast.makeText(getBaseContext(), "", Toast.LENGTH_LONG);
         displayToast("Don't forget to input your role!");
@@ -290,8 +296,12 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
         }else{
             intent = new Intent(this, Role_Info_Classic.class);
         }
+        Bundle b = new Bundle();
+        b.putIntArray("colors", this.infoTab.adapter.textColor);
+
         intent.putExtra("selection", role);
         intent.putExtra("position", position);
+        intent.putExtras(b);
         startActivity(intent);
     }
 
@@ -299,127 +309,32 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
 
     public void onPageInflated() {
         loadCustomState();
-        this.InfoTab.updateListView();
+        this.infoTab.updateListView();
     }
 
     public void fetchAlignment(View view) {
         Intent intent = new Intent(this, selectAlign.class);
-
-        switch (view.getId()) {
-            case R.id.title0 /*2131558603*/:
-                startActivityForResult(intent, REQUEST_0.ordinal());
-                return;
-            case R.id.title1 /*2131558607*/:
-                startActivityForResult(intent, REQUEST_1.ordinal());
-                return;
-            case R.id.title2 /*2131558611*/:
-                startActivityForResult(intent, REQUEST_2.ordinal());
-                return;
-            case R.id.title3 /*2131558615*/:
-                startActivityForResult(intent, REQUEST_3.ordinal());
-                return;
-            case R.id.title4 /*2131558619*/:
-                startActivityForResult(intent, REQUEST_4.ordinal());
-                return;
-            case R.id.title5 /*2131558623*/:
-                startActivityForResult(intent, REQUEST_5.ordinal());
-                return;
-            case R.id.title6 /*2131558627*/:
-                startActivityForResult(intent, REQUEST_6.ordinal());
-                return;
-            case R.id.title7 /*2131558631*/:
-                startActivityForResult(intent, REQUEST_7.ordinal());
-                return;
-            case R.id.title8 /*2131558635*/:
-                startActivityForResult(intent, REQUEST_8.ordinal());
-                return;
-            case R.id.title9 /*2131558639*/:
-                startActivityForResult(intent, REQUEST_9.ordinal());
-                return;
-            case R.id.title10 /*2131558643*/:
-                startActivityForResult(intent, REQUEST_10.ordinal());
-                return;
-            case R.id.title11 /*2131558647*/:
-                startActivityForResult(intent, REQUEST_11.ordinal());
-                return;
-            case R.id.title12 /*2131558651*/:
-                startActivityForResult(intent, REQUEST_12.ordinal());
-                return;
-            case R.id.title13 /*2131558655*/:
-                startActivityForResult(intent, REQUEST_13.ordinal());
-                return;
-            case R.id.title14 /*2131558658*/:
-            default:
-                startActivityForResult(intent, REQUEST_14.ordinal());
-
+        Row row = new Row();
+        for(Row r : rows){
+            if(r.titleID == view.getId()){
+                row = r;
+            }
         }
+
+        startActivityForResult(intent, row.requestCode.ordinal());
     }
 
     public void fetchRole(View view) {
-        int titleID;
-        template.RequestCode request;
-        switch (view.getId()) {
-            case R.id.field0 /*2131558678*/:
-                titleID = R.id.title0;
-                request = REQUEST_0;
-                break;
-            case R.id.field1 /*2131558680*/:
-                titleID = R.id.title1;
-                request = REQUEST_1;
-                break;
-            case R.id.field2 /*2131558682*/:
-                titleID = R.id.title2;
-                request = REQUEST_2;
-                break;
-            case R.id.field3 /*2131558684*/:
-                titleID = R.id.title3;
-                request = REQUEST_3;
-                break;
-            case R.id.field4 /*2131558686*/:
-                titleID = R.id.title4;
-                request = REQUEST_4;
-                break;
-            case R.id.field5 /*2131558688*/:
-                titleID = R.id.title5;
-                request = REQUEST_5;
-                break;
-            case R.id.field6 /*2131558690*/:
-                titleID = R.id.title6;
-                request = REQUEST_6;
-                break;
-            case R.id.field7 /*2131558692*/:
-                titleID = R.id.title7;
-                request = REQUEST_7;
-                break;
-            case R.id.field8 /*2131558694*/:
-                titleID = R.id.title8;
-                request = REQUEST_8;
-                break;
-            case R.id.field9 /*2131558696*/:
-                titleID = R.id.title9;
-                request = REQUEST_9;
-                break;
-            case R.id.field10 /*2131558698*/:
-                titleID = R.id.title10;
-                request = REQUEST_10;
-                break;
-            case R.id.field11 /*2131558700*/:
-                titleID = R.id.title11;
-                request = REQUEST_11;
-                break;
-            case R.id.field12 /*2131558702*/:
-                titleID = R.id.title12;
-                request = REQUEST_12;
-                break;
-            case R.id.field13 /*2131558704*/:
-                titleID = R.id.title13;
-                request = REQUEST_13;
-                break;
-            default:
-                titleID = R.id.title14;
-                request = REQUEST_14;
-                break;
+        Row row = new Row();
+        for(Row r : rows){
+            if(r.fieldID == view.getId()){
+                row = r;
+            }
         }
+
+        int titleID = row.titleID;
+        template.RequestCode request = row.requestCode;
+
         if (((TextView) findViewById(titleID)).getText().toString().equals(getResources().getString(R.string.select))) {
             displayToast("Select a category first!");
         } else {
@@ -430,102 +345,17 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
     }
 
     public void deleteRole(View view) {
-        int fieldID = -1;
-        int buttonID = -1;
-        int statusID = -1;
-        int posID = -1;
-        switch (view.getId()) {
-            case R.id.buttonfield0 /*2131558677*/:
-                posID = R.id.pos0;
-                statusID = R.id.status0;
-                fieldID = R.id.field0;
-                buttonID = R.id.buttonfield0;
-                break;
-            case R.id.buttonfield1 /*2131558679*/:
-                posID = R.id.pos1;
-                statusID = R.id.status1;
-                fieldID = R.id.field1;
-                buttonID = R.id.buttonfield1;
-                break;
-            case R.id.buttonfield2 /*2131558681*/:
-                posID = R.id.pos2;
-                statusID = R.id.status2;
-                fieldID = R.id.field2;
-                buttonID = R.id.buttonfield2;
-                break;
-            case R.id.buttonfield3 /*2131558683*/:
-                posID = R.id.pos3;
-                statusID = R.id.status3;
-                fieldID = R.id.field3;
-                buttonID = R.id.buttonfield3;
-                break;
-            case R.id.buttonfield4 /*2131558685*/:
-                posID = R.id.pos4;
-                statusID = R.id.status4;
-                fieldID = R.id.field4;
-                buttonID = R.id.buttonfield4;
-                break;
-            case R.id.buttonfield5 /*2131558687*/:
-                posID = R.id.pos5;
-                statusID = R.id.status5;
-                fieldID = R.id.field5;
-                buttonID = R.id.buttonfield5;
-                break;
-            case R.id.buttonfield6 /*2131558689*/:
-                posID = R.id.pos6;
-                statusID = R.id.status6;
-                fieldID = R.id.field6;
-                buttonID = R.id.buttonfield6;
-                break;
-            case R.id.buttonfield7 /*2131558691*/:
-                posID = R.id.pos7;
-                statusID = R.id.status7;
-                fieldID = R.id.field7;
-                buttonID = R.id.buttonfield7;
-                break;
-            case R.id.buttonfield8 /*2131558693*/:
-                posID = R.id.pos8;
-                statusID = R.id.status8;
-                fieldID = R.id.field8;
-                buttonID = R.id.buttonfield8;
-                break;
-            case R.id.buttonfield9 /*2131558695*/:
-                posID = R.id.pos9;
-                statusID = R.id.status9;
-                fieldID = R.id.field9;
-                buttonID = R.id.buttonfield9;
-                break;
-            case R.id.buttonfield10 /*2131558697*/:
-                posID = R.id.pos10;
-                statusID = R.id.status10;
-                fieldID = R.id.field10;
-                buttonID = R.id.buttonfield10;
-                break;
-            case R.id.buttonfield11 /*2131558699*/:
-                posID = R.id.pos11;
-                statusID = R.id.status11;
-                fieldID = R.id.field11;
-                buttonID = R.id.buttonfield11;
-                break;
-            case R.id.buttonfield12 /*2131558701*/:
-                posID = R.id.pos12;
-                statusID = R.id.status12;
-                fieldID = R.id.field12;
-                buttonID = R.id.buttonfield12;
-                break;
-            case R.id.buttonfield13 /*2131558703*/:
-                posID = R.id.pos13;
-                statusID = R.id.status13;
-                fieldID = R.id.field13;
-                buttonID = R.id.buttonfield13;
-                break;
-            case R.id.buttonfield14 /*2131558705*/:
-                posID = R.id.pos14;
-                statusID = R.id.status14;
-                fieldID = R.id.field14;
-                buttonID = R.id.buttonfield14;
-                break;
+        Row row = new Row();
+        for(Row r : rows){
+            if(r.buttonID == view.getId()){
+                row = r;
+            }
         }
+        int fieldID = row.fieldID;
+        int buttonID = row.buttonID;
+        int statusID = row.statusID;
+        int posID = row.positionID;
+
         EditText editText = findViewById(fieldID);
         Button button = findViewById(buttonID);
         String pos = ((EditText) findViewById(posID)).getText().toString();
@@ -542,7 +372,7 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
         editText.setLayoutParams(params);
         editText.setText("");
         updateRealizedRole(role, false);
-        this.InfoTab.updateListView();
+        this.infoTab.updateListView();
         button.setVisibility(View.INVISIBLE);
         if (pos.length() != 0) {
             updatePlayerRole(Integer.parseInt(pos), "");
@@ -551,104 +381,20 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
     }
 
     public void setPosition(View view) {
-        int posID;
-        String alignment;
-        int roleID;
-        template.RequestCode constant;
         Intent intent = new Intent(this, selectPos.class);
         String position = "";
-        switch (view.getId()) {
-            case R.id.pos1 /*2131558662*/:
-                posID = R.id.pos1;
-                alignment = getAlignment(R.id.title1);
-                roleID = R.id.field1;
-                constant = POS_1;
-                break;
-            case R.id.pos2 /*2131558663*/:
-                posID = R.id.pos2;
-                alignment = getAlignment(R.id.title2);
-                roleID = R.id.field2;
-                constant = POS_2;
-                break;
-            case R.id.pos3 /*2131558664*/:
-                posID = R.id.pos3;
-                alignment = getAlignment(R.id.title3);
-                roleID = R.id.field3;
-                constant = POS_3;
-                break;
-            case R.id.pos4 /*2131558665*/:
-                posID = R.id.pos4;
-                alignment = getAlignment(R.id.title4);
-                roleID = R.id.field4;
-                constant = POS_4;
-                break;
-            case R.id.pos5 /*2131558666*/:
-                posID = R.id.pos5;
-                alignment = getAlignment(R.id.title5);
-                roleID = R.id.field5;
-                constant = POS_5;
-                break;
-            case R.id.pos6 /*2131558667*/:
-                posID = R.id.pos6;
-                alignment = getAlignment(R.id.title6);
-                roleID = R.id.field6;
-                constant = POS_6;
-                break;
-            case R.id.pos7 /*2131558668*/:
-                posID = R.id.pos7;
-                alignment = getAlignment(R.id.title7);
-                roleID = R.id.field7;
-                constant = POS_7;
-                break;
-            case R.id.pos8 /*2131558669*/:
-                posID = R.id.pos8;
-                alignment = getAlignment(R.id.title8);
-                roleID = R.id.field8;
-                constant = POS_8;
-                break;
-            case R.id.pos9 /*2131558670*/:
-                posID = R.id.pos9;
-                alignment = getAlignment(R.id.title9);
-                roleID = R.id.field9;
-                constant = POS_9;
-                break;
-            case R.id.pos10 /*2131558671*/:
-                posID = R.id.pos10;
-                alignment = getAlignment(R.id.title10);
-                roleID = R.id.field10;
-                constant = POS_10;
-                break;
-            case R.id.pos11 /*2131558672*/:
-                posID = R.id.pos11;
-                alignment = getAlignment(R.id.title11);
-                roleID = R.id.field11;
-                constant = POS_11;
-                break;
-            case R.id.pos12 /*2131558673*/:
-                posID = R.id.pos12;
-                alignment = getAlignment(R.id.title12);
-                roleID = R.id.field12;
-                constant = POS_12;
-                break;
-            case R.id.pos13 /*2131558674*/:
-                posID = R.id.pos13;
-                alignment = getAlignment(R.id.title13);
-                roleID = R.id.field13;
-                constant = POS_13;
-                break;
-            case R.id.pos14 /*2131558675*/:
-                posID = R.id.pos14;
-                alignment = getAlignment(R.id.title14);
-                roleID = R.id.field14;
-                constant = POS_14;
-                break;
-            default:
-                posID = R.id.pos0;
-                alignment = getAlignment(R.id.title0);
-                roleID = R.id.field0;
-                constant = POS_0;
-                break;
+
+        Row row = new Row();
+        for(Row r : rows){
+            if(r.positionID == view.getId()){
+                row = r;
+            }
         }
+        int posID = row.positionID;
+        String alignment = getAlignment(row.titleID);
+        int roleID = row.fieldID;
+        template.RequestCode constant = row.posCode;
+
         EditText positionField = findViewById(posID);
         TextView roleField = findViewById(roleID);
         if (positionField.getText().toString().length() > 0) {
@@ -668,72 +414,19 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
     }
 
     public void onClickedChkBox(View view) {
-        int posID;
-        int statusID;
         CheckBox checkBox = (CheckBox) view;
-        this.InfoTab.updateListView();
-        switch (view.getId()) {
-            case R.id.field0 /*2131558678*/:
-                posID = R.id.pos0;
-                statusID = R.id.status0;
-                break;
-            case R.id.field1 /*2131558680*/:
-                posID = R.id.pos1;
-                statusID = R.id.status1;
-                break;
-            case R.id.field2 /*2131558682*/:
-                posID = R.id.pos2;
-                statusID = R.id.status2;
-                break;
-            case R.id.field3 /*2131558684*/:
-                posID = R.id.pos3;
-                statusID = R.id.status3;
-                break;
-            case R.id.field4 /*2131558686*/:
-                posID = R.id.pos4;
-                statusID = R.id.status4;
-                break;
-            case R.id.field5 /*2131558688*/:
-                posID = R.id.pos5;
-                statusID = R.id.status5;
-                break;
-            case R.id.field6 /*2131558690*/:
-                posID = R.id.pos6;
-                statusID = R.id.status6;
-                break;
-            case R.id.field7 /*2131558692*/:
-                posID = R.id.pos7;
-                statusID = R.id.status7;
-                break;
-            case R.id.field8 /*2131558694*/:
-                posID = R.id.pos8;
-                statusID = R.id.status8;
-                break;
-            case R.id.field9 /*2131558696*/:
-                posID = R.id.pos9;
-                statusID = R.id.status9;
-                break;
-            case R.id.field10 /*2131558698*/:
-                posID = R.id.pos10;
-                statusID = R.id.status10;
-                break;
-            case R.id.field11 /*2131558700*/:
-                posID = R.id.pos11;
-                statusID = R.id.status11;
-                break;
-            case R.id.field12 /*2131558702*/:
-                posID = R.id.pos12;
-                statusID = R.id.status12;
-                break;
-            case R.id.field13 /*2131558704*/:
-                posID = R.id.pos13;
-                statusID = R.id.status13;
-                break;
-            default:
-                posID = R.id.pos14;
-                statusID = R.id.status14;
-                break;
+        this.infoTab.updateListView();
+
+        Row row = new Row();
+        for(Row r : rows){
+            if(r.fieldID == view.getId()){
+                row = r;
+            }
         }
+
+        int posID = row.positionID;
+        int statusID = row.statusID;
+
         if (((EditText) findViewById(posID)).getText().toString().length() == 0 && !checkBox.isChecked()) {
             findViewById(statusID).setVisibility(View.INVISIBLE);
         }
@@ -744,7 +437,6 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        int titleID;
         String roleOrPosition = null;
         boolean category_align = false;
         boolean category_role = false;
@@ -761,137 +453,27 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
             }
         }
         if (resultCode == -1 && roleOrPosition != null) {
-            int statusID;
-            int positionID;
-            int fieldID;
-            int buttonID;
+
             if (!confTipShown) {
                 confTipShown = true;
                 displayToast("*Hold* the alignment to confirm this Player / Role!");
             }
 
             template.RequestCode rc = template.RequestCode.values()[requestCode];
-            switch (rc) {
-                case REQUEST_1 /*1*/:
-                case POS_1 /*15*/:
-                    titleID = R.id.title1;
-                    statusID = R.id.status1;
-                    positionID = R.id.pos1;
-                    fieldID = R.id.field1;
-                    buttonID = R.id.buttonfield1;
-                    break;
-                case REQUEST_2 /*2*/:
-                case POS_2 /*16*/:
-                    titleID = R.id.title2;
-                    statusID = R.id.status2;
-                    positionID = R.id.pos2;
-                    fieldID = R.id.field2;
-                    buttonID = R.id.buttonfield2;
-                    break;
-                case REQUEST_3 /*3*/:
-                case POS_3 /*17*/:
-                    titleID = R.id.title3;
-                    statusID = R.id.status3;
-                    positionID = R.id.pos3;
-                    fieldID = R.id.field3;
-                    buttonID = R.id.buttonfield3;
-                    break;
-                case REQUEST_4 /*4*/:
-                case POS_4 /*18*/:
-                    titleID = R.id.title4;
-                    statusID = R.id.status4;
-                    positionID = R.id.pos4;
-                    fieldID = R.id.field4;
-                    buttonID = R.id.buttonfield4;
-                    break;
-                case REQUEST_5 /*5*/:
-                case POS_5 /*19*/:
-                    titleID = R.id.title5;
-                    statusID = R.id.status5;
-                    positionID = R.id.pos5;
-                    fieldID = R.id.field5;
-                    buttonID = R.id.buttonfield5;
-                    break;
-                case REQUEST_6 /*6*/:
-                case POS_6 /*20*/:
-                    titleID = R.id.title6;
-                    statusID = R.id.status6;
-                    positionID = R.id.pos6;
-                    fieldID = R.id.field6;
-                    buttonID = R.id.buttonfield6;
-                    break;
-                case REQUEST_7 /*7*/:
-                case POS_7 /*21*/:
-                    titleID = R.id.title7;
-                    statusID = R.id.status7;
-                    positionID = R.id.pos7;
-                    fieldID = R.id.field7;
-                    buttonID = R.id.buttonfield7;
-                    break;
-                case REQUEST_8 /*8*/:
-                case POS_8 /*22*/:
-                    titleID = R.id.title8;
-                    statusID = R.id.status8;
-                    positionID = R.id.pos8;
-                    fieldID = R.id.field8;
-                    buttonID = R.id.buttonfield8;
-                    break;
-                case REQUEST_9 /*9*/:
-                case POS_9 /*23*/:
-                    titleID = R.id.title9;
-                    statusID = R.id.status9;
-                    positionID = R.id.pos9;
-                    fieldID = R.id.field9;
-                    buttonID = R.id.buttonfield9;
-                    break;
-                case REQUEST_10 /*10*/:
-                case POS_10 /*24*/:
-                    titleID = R.id.title10;
-                    statusID = R.id.status10;
-                    positionID = R.id.pos10;
-                    fieldID = R.id.field10;
-                    buttonID = R.id.buttonfield10;
-                    break;
-                case REQUEST_11 /*11*/:
-                case POS_11 /*25*/:
-                    titleID = R.id.title11;
-                    statusID = R.id.status11;
-                    positionID = R.id.pos11;
-                    fieldID = R.id.field11;
-                    buttonID = R.id.buttonfield11;
-                    break;
-                case REQUEST_12 /*12*/:
-                case POS_12 /*26*/:
-                    titleID = R.id.title12;
-                    statusID = R.id.status12;
-                    positionID = R.id.pos12;
-                    fieldID = R.id.field12;
-                    buttonID = R.id.buttonfield12;
-                    break;
-                case REQUEST_13 /*13*/:
-                case POS_13 /*27*/:
-                    titleID = R.id.title13;
-                    statusID = R.id.status13;
-                    positionID = R.id.pos13;
-                    fieldID = R.id.field13;
-                    buttonID = R.id.buttonfield13;
-                    break;
-                case REQUEST_14 /*14*/:
-                case POS_14 /*28*/:
-                    titleID = R.id.title14;
-                    statusID = R.id.status14;
-                    positionID = R.id.pos14;
-                    fieldID = R.id.field14;
-                    buttonID = R.id.buttonfield14;
-                    break;
-                default:
-                    titleID = R.id.title0;
-                    statusID = R.id.status0;
-                    positionID = R.id.pos0;
-                    fieldID = R.id.field0;
-                    buttonID = R.id.buttonfield0;
-                    break;
+
+            Row row = new Row();
+            for(Row r : rows){
+                if(r.requestCode == rc || r.posCode == rc){
+                    row = r;
+                }
             }
+
+            int titleID = row.titleID;
+            int statusID = row.statusID;
+            int positionID = row.positionID;
+            int fieldID = row.fieldID;
+            int buttonID = row.buttonID;
+
             EditText positionField = findViewById(positionID);
             String role;
             TextView titleField;
@@ -925,7 +507,7 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
                 pos = positionField.getText().toString();
                 if (!(role == null || role.length() == 0)) {
                     updateRealizedRole(role, false);
-                    this.InfoTab.updateListView();
+                    this.infoTab.updateListView();
                 }
                 if (pos.length() != 0) {
                     updatePlayerRole(Integer.parseInt(pos), "");
@@ -972,7 +554,7 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
                         updateRealizedRole(role, false);
                     }
                     updateRealizedRole(roleOrPosition, true);
-                    this.InfoTab.updateListView();
+                    this.infoTab.updateListView();
                     if (pos.length() != 0) {
                         updatePlayerRole(Integer.parseInt(pos), "");
                         updateRemainingPos(pos, false);
@@ -1011,7 +593,7 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
                     params.addRule(0, buttonID);
                     textField.setLayoutParams(params);
                     updateRealizedRole(roleOrPosition, true);
-                    this.InfoTab.updateListView();
+                    this.infoTab.updateListView();
                     roleOrPosition = template.encodeRole(roleOrPosition);
                     textField.setText(roleOrPosition);
                     textField.setTextColor(ContextCompat.getColor(getApplicationContext(), mainPage.roleColors.get(decodeRole(roleOrPosition))));
@@ -1063,86 +645,18 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
     public void toggleStatus(View view) {
         String roleText;
         Type type;
-        int statusID = -1;
-        int posID = -1;
-        int fieldID = -1;
-        switch (view.getId()) {
-            case R.id.title0 /*2131558603*/:
-                statusID = R.id.status0;
-                fieldID = R.id.field0;
-                posID = R.id.pos0;
-                break;
-            case R.id.title1 /*2131558607*/:
-                statusID = R.id.status1;
-                fieldID = R.id.field1;
-                posID = R.id.pos1;
-                break;
-            case R.id.title2 /*2131558611*/:
-                statusID = R.id.status2;
-                fieldID = R.id.field2;
-                posID = R.id.pos2;
-                break;
-            case R.id.title3 /*2131558615*/:
-                statusID = R.id.status3;
-                fieldID = R.id.field3;
-                posID = R.id.pos3;
-                break;
-            case R.id.title4 /*2131558619*/:
-                statusID = R.id.status4;
-                fieldID = R.id.field4;
-                posID = R.id.pos4;
-                break;
-            case R.id.title5 /*2131558623*/:
-                statusID = R.id.status5;
-                fieldID = R.id.field5;
-                posID = R.id.pos5;
-                break;
-            case R.id.title6 /*2131558627*/:
-                statusID = R.id.status6;
-                fieldID = R.id.field6;
-                posID = R.id.pos6;
-                break;
-            case R.id.title7 /*2131558631*/:
-                statusID = R.id.status7;
-                fieldID = R.id.field7;
-                posID = R.id.pos7;
-                break;
-            case R.id.title8 /*2131558635*/:
-                statusID = R.id.status8;
-                fieldID = R.id.field8;
-                posID = R.id.pos8;
-                break;
-            case R.id.title9 /*2131558639*/:
-                statusID = R.id.status9;
-                fieldID = R.id.field9;
-                posID = R.id.pos9;
-                break;
-            case R.id.title10 /*2131558643*/:
-                statusID = R.id.status10;
-                fieldID = R.id.field10;
-                posID = R.id.pos10;
-                break;
-            case R.id.title11 /*2131558647*/:
-                statusID = R.id.status11;
-                fieldID = R.id.field11;
-                posID = R.id.pos11;
-                break;
-            case R.id.title12 /*2131558651*/:
-                statusID = R.id.status12;
-                fieldID = R.id.field12;
-                posID = R.id.pos12;
-                break;
-            case R.id.title13 /*2131558655*/:
-                statusID = R.id.status13;
-                fieldID = R.id.field13;
-                posID = R.id.pos13;
-                break;
-            case R.id.title14 /*2131558658*/:
-                statusID = R.id.status14;
-                fieldID = R.id.field14;
-                posID = R.id.pos14;
-                break;
+
+        Row row = new Row();
+        for(Row r : rows){
+            if(r.titleID == view.getId()){
+                row = r;
+            }
         }
+
+        int statusID = row.statusID;
+        int posID = row.positionID;
+        int fieldID = row.fieldID;
+
         EditText position = findViewById(posID);
         try {
             roleText = decodeRole(((EditText) findViewById(fieldID)).getText().toString());
@@ -1179,7 +693,7 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
                 updatePlayerPos(pos, true);
             }
         }
-        this.InfoTab.updateListView();
+        this.infoTab.updateListView();
     }
 
     public void onBackPressed() {

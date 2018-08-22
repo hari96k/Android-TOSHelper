@@ -209,7 +209,7 @@
         android:layout_below="@+id/escort_maf"
         android:background="@color/mafia"
         android:gravity="center"
-        android:text="@string/Maf"
+        android:text="@string/Mafioso"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="20sp"
         app:layout_heightPercent="6%"

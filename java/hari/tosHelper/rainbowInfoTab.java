@@ -11,11 +11,11 @@ import android.widget.ListView;
 public class rainbowInfoTab extends ListFragment {
     protected static final String[] AllRoles = new String[]{"Bodyguard", "Doctor", "Escort", "Investigator", "Jailor", "Lookout", "Mayor", "Medium", "Retributionist", "Sheriff", "Spy", "Transporter", "Veteran", "Vigilante", "Blackmailer", "Consigliere", "Consort", "Disguiser", "Forger", "Framer", "Godfather", "Janitor", "Mafioso", "Arsonist", "Serial Killer", "Werewolf", "Executioner", "Jester", "Witch", "Amnesiac", "Survivor", "Vampire"};
     private Activity activity;
-    private infoTabAdapter adapter;
+    private InfoTabAdapter adapter;
 
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        this.adapter = new infoTabAdapter(getActivity(), AllRoles);
+        this.adapter = new InfoTabAdapter(getActivity(), AllRoles);
         setListAdapter(this.adapter);
         ListView listView = getListView();
         if (listView != null) {

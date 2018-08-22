@@ -72,8 +72,14 @@ public class Role_Info_Classic extends Activity {
         }
     };
 
+    int[] roleColors = null;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle b = this.getIntent().getExtras();
+        if(b != null) {
+            roleColors = b.getIntArray("colors");
+        }
         int position = getIntent().getIntExtra("position", 0);
         String role = getIntent().getStringExtra("selection");
         setContentView(R.layout.activity_roleinfo_page);
@@ -1379,7 +1385,7 @@ public class Role_Info_Classic extends Activity {
     private void setInfo(String role, int position) {
         TextView infoField = findViewById(R.id.roleTitle);
         infoField.setText(role);
-        infoField.setTextColor(ContextCompat.getColor(this, infoTabAdapter.textColor[position]));
+        infoField.setTextColor(ContextCompat.getColor(this, roleColors[position]));
         ((TextView) findViewById(R.id.roleAttribute)).setText((String) infoData.get(role)[0]);
         ((TextView) findViewById(R.id.summaryInfo)).setText((String) infoData.get(role)[1]);
         ((TextView) findViewById(R.id.abilitiesInfo)).setText((String) infoData.get(role)[2]);
