@@ -206,7 +206,6 @@
                         android:text="@string/select_" />
 
                     <Button
-                        android:id="@+id/deletePreset5"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"

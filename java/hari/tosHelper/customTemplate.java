@@ -190,7 +190,6 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
     protected CustomAdapter adapter;
     String alignment;
     private boolean doubleBackToExitPressedOnce = false;
-    Intent intent;
     Toast toast;
     private ViewPager viewPager;
 
@@ -430,10 +429,6 @@ public class customTemplate extends AppCompatActivity implements OnCustomRolesTa
         if (((EditText) findViewById(posID)).getText().toString().length() == 0 && !checkBox.isChecked()) {
             findViewById(statusID).setVisibility(View.INVISIBLE);
         }
-    }
-
-    protected void onResume() {
-        super.onResume();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

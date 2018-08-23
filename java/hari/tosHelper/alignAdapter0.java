@@ -18,9 +18,9 @@ class alignAdapter0 extends ArrayAdapter<String> {
         super(context, R.layout.list_view_element, roles);
         this.context = context;
         this.roles = roles;
-        if(startPage.modeCoven){
+        if (startPage.modeCoven) {
             initializeCovenAlignColors();
-        }else{
+        } else {
             initializeAlignColors();
         }
     }
@@ -34,7 +34,7 @@ class alignAdapter0 extends ArrayAdapter<String> {
                 textColor[i] = R.color.mafiaText;
             } else if (i < 13) {
                 textColor[i] = R.color.exeText;
-            } else if (i < 14 ) {
+            } else if (i < 14) {
                 textColor[i] = R.color.covenText;
             } else {
                 textColor[i] = R.color.black;
@@ -80,7 +80,5 @@ class alignAdapter0 extends ArrayAdapter<String> {
 }
 
 class ViewHolder3 {
-    View confirmedFlag;
-    View presentFlag;
     TextView textView;
 }

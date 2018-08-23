@@ -29,7 +29,6 @@
             android:src="@drawable/button_ranked" />
 
         <ImageView
-            android:id="@+id/buttonClassic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/classic_mode"
@@ -37,7 +36,6 @@
             android:src="@drawable/button_classic" />
 
         <ImageView
-            android:id="@+id/buttonRainbow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -46,7 +44,6 @@
             android:src="@drawable/button_rainbow" />
 
         <ImageView
-            android:id="@+id/buttonCustom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
@@ -67,7 +64,6 @@
         android:src="@drawable/godfather" />
 
     <ImageView
-        android:id="@+id/imageView3"
         android:layout_width="90dp"
         android:layout_height="150dp"
         android:layout_alignParentBottom="true"

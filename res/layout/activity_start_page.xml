@@ -5,7 +5,6 @@
     android:background="@drawable/background">
 
     <ImageView
-        android:id="@+id/Helper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView5"
@@ -52,7 +51,6 @@
 
 
         <ImageView
-            android:id="@+id/buttonSalemClassic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/buttonCovenModes"

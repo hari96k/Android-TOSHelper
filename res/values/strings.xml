@@ -20,7 +20,6 @@
     <string name="NB">Neutral Benign</string>
     <string name="NE">Neutral Evil</string>
     <string name="NK">Neutral Killing</string>
-    <string name="Present">Present</string>
     <string name="RM">Random Mafia</string>
     <string name="RN">Random Neutral</string>
     <string name="RT">Random Town</string>
@@ -71,7 +70,6 @@
     <string name="player_names">Player Names</string>
     <string name="position">Position</string>
     <string name="positionTitle">#</string>
-    <string name="present">Present</string>
     <string name="rainbow_mode">Rainbow Mode</string>
     <string name="ranked_button">Ranked Mode</string>
     <string name="role_attribute">Role Attribute</string>
@@ -97,17 +95,11 @@
     <string name="tipsTitle">Tips</string>
     <string name="town_of_salem">Town of Salem</string>
     <string name="version">V 9014</string>
-    <string name="x2">(x2)</string>
     <string name="salem_classic">Salem Classic</string>
     <string name="coven_modes">Coven Modes</string>
-    <string name="ranked_practice_button">Ranked Practice</string>
     <string name="CL">Coven Leader</string>
     <string name="Medusa">Medusa</string>
     <string name="CE">Coven Evil</string>
-    <string name="Psychic">Psychic</string>
-    <string name="PM">Potion Master</string>
-    <string name="RC">Random Coven</string>
-    <string name="Plaguebearer">Plaguebearer</string>
     <string name="Pirate">Pirate</string>
     <string name="NC">Neutral Chaos</string>
     <string name="coven">Coven</string>

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import hotchemi.android.rate.AppRate;
 
 public class startPage extends Activity {

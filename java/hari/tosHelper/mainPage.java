@@ -169,61 +169,6 @@ public class mainPage {
     static int standardHeight;
     static int standardTitleHeight;
 
-    protected static HashMap<String, String> correspondingAllignment = new HashMap<String, String>() {
-        {
-            put("Sheriff", "Town Investigative");
-            put("Doctor", "Town Protective");
-            put("Investigator", "Town Investigative");
-            put("Jailor", "Town Killing");
-            put("Medium", "Town Support");
-            put("Executioner", "Neutral Evil");
-            put("Escort", "Town Support");
-            put("Lookout", "Town Investigative");
-            put("Serial Killer", "Neutral Killing");
-            put("Veteran", "Town Killing");
-            put("Vigilante", "Town Killing");
-            put("Jester", "Neutral Evil");
-            put("Bodyguard", "Town Protective");
-            put("Mayor", "Town Support");
-            put("Retributionist", "Town Support");
-            put("Spy", "Town Investigative");
-            put("Transporter", "Town Support");
-            put("Vampire Hunter", "Town Killing");
-            put("Blackmailer", "Mafia Support");
-            put("Consigliere", "Mafia Support");
-            put("Consort", "Mafia Support");
-            put("Disguiser", "Mafia Deception");
-            put("Forger", "Mafia Deception");
-            put("Framer", "Mafia Deception");
-            put("Godfather", "Mafia Killing");
-            put("Janitor", "Mafia Deception");
-            put("Mafioso", "Mafia Killing");
-            put("Arsonist", "Neutral Killing");
-            put("Werewolf", "Neutral Killing");
-            put("Witch", "Neutral Evil");
-            put("Amnesiac", "Neutral Benign");
-            put("Survivor", "Neutral Benign");
-            put("Vampire", "Neutral Chaos");
-
-            put("Coven Leader", "Coven Evil");
-            put("Hex Master", "Coven Evil");
-            put("Poisoner", "Coven Evil");
-            put("Potion Master", "Coven Evil");
-            put("Medusa", "Coven Evil");
-            put("Necromancer", "Coven Evil");
-            put("Ambusher", "Mafia Killing");
-            put("Hypnotist", "Mafia Deception");
-            put("Guardian Angel", "Neutral Bening");
-            put("Pirate", "Neutral Chaos");
-            put("Crusader", "Town Protective");
-            put("Tracker", "Town Investigative");
-            put("Trapper", "Town Protective");
-            put("Plaguebearer", "Neutral Chaos");
-            put("Pestilence", "Neutral Chaos");
-            put("Juggernaut", "Neutral Killing");
-        }
-    };
-
     static String decodeRole(String role) {
         switch (role) {
             case "Vamp Hunter" /*0*/:
@@ -233,11 +178,4 @@ public class mainPage {
         }
     }
 
-    static void resizeText(EditText field, String role) {
-        if (role.length() >= 10) {
-            field.setTextSize(2, 18.0f);
-        } else {
-            field.setTextSize(2, 20.0f);
-        }
-    }
 }

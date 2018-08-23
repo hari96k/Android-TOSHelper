@@ -179,7 +179,6 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
         }
     };
     static ArrayList<Integer> remainingPositions = new ArrayList<>();
-    static boolean customStatesSaved;
     static int[] titles = new int[]{R.id.title0, R.id.title1, R.id.title2, R.id.title3, R.id.title4, R.id.title5, R.id.title6, R.id.title7, R.id.title8, R.id.title9, R.id.title10, R.id.title11, R.id.title12, R.id.title13, R.id.title14};
     Row[] rows;
 
@@ -187,7 +186,6 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
     protected FragAdapter adapter;
     overviewTab OverviewTab;
     String alignment;
-    Intent intent;
     Toast toast;
     private hari.tosHelper.InfoTab infoTab;
     private boolean doubleBackToExitPressedOnce = false;
@@ -289,7 +287,6 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
             rows[i] = new Row(i);
         }
 
-        customStatesSaved = false;
         this.toast = Toast.makeText(getBaseContext(), "", Toast.LENGTH_LONG);
 
         displayToast("Don't forget to input your role!");
@@ -715,7 +712,6 @@ public class template extends AppCompatActivity implements OnCustomRolesTabListe
 
     public void onBackPressed() {
         if (this.doubleBackToExitPressedOnce) {
-            customStatesSaved = true;
             this.toast.cancel();
             super.onBackPressed();
             return;

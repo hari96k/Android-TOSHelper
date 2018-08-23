@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 class alignAdapter1 extends ArrayAdapter<String> {
     private static int[] textColor;
@@ -26,113 +25,46 @@ class alignAdapter1 extends ArrayAdapter<String> {
     }
 
     private void initializeCovenTextColors() {
-        textColor = new int[50];
-        for (int i = 0; i < textColor.length; i++) {
-            if (i >= 19) {
-                if (i >= 30) {
-                    if (i >= 36) {
-                        textColor[i] = R.color.skText;
-                        switch (i) {
-                            case 36 /*24*/:
-                                textColor[i] = R.color.arsonistText;
-                                break;
-                            case 37 /*25*/:
-                                textColor[i] = R.color.juggernautText;
-                                break;
-                            case 38 /*25*/:
-                                textColor[i] = R.color.skText;
-                                break;
-                            case 39 /*26*/:
-                                textColor[i] = R.color.wwText;
-                                break;
-                            case 40 /*27*/:
-                                textColor[i] = R.color.exeText;
-                                break;
-                            case 41   /*28*/:
-                                textColor[i] = R.color.jesterText;
-                                break;
-                            case 42 /*29*/:
-                                textColor[i] = R.color.witchText;
-                                break;
-                            case 43 /*30*/:
-                                textColor[i] = R.color.amneText;
-                                break;
-                            case 44 /*32*/:
-                                textColor[i] = R.color.gaText;
-                                break;
-                            case 45 /*31*/:
-                                textColor[i] = R.color.survivorText;
-                                break;
-                            case 46 /*32*/:
-                                textColor[i] = R.color.pirateText;
-                                break;
-                            case 47 /*32*/:
-                                textColor[i] = R.color.plaguebearerText;
-                                break;
-                            case 48 /*32*/:
-                                textColor[i] = R.color.pestilenceText;
-                                break;
-                            case 49 /*32*/:
-                                textColor[i] = R.color.exeText;
-                                break;
-                            default:
-                                break;
-                        }
-                    } else {
-                        textColor[i] = R.color.covenText;
-                    }
-                } else {
-                    textColor[i] = R.color.mafiaText;
-                }
-            } else {
-                textColor[i] = R.color.townText;
-            }
-        }
+        textColor = new int[]{
+                // 0-18 town
+                R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText,
+                // 19 - 29 mafia
+                R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText,
+                // 30 - 35 coven
+                R.color.covenText, R.color.covenText, R.color.covenText, R.color.covenText, R.color.covenText, R.color.covenText,
+                R.color.arsonistText,
+                R.color.juggernautText,
+                R.color.skText,
+                R.color.wwText,
+                R.color.exeText,
+                R.color.jesterText,
+                R.color.witchText,
+                R.color.amneText,
+                R.color.gaText,
+                R.color.survivorText,
+                R.color.pirateText,
+                R.color.plaguebearerText,
+                R.color.pestilenceText,
+                R.color.exeText
+        };
     }
 
     private void initializeTextColors() {
-        textColor = new int[33];
-        for (int i = 0; i < textColor.length; i++) {
-            if (i >= 15) {
-                if (i >= 24) {
-                    switch (i) {
-                        case 24 /*24*/:
-                            textColor[i] = R.color.arsonistText;
-                            break;
-                        case 25 /*25*/:
-                            textColor[i] = R.color.skText;
-                            break;
-                        case 26 /*26*/:
-                            textColor[i] = R.color.wwText;
-                            break;
-                        case 27 /*27*/:
-                            textColor[i] = R.color.exeText;
-                            break;
-                        case 28 /*28*/:
-                            textColor[i] = R.color.jesterText;
-                            break;
-                        case 29 /*29*/:
-                            textColor[i] = R.color.witchText;
-                            break;
-                        case 30 /*30*/:
-                            textColor[i] = R.color.amneText;
-                            break;
-                        case 31 /*31*/:
-                            textColor[i] = R.color.survivorText;
-                            break;
-                        case 32 /*32*/:
-                            textColor[i] = R.color.exeText;
-                            break;
-                        default:
-                            break;
-                    }
-                } else {
-                    textColor[i] = R.color.mafiaText;
-                }
-            } else {
-                textColor[i] = R.color.townText;
-            }
-        }
+        textColor = new int[]{
+                // 0-14 town
+                R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText, R.color.townText,
+                // 15 - 23 mafia
+                R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText, R.color.mafiaText,
+                R.color.arsonistText,
+                R.color.skText,
+                R.color.wwText,
+                R.color.exeText,
+                R.color.jesterText,
+                R.color.witchText,
+                R.color.amneText,
+                R.color.survivorText,
+                R.color.exeText
+        };
     }
 
     @NonNull
