@@ -42,11 +42,14 @@
         android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView5"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_above="@id/buttonWiki">
+
+
+
 
         <ImageView
             android:id="@+id/buttonSalemClassic"
@@ -62,33 +65,37 @@
             android:id="@+id/buttonCovenModes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@id/buttonWiki"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
             android:contentDescription="@string/coven_modes"
             android:onClick="goToCovenModes"
-            android:src="@drawable/buttton_coven_modes" />
+            android:src="@drawable/buttton_coven_modes"/>
 
-        <ImageView
-            android:id="@+id/buttonWiki"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/buttonTips"
-            android:layout_centerHorizontal="true"
-            android:contentDescription="@string/tips"
-            android:onClick="goToWiki"
-            android:src="@drawable/button_wiki" />
 
-        <ImageView
-            android:id="@+id/buttonTips"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:contentDescription="@string/tips"
-            android:onClick="goToTips"
-            android:src="@drawable/button_tips" />
+
 
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/buttonTips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/buttonWiki"
+        android:contentDescription="@string/tips"
+        android:onClick="goToTips"
+        android:src="@drawable/button_tips"
+        android:layout_toStartOf="@id/buttonWiki" />
+
+    <ImageView
+        android:id="@+id/buttonWiki"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/wiki"
+        android:onClick="goToWiki"
+        android:src="@drawable/button_wiki"
+        android:layout_alignParentEnd="true" />
 
 
     <ImageView

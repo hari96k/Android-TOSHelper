@@ -41,7 +41,7 @@ public class selectAlign extends Activity {
         this.list.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String selection = ((TextView) view).getText().toString();
-                Intent intent = new Intent(selectAlign.this, rainbowPage.class);
+                Intent intent = new Intent(selectAlign.this, customTemplate.class);
                 intent.putExtra("alignment", selection);
                 selectAlign.this.setResult(-1, intent);
                 selectAlign.this.finish();
@@ -50,7 +50,7 @@ public class selectAlign extends Activity {
         this.list2.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String selection = ((TextView) view).getText().toString();
-                Intent intent = new Intent(selectAlign.this, rainbowPage.class);
+                Intent intent = new Intent(selectAlign.this, customTemplate.class);
                 intent.putExtra("role", selection);
                 selectAlign.this.setResult(-1, intent);
                 selectAlign.this.finish();

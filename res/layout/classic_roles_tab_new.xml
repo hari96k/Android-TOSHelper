@@ -35,13 +35,12 @@
             android:id="@+id/title0"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/mafia"
+            android:background="@color/town"
             android:gravity="center"
             android:longClickable="true"
             android:onClick="toggleStatus"
-            android:text="@string/GF"
+            android:text="@string/sheriff"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/mafiaText"
             android:textSize="18sp" />
 
         <View
@@ -75,12 +74,11 @@
             android:id="@+id/title1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/neutral"
+            android:background="@color/town"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/arsonist"
+            android:text="@string/Doctor"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/arsonistText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -116,12 +114,11 @@
             android:id="@+id/title2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/neutral"
+            android:background="@color/town"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/survivor"
+            android:text="@string/investigator"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/survivorText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -162,7 +159,6 @@
             android:onClick="toggleStatus"
             android:text="@string/Jailor"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/townText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -198,12 +194,11 @@
             android:id="@+id/title4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/neutral"
+            android:background="@color/town"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/Amnesiac"
+            android:text="@string/medium"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/amneText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -239,12 +234,11 @@
             android:id="@+id/title5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/neutral"
+            android:background="@color/mafia"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/SerialKiller"
+            android:text="@string/GF"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/skText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -280,12 +274,11 @@
             android:id="@+id/title6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/neutral"
+            android:background="@color/mafia"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/Witch"
+            android:text="@string/framer"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/witchText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -321,10 +314,10 @@
             android:id="@+id/title7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:background="@color/neutral"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/Any"
+            android:text="@string/exe"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
@@ -361,12 +354,11 @@
             android:id="@+id/title8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/neutral"
+            android:background="@color/town"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/Witch"
+            android:text="@string/escort"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/witchText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -402,12 +394,11 @@
             android:id="@+id/title9"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/neutral"
+            android:background="@color/mafia"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/SerialKiller"
+            android:text="@string/Mafioso"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/skText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -443,12 +434,11 @@
             android:id="@+id/title10"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/neutral"
+            android:background="@color/town"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/Amnesiac"
+            android:text="@string/lookout"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/amneText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -484,12 +474,11 @@
             android:id="@+id/title11"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/town"
+            android:background="@color/neutral"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/Veteran"
+            android:text="@string/SerialKiller"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/townText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -525,12 +514,11 @@
             android:id="@+id/title12"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/neutral"
+            android:background="@color/town"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/survivor"
+            android:text="@string/TK"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/survivorText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -569,9 +557,8 @@
             android:background="@color/neutral"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/arsonist"
+            android:text="@string/jester"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/arsonistText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -607,12 +594,11 @@
             android:id="@+id/title14"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/mafia"
+            android:background="@color/town"
             android:gravity="center"
             android:onClick="toggleStatus"
-            android:text="@string/Mafioso"
+            android:text="@string/RT"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/mafiaText"
             android:textSize="18sp"
             app:layout_heightPercent="6%"
             app:layout_widthPercent="50%" />
@@ -642,7 +628,7 @@
         android:layout_below="@+id/align_0"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/mafia"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -667,7 +653,7 @@
         android:layout_below="@+id/_01"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/neutral"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -692,7 +678,7 @@
         android:layout_below="@+id/_12"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/neutral"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -742,7 +728,7 @@
         android:layout_below="@+id/_34"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/neutral"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -767,7 +753,7 @@
         android:layout_below="@+id/_45"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/neutral"
+        android:background="@color/mafia"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -792,7 +778,7 @@
         android:layout_below="@+id/_56"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/neutral"
+        android:background="@color/mafia"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -817,7 +803,7 @@
         android:layout_below="@+id/_67"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/white"
+        android:background="@color/neutral"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -842,7 +828,7 @@
         android:layout_below="@+id/_78"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/neutral"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -867,7 +853,7 @@
         android:layout_below="@+id/_89"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/neutral"
+        android:background="@color/mafia"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -892,7 +878,7 @@
         android:layout_below="@+id/_910"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/neutral"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -917,7 +903,7 @@
         android:layout_below="@+id/_1011"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/town"
+        android:background="@color/neutral"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -942,7 +928,7 @@
         android:layout_below="@+id/_1112"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/neutral"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -992,7 +978,7 @@
         android:layout_below="@+id/_1314"
         android:layout_toEndOf="@+id/leftBisector"
         android:layout_toRightOf="@+id/leftBisector"
-        android:background="@color/mafia"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="10%">
@@ -1038,7 +1024,7 @@
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
         android:gravity="center"
-        android:text="@string/Roles"
+        android:text="@string/taken"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="25sp"
         app:layout_heightPercent="7.5%"
@@ -1051,7 +1037,7 @@
         android:layout_below="@+id/align_0"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/mafia"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="40%">
@@ -1071,7 +1057,7 @@
         android:layout_below="@+id/_01"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="40%">
@@ -1091,7 +1077,7 @@
         android:layout_below="@+id/_12"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
@@ -1131,7 +1117,7 @@
         android:layout_below="@+id/_34"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
@@ -1151,7 +1137,7 @@
         android:layout_below="@+id/_45"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
+        android:background="@color/mafia"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
@@ -1171,7 +1157,7 @@
         android:layout_below="@+id/_56"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
+        android:background="@color/mafia"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
@@ -1191,36 +1177,18 @@
         android:layout_below="@+id/_67"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/white"
+        android:background="@color/neutral"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
-        <Button
-            android:id="@+id/buttonfield7"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="end"
-            android:background="@drawable/delete2"
-            android:onClick="deleteRole"
-            android:scaleType="fitXY"
-            android:visibility="invisible" />
-
-        <EditText
+        <CheckBox
             android:id="@+id/field7"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:focusable="false"
-            android:gravity="center"
-            android:inputType="none"
-            android:longClickable="false"
-            android:maxLines="1"
-            android:onClick="fetchRole"
-            android:paddingBottom="5dp"
-            android:paddingTop="0dp"
-            android:textSize="18sp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickedChkBox"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -1229,7 +1197,7 @@
         android:layout_below="@+id/_78"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
@@ -1249,7 +1217,7 @@
         android:layout_below="@+id/_89"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
+        android:background="@color/mafia"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
@@ -1269,7 +1237,7 @@
         android:layout_below="@+id/_910"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
@@ -1289,7 +1257,7 @@
         android:layout_below="@+id/_1011"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/town"
+        android:background="@color/neutral"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
@@ -1309,18 +1277,36 @@
         android:layout_below="@+id/_1112"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/neutral"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
-        <CheckBox
+        <Button
+            android:id="@+id/buttonfield12"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="end"
+            android:background="@drawable/delete2"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
             android:id="@+id/field12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickedChkBox"
-            android:scaleX="1.5"
-            android:scaleY="1.5" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -1349,17 +1335,35 @@
         android:layout_below="@+id/_1314"
         android:layout_toEndOf="@+id/rightBisector"
         android:layout_toRightOf="@+id/rightBisector"
-        android:background="@color/mafia"
+        android:background="@color/town"
         android:gravity="center"
         app:layout_heightPercent="6%"
         app:layout_widthPercent="50%">
 
-        <CheckBox
+        <Button
+            android:id="@+id/buttonfield14"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="end"
+            android:background="@drawable/delete2"
+            android:onClick="deleteRole"
+            android:scaleType="fitXY"
+            android:visibility="invisible" />
+
+        <EditText
             android:id="@+id/field14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickedChkBox"
-            android:scaleX="1.5"
-            android:scaleY="1.5" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:gravity="center"
+            android:inputType="none"
+            android:longClickable="false"
+            android:maxLines="1"
+            android:onClick="fetchRole"
+            android:paddingBottom="5dp"
+            android:paddingTop="0dp"
+            android:textSize="18sp" />
     </RelativeLayout>
 </android.support.percent.PercentRelativeLayout>

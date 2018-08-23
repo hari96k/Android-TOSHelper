@@ -20,19 +20,6 @@ public class covenModesPage extends Activity {
         startActivity(new Intent(this, template.class));
     }
 
-    public void goToClassic(View view) {
-        startPage.mode = "Coven Classic";
-        startPage.modeCoven = true;
-        startActivity(new Intent(this, classicPage.class));
-    }
-
-//    public void goToRankedPractice(View view) {
-//        template.roles = new String[]{"Jailor", "Town Investigative", "Town Support", "Town Protective", "Town Killing", "Random Town", "Random Town", "Random Town", "Random Town", "Godfather", "Mafioso", "Random Mafia", "Random Mafia", "Neutral Killing", "Neutral Evil"};
-//        startPage.mode = "Ranked Practice";
-//        alignmentsTab.setModeLayout(R.layout.ranked_roles_tab);
-//        startActivity(new Intent(this, template.class));
-//    }
-
     public void goToCustom(View view) {
         // Careful with renaming this mode, its format is reused elsewhere
         startPage.mode = "Coven Custom";

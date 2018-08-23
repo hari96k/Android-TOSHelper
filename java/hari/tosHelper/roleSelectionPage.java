@@ -139,7 +139,8 @@ public class roleSelectionPage extends Activity {
         this.list.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String selection = ((TextView) view).getText().toString();
-                Intent intent = new Intent(roleSelectionPage.this, rainbowPage.class);
+                //TODO: This template.class used to be rainbow.class, weirdly still worked?
+                Intent intent = new Intent(roleSelectionPage.this, template.class);
                 intent.putExtra("selection", selection);
                 roleSelectionPage.this.setResult(-1, intent);
                 roleSelectionPage.this.finish();

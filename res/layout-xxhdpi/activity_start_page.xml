@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/buttonTips"
             android:layout_centerHorizontal="true"
-            android:contentDescription="@string/tips"
+            android:contentDescription="@string/wiki"
             android:onClick="goToWiki"
             android:src="@drawable/button_wiki" />
 

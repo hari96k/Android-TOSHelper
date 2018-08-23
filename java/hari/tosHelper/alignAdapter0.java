@@ -68,8 +68,6 @@ class alignAdapter0 extends ArrayAdapter<String> {
             holder.textView = rowView.findViewById(R.id.listViewElement);
             holder.textView.setText(this.roles[position]);
             holder.textView.setTextColor(ContextCompat.getColor(getContext(), textColor[position]));
-            holder.presentFlag = rowView.findViewById(R.id.presentFlag);
-            holder.confirmedFlag = rowView.findViewById(R.id.confirmedFlag);
             rowView.setTag(holder);
             return rowView;
         }

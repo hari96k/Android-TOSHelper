@@ -18,8 +18,6 @@ public class startPage extends Activity {
         AppRate.showRateDialogIfMeetsConditions(this);
     }
 
-
-
     public void goToTips(View view) {
         startActivity(new Intent(this, tipsPage.class));
     }

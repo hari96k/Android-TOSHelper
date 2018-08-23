@@ -14,11 +14,13 @@ class InfoTabAdapter extends ArrayAdapter<String> {
     private final Context context;
     private String mode = startPage.mode;
     private final String[] roles;
+    int tabPosition;
 
-    InfoTabAdapter(Context context, String[] roles) {
+    InfoTabAdapter(Context context, String[] roles, int tabPosition) {
         super(context, R.layout.list_view_element_2, roles);
         this.context = context;
         this.roles = roles;
+        this.tabPosition = tabPosition;
 
         switch (mode) {
             case "Ranked" /*1*/:
@@ -37,7 +39,7 @@ class InfoTabAdapter extends ArrayAdapter<String> {
                 initializeCovenCustomTextColors();
                 return;
             case "Wiki":
-                if(InfoTab.position == 0){
+                if(tabPosition == 0){
                     initializeTextColors();
                 }else{
                     initializeCovenCustomTextColors();
@@ -154,8 +156,6 @@ class InfoTabAdapter extends ArrayAdapter<String> {
             holder.textView = rowView.findViewById(R.id.listViewElement);
             holder.textView.setText(this.roles[position]);
             holder.textView.setTextColor(ContextCompat.getColor(getContext(), textColor[position]));
-            holder.presentFlag = rowView.findViewById(R.id.presentFlag);
-            holder.confirmedFlag = rowView.findViewById(R.id.confirmedFlag);
             fixVisuals(position, rowView, holder);
             rowView.setTag(holder);
             return rowView;
@@ -171,18 +171,7 @@ class InfoTabAdapter extends ArrayAdapter<String> {
     private void fixVisuals(int position, View rowView, ViewHolder holder) {
         switch (mode) {
             case "Ranked" /*0*/:
-                if (template.realizedRoles.get(this.roles[position]) >= 1 || this.roles[position].equals("Jailor") || this.roles[position].equals("Godfather") || this.roles[position].equals("Mafioso")) {
-                    holder.presentFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.presentFlag.setVisibility(View.INVISIBLE);
-                }
-                if (template.confirmedRoles.get(this.roles[position]) >= 1) {
-                    holder.confirmedFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.confirmedFlag.setVisibility(View.INVISIBLE);
-                }
-
-
+            case "Custom" /*2*/:
                 if (position < 15) {
                     rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.town));
                 } else if (position < 24) {
@@ -192,11 +181,6 @@ class InfoTabAdapter extends ArrayAdapter<String> {
                 }
                 break;
             case "Classic" /*1*/:
-                if (classicPage.realizedClassicRoles.get(this.roles[position]) >= 1) {
-                    holder.presentFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.presentFlag.setVisibility(View.INVISIBLE);
-                }
                 if (position < 14) {
                     rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.town));
                 } else if (position < 17) {
@@ -205,36 +189,7 @@ class InfoTabAdapter extends ArrayAdapter<String> {
                     rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
                 }
                 break;
-            case "Custom" /*2*/:
-                if (template.realizedRoles.get(this.roles[position]) >= 1) {
-                    holder.presentFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.presentFlag.setVisibility(View.INVISIBLE);
-                }
-                if (template.confirmedRoles.get(this.roles[position]) >= 1) {
-                    holder.confirmedFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.confirmedFlag.setVisibility(View.INVISIBLE);
-                }
-                if (position < 15) {
-                    rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.town));
-                } else if (position < 24) {
-                    rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.mafia));
-                } else {
-                    rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
-                }
-                break;
             case "Rainbow":
-                if (rainbowPage.realizedRainbowRoles.get(this.roles[position]) >= 1) {
-                    holder.presentFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.presentFlag.setVisibility(View.INVISIBLE);
-                }
-                if (rainbowPage.confirmedRoles.get(this.roles[position]) >= 1) {
-                    holder.confirmedFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.confirmedFlag.setVisibility(View.INVISIBLE);
-                }
                 if (position < 14) {
                     rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.town));
                 } else if (position < 23) {
@@ -243,20 +198,16 @@ class InfoTabAdapter extends ArrayAdapter<String> {
                     rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
                 }
                 break;
-
+            case "Coven Ranked":
+                if (position < 19) {
+                    rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.town));
+                } else if (position < 25) {
+                    rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.coven));
+                } else {
+                    rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
+                }
+                break;
             case "Coven Custom":
-                if (customTemplate.realizedRoles.get(this.roles[position]) >= 1) {
-                    holder.presentFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.presentFlag.setVisibility(View.INVISIBLE);
-                }
-                if (customTemplate.confirmedRoles.get(this.roles[position]) >= 1) {
-                    holder.confirmedFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.confirmedFlag.setVisibility(View.INVISIBLE);
-                }
-
-
                 if (position < 19) {
                     rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.town));
                 } else if (position < 30) {
@@ -267,45 +218,31 @@ class InfoTabAdapter extends ArrayAdapter<String> {
                     rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
                 }
                 break;
-            case "Coven Ranked":
-                if (template.realizedRoles.get(this.roles[position]) >= 1) {
-                    holder.presentFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.presentFlag.setVisibility(View.INVISIBLE);
-                }
-                if (template.confirmedRoles.get(this.roles[position]) >= 1) {
-                    holder.confirmedFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.confirmedFlag.setVisibility(View.INVISIBLE);
-                }
-                if (position < 19) {
-                    rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.town));
-                } else if (position < 25) {
-                    rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.coven));
-                } else {
-                    rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
-                }
-                break;
             case "Wiki":
-                if(holder.presentFlag.getVisibility() == View.VISIBLE){
-                    holder.presentFlag.setVisibility(View.INVISIBLE);
+                // If left tab (Classic Game Mode)
+                if(tabPosition == 0) {
+                    if (position < 15) {
+                        rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.town));
+                    } else if (position < 24) {
+                        rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.mafia));
+                    } else {
+                        rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
+                    }
                 }
-
-                if(holder.confirmedFlag.getVisibility() == View.VISIBLE){
-                    holder.confirmedFlag.setVisibility(View.INVISIBLE);
+                // If right tab (Coven Game Mode)
+                else{
+                    if (position < 19) {
+                        rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.town));
+                    } else if (position < 30) {
+                        rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.mafia));
+                    } else if (position < 36) {
+                        rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.coven));
+                    } else {
+                        rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.neutral));
+                    }
                 }
                 break;
             default:
-                if (template.realizedRoles.get(this.roles[position]) >= 1) {
-                    holder.presentFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.presentFlag.setVisibility(View.INVISIBLE);
-                }
-                if (template.confirmedRoles.get(this.roles[position]) >= 1) {
-                    holder.confirmedFlag.setVisibility(View.VISIBLE);
-                } else {
-                    holder.confirmedFlag.setVisibility(View.INVISIBLE);
-                }
                 if (position < 19) {
                     rowView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.town));
                 } else if (position < 25) {
@@ -319,7 +256,5 @@ class InfoTabAdapter extends ArrayAdapter<String> {
 }
 
 class ViewHolder {
-    View confirmedFlag;
-    View presentFlag;
     TextView textView;
 }

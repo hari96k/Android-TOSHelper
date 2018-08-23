@@ -80,6 +80,7 @@ public class selectPos extends Activity {
         String playerName;
         switch (startPage.mode) {
             case "Ranked" /*0*/:
+            case "Rainbow":
                 positions = new String[template.remainingPositions.size()];
                 for (i2 = 0; i2 < positions.length; i2++) {
                     positions[i2] = (template.remainingPositions.get(i2)).toString();
@@ -114,12 +115,6 @@ public class selectPos extends Activity {
                     }
                 }
                 break;
-            case "Rainbow":
-                positions = new String[rainbowPage.remainingPositions.size()];
-                for (i2 = 0; i2 < positions.length; i2++) {
-                    positions[i2] = rainbowPage.remainingPositions.get(i2).toString();
-                }
-                break;
             default:
                 positions = new String[template.remainingPositions.size()];
                 for (i2 = 0; i2 < positions.length; i2++) {
@@ -146,11 +141,7 @@ public class selectPos extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent;
                 String selection = ((TextView) view).getText().toString();
-                if (startPage.mode.equals("Ranked")) {
-                    intent = new Intent(selectPos.this, template.class);
-                } else {
-                    intent = new Intent(selectPos.this, rainbowPage.class);
-                }
+                intent = new Intent(selectPos.this, template.class);
                 intent.putExtra("selection", selection);
                 selectPos.this.setResult(-1, intent);
                 selectPos.this.finish();
@@ -160,11 +151,7 @@ public class selectPos extends Activity {
 
     public void deletePos(View view) {
         Intent intent;
-        if (startPage.mode.equals("Ranked")) {
-            intent = new Intent(this, template.class);
-        } else {
-            intent = new Intent(this, rainbowPage.class);
-        }
+        intent = new Intent(this, template.class);
         intent.putExtra("selection", "delete");
         setResult(-1, intent);
         finish();

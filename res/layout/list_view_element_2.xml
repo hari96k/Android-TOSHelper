@@ -11,23 +11,23 @@
         android:gravity="center"
         android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/presentFlag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:contentDescription="@string/present"
-        android:scaleType="fitXY"
-        android:text="@string/Present" />
+    <!--<TextView-->
+        <!--android:id="@+id/presentFlag"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:contentDescription="@string/present"-->
+        <!--android:scaleType="fitXY"-->
+        <!--android:text="@string/Present" />-->
 
-    <TextView
-        android:id="@+id/confirmedFlag"
-        android:layout_width="5dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:text=""
-        android:textSize="30sp"
-        android:visibility="invisible" />
+    <!--<TextView-->
+        <!--android:id="@+id/confirmedFlag"-->
+        <!--android:layout_width="5dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorAccent"-->
+        <!--android:text=""-->
+        <!--android:textSize="30sp"-->
+        <!--android:visibility="invisible" />-->
 </RelativeLayout>

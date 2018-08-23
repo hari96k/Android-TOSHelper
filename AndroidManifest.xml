@@ -21,12 +21,6 @@
             android:name="hari.tosHelper.wikiPage"
             android:screenOrientation="portrait" />
         <activity
-            android:name="hari.tosHelper.classicPage"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="hari.tosHelper.rainbowPage"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="hari.tosHelper.customPresets"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
