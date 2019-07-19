@@ -98,7 +98,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -134,7 +134,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -358,7 +358,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -390,7 +390,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -421,7 +421,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), tempLength, builder.length(), 33);
                 builder.append(".");
-                extraBuilder = new SpannableStringBuilder("Your target is not suspicious:\nAll Townies\n");
+                extraBuilder = new SpannableStringBuilder("You cannot find evidence of wrongdoing. Your target seems innocent:\nAll Townies\n");
                 tempLength = extraBuilder.length();
                 extraBuilder.append("Amnesiac");
                 extraBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.amneText)), tempLength, extraBuilder.length(), 33);
@@ -496,7 +496,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -532,7 +532,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -568,7 +568,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
 
@@ -609,7 +609,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -649,7 +649,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
 
@@ -690,7 +690,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -726,7 +726,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -762,7 +762,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -798,7 +798,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -842,7 +842,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -882,7 +882,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -922,7 +922,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
 
@@ -1270,7 +1270,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
 
@@ -1387,7 +1387,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -1459,7 +1459,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -1491,7 +1491,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -1531,7 +1531,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
 
                 tempLength = builder.length();
                 builder.append("Investigator");
@@ -1573,7 +1573,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.\n\n");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.\n\n");
                 tempLength = builder.length();
                 builder.append("Investigator");
                 builder.setSpan(new StyleSpan(1), tempLength, builder.length(), 33);
@@ -1682,7 +1682,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.");
 
                 tempLength = builder.length();
                 builder.append("\n\nInvestigator");
@@ -1930,7 +1930,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.");
 
                 tempLength = builder.length();
                 builder.append("\n\nInvestigator");
@@ -1965,7 +1965,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.");
 
                 tempLength = builder.length();
                 builder.append("\n\nInvestigator");
@@ -2003,7 +2003,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.");
 
                 tempLength = builder.length();
                 builder.append("\n\nInvestigator");
@@ -2042,7 +2042,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.");
 
                 tempLength = builder.length();
                 builder.append("\n\nInvestigator");
@@ -2081,7 +2081,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.");
 
                 tempLength = builder.length();
 
@@ -2116,7 +2116,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.");
 
                 tempLength = builder.length();
                 builder.append("\n\nInvestigator");
@@ -2155,7 +2155,7 @@ public class Role_Info_Coven extends Activity {
                 builder.append("Sheriff");
                 builder.setSpan(new StyleSpan(1), 0, builder.length(), 33);
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.townText)), 0, builder.length(), 33);
-                builder.append(" -\nYour target is not suspicious.");
+                builder.append(" -\nYou cannot find evidence of wrongdoing. Your target seems innocent.");
 
                 tempLength = builder.length();
                 builder.append("\n\nInvestigator");
